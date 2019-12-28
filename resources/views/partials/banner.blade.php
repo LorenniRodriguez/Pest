@@ -4,7 +4,7 @@
             <div class="header-left">
                 <div class="w3layouts-logo">
                     <h1>
-                        <a href="index.html">Cat <span>Club</span></a>
+                        <a href="{{ route('home') }}">Cat <span>Club</span></a>
                     </h1>
                 </div>
             </div>
@@ -27,6 +27,11 @@
                                 <li><a href="{{ url('/gallery') }}">Galería</a></li>
                                 <li><a href="{{ url('/blog') }}">Blog</a></li>
                                 <li><a href="{{ url('/contact') }}">Contacto</a></li>
+                                @guest
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                @else
+                                    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                                @endguest
                             </ul>   
                             <div class="clearfix"> </div>
                         </div>  

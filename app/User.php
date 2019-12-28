@@ -36,4 +36,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // Relaciones entre modelos
+    public function vacunas ()
+    {
+        return $this->hasMany('App\Vacuna');
+    }
+
+
+    // Assessors
+    public function getTipoUsuarioAttribute ()
+    {
+        return $this->user_type == 'A' ? 'Administrador' : 'Veterinario';
+    }
 }
