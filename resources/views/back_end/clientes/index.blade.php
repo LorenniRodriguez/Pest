@@ -14,10 +14,6 @@
                                 <tr>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
-                                    <th>Edad</th>
-                                    <th>genero</th>
-                                    <th>cedula</th>
-                                    <th>Dirección</th>
                                     <th>Teléfono</th>
                                     <th>Celular</th>
                                     <th> País</th>
@@ -31,10 +27,6 @@
                                     <tr>
                                         <td>{{ $cliente->nombres }}</td>
                                         <td>{{ $cliente->apellidos }}</td>
-                                        <td>{{ $cliente->edad }}</td>
-                                        <td>{{ $cliente->genero->descripcion }}</td>
-                                        <td>{{ $cliente->cedula}}</td>
-                                        <td>{{ $cliente->direccion }}</td>
                                         <td>{{ $cliente->telefono}}</td>
                                         <td>{{ $cliente->celular}}</td>
                                         <td>{{ $cliente->pais->descripcion}}</td>

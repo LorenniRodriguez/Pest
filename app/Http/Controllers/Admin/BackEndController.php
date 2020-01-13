@@ -12,7 +12,8 @@ class BackEndController extends Controller
     	return view('back_end.dashboard', [
     		'mascotas' => \App\Mascota::where('estatus', '=', 'A')->count(),
     		'clientes' => \App\Cliente::where('estatus', '=', 'A')->count(),
-    		'citas' => \App\Cita::whereRaw("estatus = 'A' AND fecha_atendida IS NULL")->count()
+    		'citas' => \App\Cita::whereRaw("estatus = 'A' AND fecha_atendida IS NULL")->count(),
+    		'Hospedajes' => \App\Hospedaje::whereRaw("estatus = 'A' AND fecha_entrega IS NULL")->count()
     	]);
     }
 }

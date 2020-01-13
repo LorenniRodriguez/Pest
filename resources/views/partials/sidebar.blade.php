@@ -59,7 +59,7 @@
                         <a class="nav-link" href="{{ route('clientes.create') }}">Registrar Cliente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('clientes.index') }}">Clientes Registradas</a>
+                        <a class="nav-link" href="{{ route('clientes.index') }}">Clientes Registrados</a>
                     </li>
                 </ul>
             </div>
@@ -99,6 +99,53 @@
             </div>
         </li>
         {{-- fin opcion del modulo citas --}}
+
+        
+        {{-- opcion del modulo de hospedajes --}}
+         <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#hospedajes" aria-expanded="false" aria-controls="hospedajes">
+                <i class="menu-icon mdi mdi-home-heart"></i>
+                <span class="menu-title">Realizar Hospedaje</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="hospedajes">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('hospedajes.create') }}">Registrar Hospedaje</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('hospedajes.index') }}">Hospedajes Realizados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('hospedajes.historico') }}">Histórico Hospedaje</a>
+                    </li>       
+                </ul>
+            </div>
+        </li>
+        {{-- fin del modulo de hospedajes --}}
+
+        {{--opcion del modulo de adopcion--}}
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#cliente-mascota" aria-expanded="false" aria-controls="cliente-mascota">
+
+              <i class="menu-icon mdi mdi-hand-heart"></i>
+                <span class="menu-title">Gestionar Adopciones</span>
+                <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="cliente-mascota">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cliente_mascota.create') }}">Registrar Adopciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Ver Adopciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
+                    </li>
+            </div>  
+        </li>
+        {{--fin del modulo de adopcion--}}
 
 
         {{-- modulo de opciones de registrar --}}

@@ -10,7 +10,7 @@
     <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item">
-            <a href="{{ route('home') }}" class="nav-link"><i style="font-size: 16px !important;" class="fa fa-rocket"></i>Ver sitio</a>
+            <a href="{{ route('home') }}" class="nav-link" target="_blank"><i style="font-size: 16px !important;" class="fa fa-rocket"></i>Ver sitio</a>
           </li>
           {{-- <li class="nav-item active">
             <a href="#" class="nav-link">

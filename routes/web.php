@@ -68,10 +68,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 	Route::post('mascota-vacuna/store', 'MascotaVacunaController@store')->name('mascota_vacuna.store');
 	Route::delete('mascota-vacuna/destroy/{mascota_vacuna}', 'MascotaVacunaController@destroy')->name('mascota_vacuna.destroy');
 
-	# cita ruta
+	#cita ruta
 	Route::resource('citas', 'CitaController');
 	Route::post('citas/buscar-vacunas', 'CitaController@buscarVacunas')->name('citas.buscar_vacunas');
 	Route::get('historico-citas', 'CitaController@historico')->name('citas.historico');
+
+	#proceso hospedaje rutas
+	Route::resource('hospedajes', 'HospedajeController');
+    Route::get('historico-hospedajes', 'HospedajeController@historico')->name('hospedajes.historico');
+
+    #proceso adopciones rutas
+    Route::resource('cliente_mascota', 'ClienteMascotaController');
+    Route::get('historico-adopciones', 'ClienteMascotaController@historico')->name('cliente_mascota.historico');
+
 });
 
 

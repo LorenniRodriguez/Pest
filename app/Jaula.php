@@ -11,4 +11,9 @@ class Jaula extends Model
 
 	protected $fillable = ['descripcion'];
   	public $timestamps = false;
+
+  	public function hospedaje ()
+	{
+		return $this->hasMany('App\Hospedaje');
+	}
 }

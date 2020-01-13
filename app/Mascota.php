@@ -6,33 +6,33 @@ use Illuminate\Database\Eloquent\model;
 class Mascota extends Model
 {
     protected $table = 'mascotas';
-  	protected $primaryKey = 'id_mascota';
-  	
-  	protected $fillable = ['nombre', 'edad', 'peso', 'id_raza', 'id_estatura','id_tipo_mascota', 'id_color','fecha_registro'];
-  	public $timestamps = false;
+    protected $primaryKey = 'id_mascota';
+
+    protected $fillable = ['nombre', 'edad', 'peso', 'id_raza', 'id_estatura','id_tipo_mascota', 'id_color','fecha_nacimiento'];
+    
+    public $timestamps = false;
 
 
-  	// Relaciones entre modelos
-  	public function tipoMascota ()
-  	{
-  		return $this->belongsTo('App\TipoMascota', 'id_tipo_mascota');
-  	}
+    // Relaciones entre modelos
+    public function tipoMascota ()
+    {
+        return $this->belongsTo('App\TipoMascota', 'id_tipo_mascota');
+    }
 
-  	public function raza ()
-  	{
-  		return $this->belongsTo('App\Raza', 'id_raza');
-  	}
+    public function raza ()
+    {
+        return $this->belongsTo('App\Raza', 'id_raza');
+    }
 
-  	public function color ()
-  	{
-  		return $this->belongsTo('App\Color', 'id_color');
-  	}
+    public function color ()
+    {
+        return $this->belongsTo('App\Color', 'id_color');
+    }
 
-  	public function estatura ()
-  	{
-  		return $this->belongsTo('App\Estatura', 'id_estatura');
-  	}
-
+    public function estatura ()
+    {
+        return $this->belongsTo('App\Estatura', 'id_estatura');
+    }
 
     // Assessors
     public function getFechaRegistroAttribute ($fecha_registro)

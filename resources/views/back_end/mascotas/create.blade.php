@@ -128,9 +128,9 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Fecha Registro:</label>
+                          <label class="col-sm-3 col-form-label">Fecha Nacimineto:</label>
                           <div class="col-sm-9">
-                            <input name="Fecha_registro" id ="Fecha_registro" placeholder ="Fecha de Registro" value="{{old('Fecha_resgistro')}}" type="text" class="form-control" />
+                            <input name="Fecha_nacimiento" id ="Fecha_nacimiento" placeholder ="Fecha Nacimineto" value="{{old('Fecha_nacimiento')}}" type="date" class="form-control" />
                           </div>
                         </div>
                       </div>

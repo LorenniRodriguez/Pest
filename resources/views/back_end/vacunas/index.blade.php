@@ -1,6 +1,6 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Vacunas Registrados')
+@section('titulo', 'Vacunas Registradas')
 
 @section('content')
 

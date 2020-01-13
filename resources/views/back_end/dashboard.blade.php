@@ -13,14 +13,14 @@
 							<i class="mdi mdi-cat text-danger icon-lg"></i>
 						</div>
 						<div class="float-right">
-							<p class="mb-0 text-right">Cant. Mascotas</p>
+							<p class="mb-0 text-right">Mascotas</p>
 							<div class="fluid-container">
 								<h3 class="font-weight-medium text-right mb-0">{{ $mascotas }}</h3>
 							</div>
 						</div>
 					</div>
 					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Ver info. de mascotas
+						<i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Ver mascotas registradas
 					</p>
 				</div>
 			</div>
@@ -34,35 +34,35 @@
 							<i class="mdi mdi-account text-warning icon-lg"></i>
 						</div>
 						<div class="float-right">
-							<p class="mb-0 text-right">Cant. Clientes</p>
+							<p class="mb-0 text-right">Clientes</p>
 							<div class="fluid-container">
 								<h3 class="font-weight-medium text-right mb-0">{{ $clientes }}</h3>
 							</div>
 						</div>
 					</div>
 					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Ver todos los clientes
+						<i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Ver clientes registrados
 					</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card" onclick="document.location.href='{{ route('hospedajes.index') }}'" style="cursor: pointer;">
 			<div class="card card-statistics">
 				<div class="card-body">
 					<div class="clearfix">
 						<div class="float-left">
-							<i class="mdi mdi-poll-box text-success icon-lg"></i>
+							<i class="mdi mdi-home-heart text-success icon-lg"></i>
 						</div>
 						<div class="float-right">
-							<p class="mb-0 text-right">Sales</p>
+							<p class="mb-0 text-right">Hospedajes</p>
 							<div class="fluid-container">
-								<h3 class="font-weight-medium text-right mb-0">5693</h3>
+								<h3 class="font-weight-medium text-right mb-0"> {{ $Hospedajes }}</h3>
 							</div>
 						</div>
 					</div>
 					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales
+						<i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Ver hospedajes en curso
 					</p>
 				</div>
 			</div>
@@ -76,14 +76,14 @@
 							<i class="mdi mdi-calendar-range text-info icon-lg"></i>
 						</div>
 						<div class="float-right">
-							<p class="mb-0 text-right">Citas Pendientes</p>
+							<p class="mb-0 text-right">Citas</p>
 							<div class="fluid-container">
 								<h3 class="font-weight-medium text-right mb-0">{{ $citas }}</h3>
 							</div>
 						</div>
 					</div>
 					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Próximas citas
+						<i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Ver citas pendientes
 					</p>
 				</div>
 			</div>

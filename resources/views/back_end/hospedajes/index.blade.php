@@ -1,7 +1,6 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Citas Agendadas')
-@section('subtitulo', '(Próximas vacunas a aplicar)')
+@section('titulo', 'Hospedajes Registrados')
 
 @section('content')
 
@@ -15,40 +14,40 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Mascota</th>
-                                    <th>Vacuna</th>
+                                    <th>Jaula</th>
                                     <th>Registrado Por</th>
-                                    <th>Fecha Cita</th>
-                                    <th>Faltan</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Fecha Final</th>
+                                    <th>Tipo Hospedaje</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($citas as $cita)
+                                @foreach ($hospedajes as $hospedaje)
                                     <tr>
-                                        <td>{{ $cita->id_cita }}</td>
-                                        <td>{{ $cita->mascota->nombre }}</td>
-                                        <td>{{ $cita->vacuna->descripcion }}</td>
-                                        <td>{{ $cita->usuario->name }}</td>
-                                        <td>{{ $cita->fecha_cita }}</td>
-                                        <td>{{ $cita->dias_restantes }}</td>
+                                        <td>{{ $hospedaje->id_hospedaje }}</td>
+                                        <td>{{ $hospedaje->mascota->nombre }}</td>
+                                        <td>{{ $hospedaje->jaula->descripcion }}</td>
+                                        <td>{{ $hospedaje->usuario->name }}</td>
+                                        <td>{{ $hospedaje->fecha_registro}}</td>                                      
+                                        <td>{{ $hospedaje->fecha_final }}</td>
+                                        <td>{{ $hospedaje->TipoHospedaje->descripcion}}</td>
                                         <td>
                                             <div style="display: flex; justify-content: space-around;">
                                                 <a href="" class=""></a>
-                                                <form method="POST" action="{{ route('mascota_vacuna.aplicar_vacuna') }}">
-                                                    @csrf
 
-                                                    <input type="hidden" name="id_mascota" value="{{ $cita->id_mascota }}">
-                                                    <input type="hidden" name="id_vacuna" value="{{ $cita->id_vacuna }}">
-                                                    <input type="hidden" name="id_cita" value="{{ $cita->id_cita }}">
+                                                 <form method="POST" action="{{ route('hospedajes.update', $hospedaje->id_hospedaje) }}">
+                                                    @csrf
+                                                    @method('PUT')
 
                                                     <button type="submit" class="btn btn-info btn-xs btn-rounded">
-                                                        <i class="fa fa-location-arrow"></i>¡Atender!
+                                                        <i class="fa fa-location-arrow"></i>¡Finalizar!
                                                     </button>
                                                 </form>
-
-                                                @if(Auth::user()->user_type == 'A' || $cita->id_usuario == Auth::user()->id)
-                                                    @if($cita->estatus == 'A')
-                                                        <form method="POST" action="{{ route('citas.destroy', $cita->id_cita) }}">
+                       
+                                                @if(Auth::user()->user_type == 'A' || $hospedaje->id_usuario == Auth::user()->id)
+                                                    @if($hospedaje->estatus == 'A')
+                                                        <form method="POST" action="{{ route('hospedajes.destroy', $hospedaje->id_hospedaje) }}">
                                                             @csrf
                                                             @method('DELETE')
 
@@ -59,7 +58,7 @@
                                                     @endif
                                                 @endif
                                             </div>
-                                        </td>
+                                        </td>                  
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -69,6 +68,7 @@
             </div>
         </div>
     </div>
+
 
 @endsection
 

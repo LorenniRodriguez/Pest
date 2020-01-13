@@ -52,6 +52,14 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+         $this->validate($request, [
+
+            'nombres'      => 'required',
+            'apellidos'    => 'required'
+    
+        ]);
+    
+
         $cliente = Cliente::create($request->only('nombres', 'apellidos','edad', 'direccion', 'cedula', 'telefono','celular', 'correo', 
             'id_provincia','id_genero', 'id_pais'));
 

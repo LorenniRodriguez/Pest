@@ -20,8 +20,7 @@ class MascotaController extends Controller
      */
     public function index()
     {
-        return view('back_end.mascotas.index')
-            ->with([
+        return view('back_end.mascotas.index')->with([
                 'mascotas' => Mascota::all()
         ]);
     }
@@ -64,7 +63,7 @@ class MascotaController extends Controller
         ]);
         
         $mascota = Mascota::create($request->only('nombre', 'edad', 'peso', 'id_raza', 'id_estatura',
-            'id_tipo_mascota', 'id_color'));
+            'id_tipo_mascota', 'id_color', 'fecha_nacimiento'));
 
         //echo '<pre>';
         //var_dump($mascota);
@@ -117,6 +116,7 @@ class MascotaController extends Controller
         $mascota->id_raza = $request->id_raza;
         $mascota->id_estatura = $request->id_estatura;
         $mascota->id_color = $request->id_color;
+        $mascota->fecha_nacimiento = $request->fecha_nacimiento;
         $mascota->update();
 
         Session::flash('success', 'La mascota se ha actualizado correctamente.');

@@ -155,7 +155,8 @@
                       </div>             
 
                         <div class="col-md-12">
-                              <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+                              <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i>Guardar</button>
+                              <a href="{{ route('clientes.index') }}" class="btn btn-warning btn-sm"><i class="fa fa-mail-reply"></i>Atrás</a>
                         </div>
                     </div>
                   </form>

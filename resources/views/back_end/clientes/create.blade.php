@@ -4,6 +4,20 @@
 
 @section('content')
 
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+  
+  <ul>
+    @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
+
+    @endforeach
+
+  </ul>
+</div>
+
+@endif
+
   <div class="row">
     <div class="col-12 grid-margin">
               <div class="card">
@@ -116,7 +130,7 @@
                          <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Cédula:</label>
                           <div class="col-sm-9">
-                            <input name="cedula" id="cedula" placeholder="" type="text" class="form-control" />
+                            <input name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -124,7 +138,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Correo</label>
                           <div class="col-sm-9">
-                            <input name="correo" id="correo" placeholder="" type="text" class="form-control" />
+                            <input name="correo" id="correo" placeholder="Correo Personal" type="text" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -134,7 +148,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Dirección:</label>
                           <div class="col-sm-9">
-                            <input name="direccion" id="dirección"type="text" class="form-control" />
+                            <input name="direccion" id="dirección"type="text" placeholder="Direccion del Cliente" class="form-control" />
                           </div>
                         </div>
                       </div>             
