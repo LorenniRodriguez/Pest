@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             
-                            <p class="footer-text text-center mt-3">Copyright © 2020 Veterinaria. All rights reserved.</p>
+                            <p class="footer-text text-center mt-3">Copyright © 2020 Servet Veterinaria. Todos los derechos reservados.</p>
                         </div>
                     </div>
                 </div>

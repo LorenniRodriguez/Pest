@@ -51,17 +51,18 @@ class MascotaServicioController extends Controller
      */
     public function store(Request $request)
     {
-        $mascota_servicio = new MascotaServicio;
+        foreach ($request->id_servicio as $id_servicio)
+        {
+            $mascota_servicio = new MascotaServicio;
 
-        $mascota_servicio->id_mascota = $request->id_mascota;
-        $mascota_servicio->id_servicio = $request->id_servicio;
-        $mascota_servicio->id_usuario = Auth::user()->id;
-        $mascota_servicio-> save();
+            $mascota_servicio->id_mascota = $request->id_mascota;
+            $mascota_servicio->id_servicio = $id_servicio;
+            $mascota_servicio->id_usuario = Auth::user()->id;
+            $mascota_servicio-> save();
+        }
 
-        Session::flash('success', 'El servicio se ha registrado correctamente.');
-         return redirect()->route('mascota_servicio.index');
-        echo '<pre>';
-        var_dump($request->all());
+        Session::flash('success', 'Servicio(s) aplicado(s) correctamente.');
+        return redirect()->route('mascota_servicio.index');
     }
 
     /**

@@ -27,18 +27,6 @@ class MascotaServicio extends Model
 		return $this->belongsTo('App\User', 'id_usuario');
 	}
 
-	public function servicioDescripcion ()
-
-	{
-		return $this->belongsTo('App\Servicio', 'descripcion');
-	}
-
-	public function mascotaNombre ()
-	{
-		return $this->belongsTo('App\Mascota', 'nombre');
-	}
-	
-
 	// Assessors
 
 	public function getFechaRegistroAttribute ($fecha_registro)
