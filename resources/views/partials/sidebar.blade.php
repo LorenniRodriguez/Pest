@@ -4,9 +4,9 @@
             <div class="nav-link">
                 <div class="user-wrapper">
                     <div class="profile-image">
-                        <img src="{{ asset('back_end/images/pets.jpg') }}" alt="profile image">
+                        <img src="{{ asset('back_end/images/pets.jpg') }}" alt="profile image" width="50px" height="50px" style="max-width: none;">
                     </div>
-                    <div class="text-wrapper">
+                    <div class="text-wrapper" style="margin-top: 8px; margin-left: 25px;">
                         <p class="profile-name">{{ Auth::user()->name }}</p>
                         <div>
                             <small class="designation text-muted">{{ Auth::user()->tipo_usuario }}</small>

@@ -37,8 +37,9 @@
 				<div>
 					<form>
 						<div class="form-group mb-0">
-							<select class="form-control form-control-sm col-sm-1" name="year" id="year">
-								@foreach($years as $year)
+							<select class="form-control form-control-sm col-sm-1" name="year_servicios" id="year_servicios">
+								<option value="0" selected="">Año...</option>
+								@foreach($years_servicios as $year)
 									<option value="{{ $year }}">{{ $year }}</option>
 								@endforeach
 							</select>
@@ -61,8 +62,9 @@
 				<div>
 					<form>
 						<div class="form-group mb-0">
-							<select class="form-control form-control-sm col-sm-1" name="year" id="year">
-								@foreach($years as $year)
+							<select class="form-control form-control-sm col-sm-1" name="years_adopciones" id="year_adopciones">
+								<option value="0" selected="">Año...</option>
+								@foreach($years_adopciones as $year)
 									<option value="{{ $year }}">{{ $year }}</option>
 								@endforeach
 							</select>
@@ -85,8 +87,9 @@
 				<div>
 					<form>
 						<div class="form-group mb-0">
-							<select class="form-control form-control-sm col-sm-1" name="year" id="year">
-								@foreach($years as $year)
+							<select class="form-control form-control-sm col-sm-1" name="years_adopciones_tipo" id="year_adopciones_tipo">
+								<option value="0" selected="">Año...</option>
+								@foreach($years_adopciones as $year)
 									<option value="{{ $year }}">{{ $year }}</option>
 								@endforeach
 							</select>
@@ -127,18 +130,18 @@
 		<div class="card">
             <div class="card-body">
 				<h5>Cantidad de Vacunas Aplicadas</h5>
-
-				<div>
+				{{-- <div>
 					<form>
 						<div class="form-group mb-0">
-							<select class="form-control form-control-sm col-sm-1" name="year" id="year">
-								@foreach($years as $year)
+							<select class="form-control form-control-sm col-sm-1" name="year_vacunas" id="year_vacunas">
+								<option value="0" selected="">Año...</option>
+								@foreach($years_vacunas as $year)
 									<option value="{{ $year }}">{{ $year }}</option>
 								@endforeach
 							</select>
 						</div>
 					</form>
-				</div>
+				</div> --}}
 
 				<div class="cant_vacunas">
 					<canvas id="cant_vacunas" width="800" height="250"></canvas>
@@ -177,8 +180,9 @@
 				<div>
 					<form>
 						<div class="form-group mb-0">
-							<select class="form-control form-control-sm col-sm-1" name="year" id="year">
-								@foreach($years as $year)
+							<select class="form-control form-control-sm col-sm-1" name="years_hospedajes" id="year_hospedajes">
+								<option value="0" selected="">Año...</option>
+								@foreach($years_hospedajes as $year)
 									<option value="{{ $year }}">{{ $year }}</option>
 								@endforeach
 							</select>
@@ -212,7 +216,7 @@
 						labels: cant_adopciones.labels,
 						datasets: [{
 							label: "Adopciones",
-							backgroundColor: ['#0277BD', '#FF5722', '#607D8B', '#00695C', '#D84315', '#4E342E', '#FF8F00', '#0091EA', '#d50000', '#00BFA5', '#FFD600', '#4DD0E1'],
+							borderColor: '#00695C' /*['#0277BD', '#FF5722', '#607D8B', '#00695C', '#D84315', '#4E342E', '#FF8F00', '#0091EA', '#d50000', '#00BFA5', '#FFD600', '#4DD0E1']*/,
 							data: cant_adopciones.values,
 							fill: false
 						}]
@@ -291,7 +295,7 @@
 				{
 					cant_adopciones_tp.data.datasets.push({
 						label: cant_adopciones[x].label,
-						backgroundColor: "#04B4AE",
+						backgroundColor: "#FE642E",
 						data: cant_adopciones[x].values
 					});
 				}
@@ -476,7 +480,7 @@
 				datasets: [
 					{
 						label: "Cliente",
-						backgroundColor: ["#8A0808", "#088A4B", "#0080FF", "#FE2E64", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+						backgroundColor: ["#0080FF", "#FE2E64", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "013ADF", "0489B1", "AEB404", "FF4000"],
 						data: cant_adopciones_cliente.values
 					}
 				]
@@ -497,7 +501,7 @@
 			data: {
 				labels: cant_hospedajes_cliente.labels,
 				datasets: [{
-					backgroundColor: ["#4C0B5F", "#0B3B0B", "#5E610B", "#8A2908", "#DF013A", "#AEB404", "#e8c3b9", "#088A4B"],
+					backgroundColor: ["#F5A9BC", "#FA5858", "#D0FA58", "#DF013A", "#AEB404", "#e8c3b9", "#088A4B"],
 					data: cant_hospedajes_cliente.values
 				}]
 			},
@@ -548,25 +552,70 @@
 
 		cant_hospedaje_mes(@json($cant_hospedaje_mes));
 
-		/*$('#year').change(function () {
+		// consulta AJAX
+		$('#year_servicios, #year_adopciones, #year_adopciones_tipo, #year_hospedajes').change(function ($this) {
+
+			let element = $this.target.id;
+			let yyear = $('#' + element).val();
+
+			if(yyear == 0)
+			{
+				alert('Selecciona un año válido para continuar...');
+				return 0;
+			}
 
 			// petición AJAX
 			$.ajax({
 	        	type: 'POST',
 	        	headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-	        	url: '',
-	        	data: { 'year': $('#year option:selected').val() },
+	        	url: `{{ route('graficos.consultar') }}`,
+	        	data: { 'year': yyear, 'element': element },
 	        	success: function (response) {
 
-		        	// removiendo el lienzo para generar un nuevo gráfico
-			        $("canvas#revenue").remove();
-					$("div.revenue").append('<canvas id="revenue" width="800" height="250"></canvas>');
+	        		console.log(response);
 
-					{{-- Ingresos por Venta --}}
-					revenue(response.data);
+	        		if(element == 'year_servicios')
+					{
+						// removiendo el lienzo para generar un nuevo gráfico
+				        $("canvas#cant_servicios_tipo").remove();
+						$("div.cant_servicios_tipo").append('<canvas id="cant_servicios_tipo" width="800" height="250"></canvas>');
+						cant_servicios_tipo(response.data);
+					}
+
+					if(element == 'year_adopciones')
+					{
+						// removiendo el lienzo para generar un nuevo gráfico
+				        $("canvas#cant_adopciones").remove();
+						$("div.cant_adopciones").append('<canvas id="cant_adopciones" width="800" height="250"></canvas>');
+						cant_adopciones(response.data);
+					}
+
+					if(element == 'year_adopciones_tipo')
+					{
+						// removiendo el lienzo para generar un nuevo gráfico
+				        $("canvas#cant_adopciones_tipo_mascota").remove();
+						$("div.cant_adopciones_tipo_mascota").append('<canvas id="cant_adopciones_tipo_mascota" width="800" height="250"></canvas>');
+						cant_adopciones_tipo_mascota(response.data);
+					}
+
+					/*if(element == 'year_vacunas')
+					{
+						// removiendo el lienzo para generar un nuevo gráfico
+				        $("canvas#cant_vacunas").remove();
+						$("div.cant_vacunas").append('<canvas id="cant_vacunas" width="800" height="250"></canvas>');
+						cant_vacunas(response.data);
+					}*/
+
+					if(element == 'year_hospedajes')
+					{
+						// removiendo el lienzo para generar un nuevo gráfico
+				        $("canvas#cant_hospedaje_mes").remove();
+						$("div.cant_hospedaje_mes").append('<canvas id="cant_hospedaje_mes" width="800" height="250"></canvas>');
+						cant_hospedaje_mes(response.data);
+					}
 	            }
 	        }) // fin de la petición AJAX
-		});*/
+		});
 
 	</script>
 

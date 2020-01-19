@@ -19,8 +19,8 @@
 							</div>
 						</div>
 					</div>
-					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Ver mascotas
+					<p class="text-muted mt-3 mb-0" style="color: #999 !important;">
+						<i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Mascotas activas
 					</p>
 				</div>
 			</div>
@@ -40,8 +40,8 @@
 							</div>
 						</div>
 					</div>
-					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Ver clientes registrados
+					<p class="text-muted mt-3 mb-0" style="color: #999 !important;">
+						<i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Clientes activos
 					</p>
 				</div>
 			</div>
@@ -61,8 +61,8 @@
 							</div>
 						</div>
 					</div>
-					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Ver hospedajes en curso
+					<p class="text-muted mt-3 mb-0" style="color: #999 !important;">
+						<i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Hospedajes en curso
 					</p>
 				</div>
 			</div>
@@ -82,8 +82,8 @@
 							</div>
 						</div>
 					</div>
-					<p class="text-muted mt-3 mb-0">
-						<i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Ver vacunaciones
+					<p class="text-muted mt-3 mb-0" style="color: #999 !important;">
+						<i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Próximas vacunaciones
 					</p>
 				</div>
 			</div>
@@ -174,7 +174,7 @@
 				datasets: [
 					{
 						label: "",
-						backgroundColor: ["#DF7401", "#2E9AFE", "#01DFA5"],
+						backgroundColor: ["#FE2E2E", "#04B4AE", "#01DFA5"],
 						data: cant_adopciones.values
 					}
 				]
@@ -205,7 +205,7 @@
 				datasets: [
 					{
 						label: "",
-						backgroundColor: ["#084B8A", "#0B243B", "#0B3B39"],
+						backgroundColor: ["#FA5882", "#FA8258", "#0B3B39"],
 						data: cant_hospedajes.values
 					}
 				]
@@ -235,7 +235,7 @@
 				labels: cant_hospedajes_tardios.labels,
 				datasets: [{
 					label: "Hospedajes",
-					backgroundColor: ['#D84315', '#4E342E', '#FF8F00', '#0091EA', '#0277BD', '#FF5722', '#607D8B', '#00695C', '#d50000', '#00BFA5', '#FFD600', '#4DD0E1'],
+					borderColor: '#01DF74',
 					data: cant_hospedajes_tardios.values,
 					fill: false
 				}]
@@ -336,7 +336,7 @@
 				datasets: [
 					{
 						label: "Clientes",
-						backgroundColor: ["#04B486", "#B18904", "#088A85", "#01A9DB", "#DF7401", "#3cba9f", "#e8c3b9", "#c45850"],
+						backgroundColor: ["#04B486", "#FA8258", "#088A85", "#01A9DB", "#DF7401", "#3cba9f", "#e8c3b9", "#c45850"],
 						data: cant_clientes_pais.values
 					}
 				]

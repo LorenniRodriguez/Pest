@@ -87,6 +87,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     
     #graficos del sistema
     Route::get('graficos', 'GraficoController@index')->name('graficos.index');
+    Route::post('graficos/consulta', 'GraficoController@consultar')->name('graficos.consultar');
 });
 
 

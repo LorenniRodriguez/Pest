@@ -22,14 +22,20 @@ class GraficoController extends Controller
     		'cant_hospedaje_cliente' => $this->cantidadHospedajeCliente(),
     		'cant_hospedaje_mes' => $this->cantidadHospedajesMensuales(),
     		'cant_vacunas' => $this->cantidadVacunas(),
-    		'years' => $this->years()
+    		'years_adopciones' => $this->yearsAdopciones(),
+    		'years_servicios' => $this->yearsServicios(),
+    		'years_hospedajes' => $this->yearsHospedajes(),
+    		'years_vacunas' => $this->yearsVacunas()
     	]);
     }
 
 
     // 1 - cantidad de adopciones por meses
-    public function cantidadAdopcionesMensuales () : ?array
+    public function cantidadAdopcionesMensuales ($year = null) : ?array
     {
+    	if(is_null($year))
+    		$year = date('Y');
+
     	$data = [
     		'labels' => [],
     		'values' => []
@@ -45,12 +51,13 @@ class GraficoController extends Controller
 			WHERE
 				cm.es_adopcion = 'Y'
 					AND cm.estatus IN ('A', 'E')
+					AND YEAR(cm.fecha_registro) = ?
 			GROUP BY
 				MONTH(cm.fecha_registro)
 			ORDER BY
 				mes asc
 			;
-		");
+		", array($year));
 
     	// me aseguro que exista data resultante del query
     	if(count($result))
@@ -67,32 +74,6 @@ class GraficoController extends Controller
     	}
 
     	return $data;
-    }
-
-    // obtiene una lista con los años en que se ha efectuado alguna transacción
-    public function years () : ?array
-    {
-    	// ejecuto la consulta de lugar
-    	$result = DB::select("
-			SELECT DISTINCT
-				YEAR(fecha_registro) AS yyear
-			FROM
-				cliente_mascota
-			;
-		");
-
-    	// me aseguro que exista data resultante del query
-    	if(count($result))
-    	{
-    		$data = [];
-
-	    	foreach ($result as $value)
-	    	{
-	    		$data[] = $value->yyear;
-	    	}
-    	}
-
-    	return $data ?? null;
     }
 
     // 2 - cantidad de servicios realizados
@@ -134,15 +115,10 @@ class GraficoController extends Controller
     }
 
     // 3 - cantidad de adopciones realizadas por tipo de mascota (por meses)
-    public function cantidadAdopcionesTipoMascota () : ?array
+    public function cantidadAdopcionesTipoMascota ($year = null) : ?array
     {
-    	function obtenerCantMes ($mes, $cantidad)
-    	{
-    		$mes_cant = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    		$mes_cant[$mes - 1] = $cantidad;
-
-    		return $mes_cant;
-    	}
+    	if(is_null($year))
+    		$year = date('Y');
 
     	// ejecuto la consulta de lugar
     	$result = DB::select("
@@ -160,13 +136,14 @@ class GraficoController extends Controller
 				cm.es_adopcion = 'Y'
 					AND cm.estatus IN ('A', 'E')
 					AND m.estatus = 'A'
+					AND YEAR(cm.fecha_registro) = ?
 			GROUP BY
 				MONTH(cm.fecha_registro),
 				tp.descripcion
 			ORDER BY
 				mes asc
 			;
-		");
+		", array($year));
 
     	// me aseguro que exista data resultante del query
     	if(count($result))
@@ -175,7 +152,7 @@ class GraficoController extends Controller
 	    	{
 	    		$data[] = [
 	    			'label' => $value->tipo_mascota,
-		    		'values' => obtenerCantMes($value->mes, $value->cantidad)
+		    		'values' => $this->obtenerCantMes($value->mes, $value->cantidad)
 		    	];
 	    	}
     	}
@@ -184,8 +161,11 @@ class GraficoController extends Controller
     }
 
     // 4 - cantidad de servicios realizados por tipo (por meses)
-    public function cantidadServiciosTipo () : ?array
+    public function cantidadServiciosTipo ($year = null) : ?array
     {
+    	if(is_null($year))
+    		$year = date('Y');
+
     	// ejecuto la consulta de lugar
     	$result = DB::select("
 			SELECT
@@ -199,11 +179,12 @@ class GraficoController extends Controller
 			WHERE
 				ms.estatus = 'A'
 					AND s.estatus = 'A'
+					AND YEAR(ms.fecha_registro) = ?
 			GROUP BY
 				MONTH(ms.fecha_registro),
 				s.descripcion
 			;
-		");
+		", array($year));
 
     	// me aseguro que exista data resultante del query
     	if(count($result))
@@ -212,7 +193,7 @@ class GraficoController extends Controller
 	    	{
 	    		$data[] = [
 	    			'label' => $value->servicio,
-		    		'values' => obtenerCantMes($value->mes, $value->cantidad)
+		    		'values' => $this->obtenerCantMes($value->mes, $value->cantidad)
 		    	];
 	    	}
     	}
@@ -462,8 +443,11 @@ class GraficoController extends Controller
     }
 
     // 11 - cantidad de hospedajes por meses --
-    public function cantidadHospedajesMensuales () : ?array
+    public function cantidadHospedajesMensuales ($year = null) : ?array
     {
+    	if(is_null($year))
+    		$year = date('Y');
+
     	$data = [
     		'labels' => [],
     		'values' => []
@@ -479,12 +463,13 @@ class GraficoController extends Controller
 			WHERE
 				h.fecha_entrega IS NOT NULL
 					AND h.estatus IN ('A', 'E')
+					AND YEAR(h.fecha_registro) = ?
 			GROUP BY
 				MONTH(h.fecha_registro)
 			ORDER BY
 				mes asc
 			;
-		");
+		", array($year));
 
     	// me aseguro que exista data resultante del query
     	if(count($result))
@@ -503,12 +488,155 @@ class GraficoController extends Controller
     	return $data;
     }
 
+    public function obtenerCantMes ($mes, $cantidad)
+	{
+		$mes_cant = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		$mes_cant[$mes - 1] = $cantidad;
+
+		return $mes_cant;
+	}
+
+    // obtiene una lista con los años en que se ha efectuado alguna transacción
+    public function yearsAdopciones () : ?array
+    {
+    	// ejecuto la consulta de lugar
+    	$result = DB::select("
+			SELECT DISTINCT
+				YEAR(fecha_registro) AS yyear
+			FROM
+				cliente_mascota
+			ORDER BY
+				1 DESC
+			;
+		");
+
+    	// me aseguro que exista data resultante del query
+    	if(count($result))
+    	{
+    		$data = [];
+
+	    	foreach ($result as $value)
+	    	{
+	    		$data[] = $value->yyear;
+	    	}
+    	}
+
+    	return $data ?? null;
+    }
+
+    public function yearsServicios() : ?array
+    {
+    	// ejecuto la consulta de lugar
+    	$result = DB::select("
+			SELECT DISTINCT
+				YEAR(fecha_registro) AS yyear
+			FROM
+				mascota_servicio
+			ORDER BY
+				1 DESC
+			;
+		");
+
+    	// me aseguro que exista data resultante del query
+    	if(count($result))
+    	{
+    		$data = [];
+
+	    	foreach ($result as $value)
+	    	{
+	    		$data[] = $value->yyear;
+	    	}
+    	}
+
+    	return $data ?? null;
+    }
+
+    public function yearsHospedajes() : ?array
+    {
+    	// ejecuto la consulta de lugar
+    	$result = DB::select("
+			SELECT DISTINCT
+				YEAR(fecha_registro) AS yyear
+			FROM
+				hospedajes
+			ORDER BY
+				1 DESC
+			;
+		");
+
+    	// me aseguro que exista data resultante del query
+    	if(count($result))
+    	{
+    		$data = [];
+
+	    	foreach ($result as $value)
+	    	{
+	    		$data[] = $value->yyear;
+	    	}
+    	}
+
+    	return $data ?? null;
+    }
+
+    public function yearsVacunas() : ?array
+    {
+    	// ejecuto la consulta de lugar
+    	$result = DB::select("
+			SELECT DISTINCT
+				YEAR(fecha_registro) AS yyear
+			FROM
+				mascota_vacuna
+			ORDER BY
+				1 DESC
+			;
+		");
+
+    	// me aseguro que exista data resultante del query
+    	if(count($result))
+    	{
+    		$data = [];
+
+	    	foreach ($result as $value)
+	    	{
+	    		$data[] = $value->yyear;
+	    	}
+    	}
+
+    	return $data ?? null;
+    }
 
     // para la peticion AJAX
-	/*public function getRevenue (Request $request)
+	public function consultar (Request $request)
 	{
+		$data = [];
+
+		if($request->element == 'year_servicios')
+		{
+			$data = $this->cantidadServiciosTipo($request->year);
+		}
+
+		if($request->element == 'year_adopciones')
+		{
+			$data = $this->cantidadAdopcionesMensuales($request->year);
+		}
+
+		if($request->element == 'year_adopciones_tipo')
+		{
+			$data = $this->cantidadAdopcionesTipoMascota($request->year);
+		}
+
+		/*if($request->element == 'year_vacunas')
+		{
+			$data = $this->cantidadVacunas($request->year);
+		}*/
+
+		if($request->element == 'year_hospedajes')
+		{
+			$data = $this->cantidadHospedajesMensuales($request->year);
+		}
+
 		return response()->json([
-			'data' => $this->getSalesRevenue($request->year) ?? null
+			'data' => $data ?? null
 		]);
-	}*/
+	}
 }
