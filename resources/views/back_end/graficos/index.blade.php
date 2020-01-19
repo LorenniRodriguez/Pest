@@ -225,7 +225,7 @@
 						legend: { display: false },
 						title: {
 							display: true,
-							text: 'Cantidad de Adopciones Registradas ' + '2020'
+							text: 'Cantidad de Adopciones Registradas '
 						},
 						scales: {
 							yAxes: [{

@@ -14,11 +14,31 @@
   <link rel="stylesheet" href="{{ asset('back_end/vendors/css/vendor.bundle.base.css') }}">
   <link rel="stylesheet" href="{{ asset('back_end/vendors/jquery-toast/jquery.toast.min.css') }}">
   <link rel="stylesheet" href="{{ asset('back_end/vendors/css/vendor.bundle.addons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('back_end/vendors/select2/css/select2_4.0.8.min.css') }}">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('back_end/css/style.css') }}">
+  <style type="text/css">
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #f2f2f2 !important;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.75rem;
+        padding: 0.4375rem 0.75rem;
+        height: calc(2.25rem + 2px);
+        line-height: 14px;
+        font-weight: 300;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+      top: 5px !important;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+      line-height: 24px;
+    }
+  </style>
   @yield('css')
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('back_end/images/favicon.png') }}" />
@@ -46,9 +66,11 @@
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020
-              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-                  <i class="mdi mdi-heart text-danger"></i>
+              <a href="http://www.bootstrapdash.com/" target="_blank">Servet Veterinaria</a>. Todos los derechos reservados.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                  <i class="mdi mdi-cat text-danger"></i>
+                  Lorenni Rodriguez / Melissa Nuñez
+                  <i class="mdi mdi-cat text-danger"></i>
               </span>
           </div>
       </footer>
@@ -73,6 +95,7 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{ asset('back_end/js/dashboard.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back_end/vendors/select2/js/select2_4.0.8.min.js') }}"></script>
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -137,6 +160,10 @@
                 });
         @endif
     });
+
+    if($(".select2").length)
+        $(".select2").select2();
+  </script>
 </script>
 
 @yield('js')

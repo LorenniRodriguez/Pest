@@ -13,7 +13,7 @@
 
                         <div class="form-group">
                             <label for="id_mascota">Mascotas:</label>
-                            <select class="form-control" name="id_mascota" id="id_mascota">
+                            <select class="form-control select2" name="id_mascota" id="id_mascota">
                             	@foreach($mascotas as $mascota)
                             		<option value="{{ $mascota->id_mascota }}">{{ $mascota->nombre }}</option>
                             	@endforeach

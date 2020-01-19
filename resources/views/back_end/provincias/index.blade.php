@@ -69,7 +69,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="pais">País:</label>
-                            <select class="form-control" name="id_pais" id="id_pais">
+                            <select class="form-control select2" name="id_pais" id="id_pais">
                                 @foreach($paises as $pais)
                                     <option value="{{ $pais->id_pais }}">{{ $pais->descripcion }}</option>
                                 @endforeach

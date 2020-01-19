@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="id_vacuna">Vacuna:</label>
                             @if(count($vacunas))
-                                <select class="form-control" name="id_vacuna" id="id_vacuna" required="">
+                                <select class="form-control select2" name="id_vacuna" id="id_vacuna" required="">
                                     @foreach($vacunas as $vacuna)
                                         <option value="{{ $vacuna->id_vacuna }}" @if($vacuna->id_vacuna == $id_vacuna) selected="" @endif>{{ $vacuna->descripcion }}</option>
                                     @endforeach

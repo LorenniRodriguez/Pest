@@ -25,7 +25,7 @@
 
                         <div class="form-group">
                             <label for="id_mascota">Mascota: <span><strong class="text-danger">*</strong></span></label>
-                            <select class="form-control" name="id_mascota" id="id_mascota" required="">
+                            <select class="form-control select2" name="id_mascota" id="id_mascota" required="">
                                 <option value="0">Seleccione la mascota...</option>
                                 @foreach($mascotas as $mascota)
                                     <option value="{{ $mascota->id_mascota }}" @if(old('id_mascota') == $mascota->id_mascota) selected="" @endif>{{ $mascota->nombre }}</option>
@@ -35,7 +35,7 @@
 
                         <div class="form-group">
                             <label for="id_vacuna">Próxima Vacuna: <span><strong class="text-danger">*</strong></span></label>
-                            <select class="form-control" name="id_vacuna" id="id_vacuna" required=""></select>
+                            <select class="form-control select2" name="id_vacuna" id="id_vacuna" required=""></select>
                         </div>
 
                         <div class="form-group">

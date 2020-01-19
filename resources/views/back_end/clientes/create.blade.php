@@ -74,7 +74,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Pais:</label>
                           <div class="col-sm-9">
-                           <select name="id_pais" id="id_pais" class="form-control">
+                           <select name="id_pais" id="id_pais" class="form-control select2">
 
                             @foreach($paises as $pais)
 
@@ -93,7 +93,7 @@
                         <div class="form-group row">
                          <label class="col-sm-3 col-form-label">Genero:</label>
                             <div class="col-sm-9">
-                            <select name="id_genero" id="id_genero" class="form-control">
+                            <select name="id_genero" id="id_genero" class="form-control select2">
 
                               @foreach($generos as $genero)
 
@@ -111,7 +111,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Provincia:</label>
                           <div class="col-sm-9">
-                           <select name="id_provincia" id="id_provincia" class="form-control">
+                           <select name="id_provincia" id="id_provincia" class="form-control select2">
 
                             @foreach($provincias as $provincia)
 

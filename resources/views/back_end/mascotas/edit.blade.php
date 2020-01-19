@@ -60,7 +60,7 @@
                           <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Color:</label>
                           <div class="col-sm-9">
-                            <select name="id_color" id="id_color" class="form-control">
+                            <select name="id_color" id="id_color" class="form-control select2">
 
                               @foreach($colores as $color)
 
@@ -81,7 +81,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Estatura:</label>
                           <div class="col-sm-9">
-                            <select name="id_estatura" id="id_estatura" class="form-control">
+                            <select name="id_estatura" id="id_estatura" class="form-control select2">
 
                               @foreach($estaturas as $estatura)
 
@@ -101,7 +101,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Tipo Mascota:</label>
                           <div class="col-sm-9">
-                            <select name="id_tipo_mascota" id="id_tipo_mascota" class="form-control">
+                            <select name="id_tipo_mascota" id="id_tipo_mascota" class="form-control select2">
 
                               @foreach($tipo_mascotas as $Tipomascota)
 
@@ -125,7 +125,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Raza:</label>
                           <div class="col-sm-9">
-                            <select name="id_raza" id="id_raza" class="form-control">
+                            <select name="id_raza" id="id_raza" class="form-control select2">
 
                               @foreach($razas as $raza)
 
