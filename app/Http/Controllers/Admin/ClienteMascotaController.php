@@ -34,7 +34,8 @@ class ClienteMascotaController extends Controller
     {
         return view('back_end.cliente_mascota.create',[ 
 
-        'mascotas' => Mascota::where('estatus', '=', 'A')->get(),
+        'mascotas' => DB:: select("SELECT * FROM mascotas AS m WHERE m.estatus = 'A' AND NOT EXISTS ( SELECT * FROM
+           cliente_mascota AS cm  WHERE m.id_mascota = cm.id_mascota AND cm.estatus = 'A')"),
         'clientes' => Cliente::where('estatus', '=', 'A')->get()
         ]);
     }
@@ -56,8 +57,8 @@ class ClienteMascotaController extends Controller
         $cliente_mascota->registrado_por = Auth::user()->id;
         $cliente_mascota->save();
 
-         //Session::flash('success', 'La adopcion se ha agendado correctamente.');
-         // return redirect()->route('mascota_cliente.index');
+         Session::flash('success', 'La adopcion se ha realizado correctamente.');
+         return redirect()->route('cliente_mascota.index');
     }
 
     /**
@@ -108,8 +109,8 @@ class ClienteMascotaController extends Controller
         $cliente_mascota->borrado_por = Auth::user()->id;
         $cliente_mascota->update();
 
-        Session::flash('success', 'El hospedaje se ha anulado permanentemente.');
-        return redirect()->route('hospedajes.index');
+        Session::flash('success', 'La adopcion se ha anulado permanentemente.');
+        return redirect()->route('cliente_mascota.index');
 
     }
 

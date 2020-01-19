@@ -69,9 +69,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 	Route::delete('mascota-vacuna/destroy/{mascota_vacuna}', 'MascotaVacunaController@destroy')->name('mascota_vacuna.destroy');
 
 	#cita ruta
-	Route::resource('citas', 'CitaController');
-	Route::post('citas/buscar-vacunas', 'CitaController@buscarVacunas')->name('citas.buscar_vacunas');
-	Route::get('historico-citas', 'CitaController@historico')->name('citas.historico');
+	Route::resource('vacunacion', 'CitaController');
+	Route::post('vacunacion/buscar-vacunas', 'CitaController@buscarVacunas')->name('vacunacion.buscar_vacunas');
+	Route::get('historico-vacunacion', 'CitaController@historico')->name('vacunacion.historico');
 
 	#proceso hospedaje rutas
 	Route::resource('hospedajes', 'HospedajeController');
@@ -81,6 +81,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::resource('cliente_mascota', 'ClienteMascotaController');
     Route::get('historico-adopciones', 'ClienteMascotaController@historico')->name('cliente_mascota.historico');
 
+    #proceso servicios rutas
+    Route::resource('mascota_servicio', 'MascotaServicioController');
+    Route::resource('' , '');
+    
+    #graficos del sistema
+    Route::get('graficos', 'GraficoController@index')->name('graficos.index');
 });
 
 

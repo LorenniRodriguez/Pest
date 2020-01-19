@@ -1,7 +1,7 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Citas Agendadas')
-@section('subtitulo', '(Próximas vacunas a aplicar)')
+@section('titulo', 'Próximas Vacunaciones')
+{{-- @section('subtitulo', '(Próximas vacunas a aplicar)') --}}
 
 @section('content')
 
@@ -48,7 +48,7 @@
 
                                                 @if(Auth::user()->user_type == 'A' || $cita->id_usuario == Auth::user()->id)
                                                     @if($cita->estatus == 'A')
-                                                        <form method="POST" action="{{ route('citas.destroy', $cita->id_cita) }}">
+                                                        <form method="POST" action="{{ route('vacunacion.destroy', $cita->id_cita) }}">
                                                             @csrf
                                                             @method('DELETE')
 

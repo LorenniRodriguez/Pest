@@ -14,7 +14,6 @@
                                 <tr>
                                     <th>Imagen</th>
                                     <th>Nombre</th>
-                                    <th>Edad</th>
                                     <th>Tipo Mascota</th>
                                     <th>Raza</th>
                                     <th>Peso</th>
@@ -29,7 +28,6 @@
                                             <img src="{{ asset('back_end/images/faces-clipart/pic-1.png') }}" alt="image" />
                                         </td>
                                         <td>{{ $mascota->nombre }}</td>
-                                        <td>{{ $mascota->edad }}</td>
                                         <td>{{ $mascota->tipoMascota->descripcion }}</td>
                                         <td>{{ $mascota->raza->descripcion }}</td>
                                         <td>{{ $mascota->peso }}</td>

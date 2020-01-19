@@ -22,11 +22,11 @@ class Cliente extends Model {
 
   	public function pais ()
   	{
-  		return $this->belongsTo('App\pais', 'id_pais');
+  		return $this->belongsTo('App\Pais', 'id_pais');
   	}
 
   	public function provincia()
   	{
-  		return $this->belongsTo('App\provincia', 'id_provincia');
+  		return $this->belongsTo('App\Provincia', 'id_provincia');
   	}
   }

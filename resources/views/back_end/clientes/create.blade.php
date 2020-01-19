@@ -130,7 +130,7 @@
                          <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Cédula:</label>
                           <div class="col-sm-9">
-                            <input name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control" />
+                            <input name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control"/>
                           </div>
                         </div>
                       </div>

@@ -1,6 +1,6 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Registrar Nueva Cita')
+@section('titulo', 'Agendar Próxima Vacunación')
 
 @section('content')
     
@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="mb-4">Nueva Cita</h5>
+                    <h5 class="mb-4">Nueva Vacunación</h5>
 
                     <div class="errores mb-3">
                         @if(count($errors) > 0)
@@ -20,7 +20,7 @@
                         @endif
                     </div>
 
-                    <form method="POST" action="{{ route('citas.store') }}">
+                    <form method="POST" action="{{ route('vacunacion.store') }}">
                         @csrf
 
                         <div class="form-group">
@@ -64,7 +64,7 @@
                 $.ajax({
                     type: 'POST',
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    url: '{{ route('citas.buscar_vacunas') }}',
+                    url: '{{ route('vacunacion.buscar_vacunas') }}',
                     data: { 'id_mascota': $('#id_mascota').val() },
                     success: function (response) {
                         var options = [];

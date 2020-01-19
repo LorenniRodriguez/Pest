@@ -21,7 +21,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-angle-right"></i>Continuar</button>
-                        <a href="{{ route('citas.create') }}" class="btn btn-info btn-sm"><i class="fa fa-calendar"></i>Nueva Cita</a>
+                        <a href="{{ route('vacunacion.create') }}" class="btn btn-info btn-sm"><i class="fa fa-calendar"></i>Agendar Vacunación</a>
                     </form>
                 </div>
             </div>

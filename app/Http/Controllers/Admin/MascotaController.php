@@ -55,14 +55,13 @@ class MascotaController extends Controller
          $this->validate($request, [
 
             'nombre'      => 'required|min:1|max:30',
-            'edad'        => 'required',
             'peso'        => 'required',
             'id_raza'     => 'required',
             'id_estatura' => 'required',
             'id_color'    => 'required'
         ]);
         
-        $mascota = Mascota::create($request->only('nombre', 'edad', 'peso', 'id_raza', 'id_estatura',
+        $mascota = Mascota::create($request->only('nombre', 'peso', 'id_raza', 'id_estatura',
             'id_tipo_mascota', 'id_color', 'fecha_nacimiento'));
 
         //echo '<pre>';
@@ -111,7 +110,6 @@ class MascotaController extends Controller
     public function update(Mascota $mascota, Request $request)
     {
         $mascota->nombre = $request->nombre;
-        $mascota->edad   = $request->edad;
         $mascota->peso   = $request->peso;
         $mascota->id_raza = $request->id_raza;
         $mascota->id_estatura = $request->id_estatura;

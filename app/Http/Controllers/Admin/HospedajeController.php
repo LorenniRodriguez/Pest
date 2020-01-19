@@ -100,6 +100,7 @@ class HospedajeController extends Controller
 
           $hospedaje->finalizado_por = Auth::user()->id;
           $hospedaje->fecha_entrega = date('Y-m-d');
+          $hospedaje->estatus = 'E';
           $hospedaje->update();
 
           Session::flash('success', 'El hospedaje se ha finalizado correctamente.');

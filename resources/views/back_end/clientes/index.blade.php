@@ -18,7 +18,7 @@
                                     <th>Celular</th>
                                     <th> País</th>
                                     <th>Provincia</th>
-                                    <th>Fecha de Registro</th>
+                                    <th>Fecha Registro</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>

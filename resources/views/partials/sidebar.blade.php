@@ -4,7 +4,7 @@
             <div class="nav-link">
                 <div class="user-wrapper">
                     <div class="profile-image">
-                        <img src="{{ asset('back_end/images/faces/face1.jpg') }}" alt="profile image">
+                        <img src="{{ asset('back_end/images/pets.jpg') }}" alt="profile image">
                     </div>
                     <div class="text-wrapper">
                         <p class="profile-name">{{ Auth::user()->name }}</p>
@@ -81,26 +81,51 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#citas" aria-expanded="false" aria-controls="citas">
                 <i class="menu-icon mdi mdi-calendar-range"></i>
-                <span class="menu-title">Gestión de Citas</span>
+                <span class="menu-title">Vacunación</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="citas">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('citas.create') }}">Registrar Cita</a>
+                        <a class="nav-link" href="{{ route('vacunacion.create') }}">Agendar Vacunación</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('citas.index') }}">Citas Agendadas</a>
+                        <a class="nav-link" href="{{ route('vacunacion.index') }}">Próximas Vacunaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('citas.historico') }}">Histórico de Citas</a>
+                        <a class="nav-link" href="{{ route('vacunacion.historico') }}">Histórico de Vacunación</a>
                     </li>
                 </ul>
             </div>
         </li>
         {{-- fin opcion del modulo citas --}}
 
-        
+
+        {{--opcion del modulo de adopcion--}}
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#cliente-mascota" aria-expanded="false" 
+            aria-controls="cliente-mascota">
+                <i class="menu-icon mdi mdi-paw"></i>
+                <span class="menu-title">Gestionar Adopciones</span>
+                <i class="menu-arrow"></i>
+            </a>            
+            <div class="collapse" id="cliente-mascota">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cliente_mascota.create') }}">Registrar Adopciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Adopciones Realizadas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico de Adopciones</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        {{--fin del modulo de adopcion--}}
+
+
         {{-- opcion del modulo de hospedajes --}}
          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#hospedajes" aria-expanded="false" aria-controls="hospedajes">
@@ -124,28 +149,31 @@
         </li>
         {{-- fin del modulo de hospedajes --}}
 
-        {{--opcion del modulo de adopcion--}}
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#cliente-mascota" aria-expanded="false" aria-controls="cliente-mascota">
 
-              <i class="menu-icon mdi mdi-hand-heart"></i>
-                <span class="menu-title">Gestionar Adopciones</span>
+        {{-- opcion del modulo de servicios--}}
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#mascota-servicio" aria-expanded="false" 
+                aria-controls="mascota-servicio">
+
+                <i class="menu-icon mdi mdi-heart"></i>
+                <span class="menu-title">Gestionar Servicios</span>
                 <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="cliente-mascota">
+            </a>
+            <div class="collapse" id="mascota-servicio">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cliente_mascota.create') }}">Registrar Adopciones</a>
+                        <a class="nav-link" href="{{ route('mascota_servicio.create') }}">Aplicar Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Ver Adopciones</a>
+                        <a class="nav-link" href="{{ route('mascota_servicio.index') }}">Servicios Aplicados</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
-                    </li>
-            </div>  
+                    {{--  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
+                    </li> --}}
+                </ul>
+            </div>
         </li>
-        {{--fin del modulo de adopcion--}}
+        {{-- fin del modulo de servicios--}}
 
 
         {{-- modulo de opciones de registrar --}}
@@ -182,5 +210,14 @@
             </div>
         </li>
         {{-- fin modulo de opciones de registrar --}}
+
+        {{-- opcion del modulo graficos --}}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('graficos.index') }}">
+                <i class="menu-icon mdi mdi-chart-areaspline"></i>
+                <span class="menu-title">Gráficos</span>
+            </a>
+        </li>
+        {{-- fin opcion del modulo graficos --}}
     </ul>
 </nav>

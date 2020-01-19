@@ -1,10 +1,11 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{ route('dashboard') }}">
-            <img src="{{ asset('back_end/images/logo.svg') }}" alt="logo" />
+        <a class="navbar-brand" href="{{ route('dashboard') }}" style="color: #000;">
+            <span style="font-size: large; color: #21c0d9;">Servet Veterinaria</span>
+            {{-- <img src="{{ asset('back_end/images/logo.svg') }}" alt="logo" /> --}}
         </a>
         <a class="navbar-brand brand-logo-mini" href="{{ route('dashboard') }}">
-            <img src="{{ asset('back_end/images/logo-mini.svg') }}" alt="logo" />
+            <img src="{{ asset('back_end/images/pets.jpg') }}" alt="logo" />
         </a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -137,7 +138,7 @@
                 <li class="nav-item dropdown d-none d-xl-inline-block">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <span class="profile-text">¡Hola, {{ Auth::user()->name }}!</span>
-                        <img class="img-xs rounded-circle" src="{{ asset('back_end/images/faces/face1.jpg') }}" alt="Profile image">
+                        {{-- <img class="img-xs rounded-circle" src="{{ asset('back_end/images/faces/face1.jpg') }}" alt="Profile image"> --}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown" style="padding: 10px 0;">
                         {{-- <a class="dropdown-item mt-2" href="#">

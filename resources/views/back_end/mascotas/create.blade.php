@@ -31,7 +31,7 @@
                           <label class="col-sm-3 col-form-label">Nombre Mascota:</label>
                           <div class="col-sm-9">
                             <input name="nombre" id="nombre" placeholder="Nombre de la mascota" type="text" 
-                            value="{{old('nombre')}}" class="form-control" />
+                            value="{{ old ('nombre') }}" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -40,18 +40,18 @@
                           <label class="col-sm-3 col-form-label">Peso:</label>
                           <div class="col-sm-9">
                             <input name= "peso" id="peso" placeholder="Peso de la Mascota" type="text" 
-                            value="{{old('peso')}}" class="form-control" />
+                            value="{{ old ('peso') }}" class="form-control" />
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
+                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Edad:</label>
+                          <label class="col-sm-3 col-form-label">Fecha Nacimineto:</label>
                           <div class="col-sm-9">
-                            <input name="edad" id="edad" placeholder="Edad de la Mascota" type="text" 
-                            value="{{old('edad')}}" class="form-control" />
+                            <input name="fecha_nacimiento" id ="fecha_nacimiento" placeholder ="Fecha Nacimineto" 
+                                  value="{{ old ('Fecha_nacimiento') }}" type="date" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -127,12 +127,7 @@
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Fecha Nacimineto:</label>
-                          <div class="col-sm-9">
-                            <input name="Fecha_nacimiento" id ="Fecha_nacimiento" placeholder ="Fecha Nacimineto" value="{{old('Fecha_nacimiento')}}" type="date" class="form-control" />
-                          </div>
-                        </div>
+                     
                       </div>
                       <div class="col-md-6">     
                       </div>
