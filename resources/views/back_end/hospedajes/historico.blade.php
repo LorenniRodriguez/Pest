@@ -30,7 +30,7 @@
                                         <td>
                                             @if($hospedaje->estatus == 'I')
                                                 <label class="badge badge-danger">Cancelada</label>
-                                            @elseif($hospedaje->fecha_entrega != null)
+                                            @elseif($hospedaje->fecha_entrega != null || $hospedaje->estatus == 'E')
                                                 <label class="badge badge-success">¡Atendida!</label>
                                             @else
                                                 <label class="badge badge-warning">En Proceso</label>

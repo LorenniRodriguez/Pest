@@ -29,7 +29,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Nombre Mascota:</label>
+                          <label class="col-sm-3 col-form-label">Nombre Mascota: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="nombre" id="nombre" placeholder="Nombre de la mascota" type="text" 
                             value="{{ $mascota->nombre }}" class="form-control" />
@@ -38,7 +38,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Peso:</label>
+                          <label class="col-sm-3 col-form-label">Peso: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name= "peso" id="peso" placeholder="Peso de la Mascota" type="text" 
                             value="{{ $mascota->peso }}" class="form-control" />
@@ -49,7 +49,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Fecha Nacimineto:</label>
+                          <label class="col-sm-3 col-form-label">Fecha Nacimineto: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="fecha_nacimiento" id ="fecha_nacimiento" 
                             value="{{ $mascota->fecha_nacimiento }}" type="date" class="form-control" />
@@ -58,7 +58,7 @@
                       </div>
                       <div class="col-md-6">
                           <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Color:</label>
+                          <label class="col-sm-3 col-form-label">Color: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <select name="id_color" id="id_color" class="form-control select2">
 
@@ -79,7 +79,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Estatura:</label>
+                          <label class="col-sm-3 col-form-label">Estatura: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <select name="id_estatura" id="id_estatura" class="form-control select2">
 
@@ -99,7 +99,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Tipo Mascota:</label>
+                          <label class="col-sm-3 col-form-label">Tipo Mascota: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <select name="id_tipo_mascota" id="id_tipo_mascota" class="form-control select2">
 
@@ -123,7 +123,7 @@
                     <div class="row">
                      <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Raza:</label>
+                          <label class="col-sm-3 col-form-label">Raza: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <select name="id_raza" id="id_raza" class="form-control select2">
 

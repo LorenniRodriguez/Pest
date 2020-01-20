@@ -21,7 +21,11 @@ class BackEndController extends Controller
     		'cant_clientes' => $this->clientes(),
     		'cant_clientes_genero' => $this->clientesPorGenero(),
     		'cant_adopciones_tipo' => $this->adopcionesTipo(),
-    		'cant_clientes_pais' => $this->clientesPorPais()
+    		'cant_clientes_pais' => $this->clientesPorPais(),
+    		'citas_pendientes' => \App\Cita::whereRaw("estatus = 'A' AND fecha_atendida IS NULL")->get(),
+    		'hospedajes_pendientes' => \App\Hospedaje::whereRaw("estatus = 'A' and fecha_entrega IS NULL")->get(),
+    		'vacunas' => $this->vacunas(),
+    		'servicios' => $this->servicios()
     	]);
     }
 
@@ -282,5 +286,43 @@ class BackEndController extends Controller
     	}
 
     	return $data;
+    }
+
+    public function servicios ()
+    {
+    	return DB::select("
+    		SELECT
+				s.descripcion AS servicio,
+				COUNT(*) AS cantidad
+			FROM
+				mascota_servicio AS ms
+					INNER JOIN
+				servicios AS s ON ms.id_servicio = s.id_servicio
+			WHERE
+				ms.estatus = 'A'
+					AND s.estatus = 'A'
+					AND CAST(ms.fecha_registro AS DATE) = ?
+			GROUP BY
+				s.descripcion
+    	", array(date('Y-m-d')));
+    }
+
+    public function vacunas ()
+    {
+    	return DB::select("
+	    	SELECT
+	    		v.descripcion AS vacuna,
+	    		COUNT(*) AS cantidad
+	    	FROM
+	    		mascota_vacuna AS mv
+	    			INNER JOIN
+	    		vacunas AS v ON mv.id_vacuna = v.id_vacuna
+	    	WHERE
+	    		CAST(mv.fecha_registro AS DATE) = ?
+	    			AND mv.estatus = 'A'
+	    			AND v.estatus = 'A'
+	    	GROUP BY
+	    		v.descripcion
+    	", array(date('Y-m-d')));
     }
 }

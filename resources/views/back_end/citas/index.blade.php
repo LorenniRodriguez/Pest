@@ -30,7 +30,13 @@
                                         <td>{{ $cita->vacuna->descripcion }}</td>
                                         <td>{{ $cita->usuario->name }}</td>
                                         <td>{{ $cita->fecha_cita }}</td>
-                                        <td>{{ $cita->dias_restantes }}</td>
+                                        <td>
+                                            @if($cita->dias_restantes > 0)
+                                                <label class="badge badge-success">{{ str_replace('-', '', substr($cita->dias_restantes, 1, 1)) }} día(s)</label>
+                                            @elseif($cita->dias_restantes < 0)
+                                                <label class="badge badge-danger">@php echo ((int) $cita->dias_restantes * -1) . ' día(s)' @endphp</label>
+                                            @endif
+                                        </td>
                                         <td>
                                             <div style="display: flex; justify-content: space-around;">
                                                 <a href="" class=""></a>

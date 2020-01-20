@@ -34,6 +34,12 @@ class Mascota extends Model
         return $this->belongsTo('App\Estatura', 'id_estatura');
     }
 
+    public function adoptadaPor ()
+    {
+        return $this->hasMany('App\ClienteMascota', 'id_mascota')
+            ->where('estatus', '=', 'A');
+    }
+
     // Assessors
     public function getFechaRegistroAttribute ($fecha_registro)
     {

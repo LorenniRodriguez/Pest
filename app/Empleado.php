@@ -5,12 +5,12 @@ use Illuminate\Database\Eloquent\model;
 
 class Empleado extends Model {
 
-  protected $table = 'empleados';
+	protected $table = 'empleados';
 
-  protected $primaryKey = 'id_empleado';
-  
-  protected $fillable = ['', '', ''];
+	protected $primaryKey = 'id_empleado';
 
-  public $timestamps = false;
+	protected $fillable = ['', '', ''];
+
+	public $timestamps = false;
 
 }

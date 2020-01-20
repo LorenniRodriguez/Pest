@@ -83,12 +83,12 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="descripcion">Nombre:</label>
+                            <label for="descripcion">Nombre: <span><strong class="text-danger">*</strong></span></label>
                             <input type="text" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off">
                         </div>
 
                         <div class="form-group">
-                            <label>¿Es aplicable a gatos?</label>
+                            <label>¿Es aplicable a gatos? <span><strong class="text-danger">*</strong></span></label>
                             <div class="form-radio">
                                 <label class="form-check-label">
                                     <input type="radio" class="form-check-input" name="para_gatos" id="para_gatos1" value="1"> Sí
@@ -103,7 +103,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>¿Es aplicable a perros?</label>
+                            <label>¿Es aplicable a perros? <span><strong class="text-danger">*</strong></span></label>
                             <div class="form-radio">
                                 <label class="form-check-label">
                                     <input type="radio" class="form-check-input" name="para_perros" id="para_perros1" value="2"> Sí

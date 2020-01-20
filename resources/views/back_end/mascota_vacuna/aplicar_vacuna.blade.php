@@ -65,12 +65,12 @@
                         <input type="hidden" name="id_cita" value="{{ $id_cita }}">
 
                         <div class="form-group">
-                            <label for="nombre">Mascota:</label>
+                            <label for="nombre">Mascota: <span><strong class="text-danger">*</strong></span></label>
                             <input type="text" name="nombre" id="nombre" class="form-control" value="{{ $mascota->nombre }}" required="" autocomplete="off" readonly="">
                         </div>
 
                         <div class="form-group">
-                            <label for="id_vacuna">Vacuna:</label>
+                            <label for="id_vacuna">Vacuna: <span><strong class="text-danger">*</strong></span></label>
                             @if(count($vacunas))
                                 <select class="form-control select2" name="id_vacuna" id="id_vacuna" required="">
                                     @foreach($vacunas as $vacuna)

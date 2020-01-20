@@ -28,7 +28,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Nombres:</label>
+                          <label class="col-sm-3 col-form-label">Nombres: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="nombres" id="nombres" placeholder="Nombres del cliente" type="text" class="form-control" />
                           </div>
@@ -36,7 +36,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Teléfono:</label>
+                          <label class="col-sm-3 col-form-label">Teléfono: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="telefono" id="telefono" placeholder="Numero de Teléfono" type="text" class="form-control" />
                           </div>
@@ -46,7 +46,7 @@
                     <div class="row">
                        <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Apellidos:</label>
+                          <label class="col-sm-3 col-form-label">Apellidos: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="apellidos" id="apellidos" placeholder="Apellidos del cliente" type="text" class="form-control" />
                           </div>
@@ -54,7 +54,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                         <label class="col-sm-3 col-form-label">Celular:</label>
+                         <label class="col-sm-3 col-form-label">Celular: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="celular" id="celular" placeholder="Numero de Celular" type="text" class="form-control" />
                           </div>
@@ -64,7 +64,7 @@
                     <div class="row">
                       <div class="col-md-6">
                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Edad:</label>
+                          <label class="col-sm-3 col-form-label">Edad: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="edad" id="edad" placeholder="Edad del Cliente" type="text" class="form-control" />
                           </div>
@@ -72,7 +72,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Pais:</label>
+                            <label class="col-sm-3 col-form-label">País: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                            <select name="id_pais" id="id_pais" class="form-control select2">
 
@@ -91,7 +91,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                         <label class="col-sm-3 col-form-label">Genero:</label>
+                         <label class="col-sm-3 col-form-label">Género: <span><strong class="text-danger">*</strong></span></label>
                             <div class="col-sm-9">
                             <select name="id_genero" id="id_genero" class="form-control select2">
 
@@ -109,7 +109,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Provincia:</label>
+                            <label class="col-sm-3 col-form-label">Provincia: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                            <select name="id_provincia" id="id_provincia" class="form-control select2">
 
@@ -128,7 +128,7 @@
                     <div class="row">
                       <div class="col-md-6">
                          <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Cédula:</label>
+                          <label class="col-sm-3 col-form-label">Cédula: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control"/>
                           </div>
@@ -136,7 +136,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Correo</label>
+                          <label class="col-sm-3 col-form-label">Correo: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="correo" id="correo" placeholder="Correo Personal" type="text" class="form-control" />
                           </div>
@@ -146,7 +146,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Dirección:</label>
+                          <label class="col-sm-3 col-form-label">Dirección: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="direccion" id="dirección"type="text" placeholder="Direccion del Cliente" class="form-control" />
                           </div>
@@ -154,7 +154,7 @@
                       </div>             
 
                         <div class="col-md-12">
-                              <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+                              <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-save"></i>Guardar</button>
                         </div>
                     </div>
                   </form>

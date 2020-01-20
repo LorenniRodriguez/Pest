@@ -67,7 +67,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="descripcion">País:</label>
+                            <label for="descripcion">País: <span><strong class="text-danger">*</strong></span></label>
                             <input type="text" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off">
                         </div>
 

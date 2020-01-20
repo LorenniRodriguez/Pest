@@ -89,7 +89,169 @@
 			</div>
 		</div>
 	</div>
-	
+
+	<div class="row">
+		<div class="col-lg-9 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                	<h4 class="card-title">¡Vacunaciones Se Aproximan! <i class="mdi mdi-cat text-danger"></i></h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover data-table" cellspacing="0" style="width: 100%;" width="100%">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Dueño</th>
+                                    <th>Mascota</th>
+                                    <th>Vacuna</th>
+                                    <th>Fecha Cita</th>
+                                    <th>Faltan</th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($citas_pendientes as $cita)
+                                	@if($cita->dias_restantes > 0 && $cita->dias_restantes <= 3)
+	                                    <tr>
+	                                    	<td>{{ $cita->mascota->adoptadaPor[0]->cliente->nombreCompleto }}</td>
+	                                        <td>{{ $cita->mascota->nombre }}</td>
+	                                        <td>{{ $cita->vacuna->descripcion }}</td>
+	                                        <td>{{ $cita->fecha_cita }}</td>
+	                                        <td><label class="badge badge-success">{{ str_replace('+', '', substr($cita->dias_restantes, 1, 1)) }} día(s)</label></td>
+	                                        <td>
+	                                            <div style="display: flex; justify-content: space-around;">
+	                                                <a href="" class=""></a>
+	                                                <form method="POST" action="{{ route('mascota_vacuna.aplicar_vacuna') }}">
+	                                                    @csrf
+
+	                                                    <input type="hidden" name="id_mascota" value="{{ $cita->id_mascota }}">
+	                                                    <input type="hidden" name="id_vacuna" value="{{ $cita->id_vacuna }}">
+	                                                    <input type="hidden" name="id_cita" value="{{ $cita->id_cita }}">
+
+	                                                    <button type="submit" class="btn btn-info btn-xs btn-rounded">
+	                                                        <i class="fa fa-location-arrow"></i>¡Atender!
+	                                                    </button>
+	                                                </form>
+
+	                                                @if(Auth::user()->user_type == 'A' || $cita->id_usuario == Auth::user()->id)
+	                                                    @if($cita->estatus == 'A')
+	                                                        <form method="POST" action="{{ route('vacunacion.destroy', $cita->id_cita) }}">
+	                                                            @csrf
+	                                                            @method('DELETE')
+
+	                                                            <button type="submit" class="btn btn-danger btn-xs btn-rounded">
+	                                                                <i class="fa fa-exclamation-triangle"></i>Anular
+	                                                            </button>
+	                                                        </form>
+	                                                    @endif
+	                                                @endif
+	                                            </div>
+	                                        </td>
+	                                    </tr>
+	                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 grid-margin stretch-card">
+        	<div class="card">
+	        	<div class="card-body">
+	        		<h4 class="card-title">¡Vacunas Aplicadas En Este Día! <i class="mdi mdi-needle text-info"></i></h4>
+	        		<dl>
+	        			@foreach($vacunas as $vacuna)
+	        				<dt>{{ $vacuna->vacuna }}</dt>
+						  	<dd>{{ $vacuna->cantidad }}</dd>
+						@endforeach
+					</dl>
+	        	</div>
+	        </div>
+        </div>
+
+        <div class="col-lg-9 grid-margin stretch-card">
+	        <div class="card">
+	            <div class="card-body">
+	            	<h4 class="card-title">¡Ya Casi Vienen Sus Dueños! <i class="mdi mdi-paw"></i></h4>
+	                <div class="table-responsive">
+	                    <table class="table table-hover data-table" cellspacing="0" style="width: 100%;" width="100%">
+	                        <thead class="bg-primary text-white">
+	                            <tr>
+	                            	<th>Dueño</th>
+	                                <th>Mascota</th>
+	                                <th>Jaula</th>
+	                                <th>Fecha Final</th>
+	                                <th>Faltan</th>
+	                                <th class="text-center">Acciones</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            @foreach ($hospedajes_pendientes as $hospedaje)
+	                                @if($hospedaje->dias_restantes > 0 && $hospedaje->dias_restantes <= 3)
+		                                <tr>
+		                                	<td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombreCompleto }}</td>
+		                                    <td>{{ $hospedaje->mascota->nombre }}</td>
+		                                    <td>{{ $hospedaje->jaula->descripcion }}</td>                                 
+		                                    <td>{{ $hospedaje->fecha_final }}</td>
+		                                    <td>
+		                                            @if($hospedaje->dias_restantes > 0)
+		                                                <label class="badge badge-success">{{ str_replace('+', '', substr($hospedaje->dias_restantes, 1, 1)) }} día(s)</label>
+		                                            @elseif($hospedaje->dias_restantes < 0)
+		                                                <label class="badge badge-danger">@php echo ((int) $hospedaje->dias_restantes * -1) . ' día(s)' @endphp</label>
+		                                            @endif
+		                                        </td>
+		                                    <td>
+		                                        <div style="display: flex; justify-content: space-around;">
+		                                            <a href="" class=""></a>
+
+		                                             <form method="POST" action="{{ route('hospedajes.update', $hospedaje->id_hospedaje) }}">
+		                                                @csrf
+		                                                @method('PUT')
+
+		                                                <button type="submit" class="btn btn-info btn-xs btn-rounded">
+		                                                    <i class="fa fa-location-arrow"></i>¡Finalizar!
+		                                                </button>
+		                                            </form>
+		                   
+		                                            @if(Auth::user()->user_type == 'A' || $hospedaje->id_usuario == Auth::user()->id)
+		                                                @if($hospedaje->estatus == 'A')
+		                                                    <form method="POST" action="{{ route('hospedajes.destroy', $hospedaje->id_hospedaje) }}">
+		                                                        @csrf
+		                                                        @method('DELETE')
+
+		                                                        <button type="submit" class="btn btn-danger btn-xs btn-rounded">
+		                                                            <i class="fa fa-exclamation-triangle"></i>Anular
+		                                                        </button>
+		                                                    </form>
+		                                                @endif
+		                                            @endif
+		                                        </div>
+		                                    </td>                  
+		                                </tr>
+		                            @endif
+	                            @endforeach
+	                        </tbody>
+	                    </table>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+
+	    <div class="col-lg-3 grid-margin stretch-card">
+        	<div class="card">
+	        	<div class="card-body">
+	        		<h4 class="card-title">¡Servicios Aplicados En Este Día! <i class="mdi mdi-heart text-info"></i></h4>
+	        		<dl>
+	        			@foreach($servicios as $servicio)
+	        				<dt>{{ $servicio->servicio }}</dt>
+						  	<dd>{{ $servicio->cantidad }}</dd>
+						@endforeach
+					</dl>
+	        	</div>
+	        </div>
+        </div>
+	</div>
+
 	<div class="row">
 		<div class="col-md-6 grid-margin">
 			<div class="row">
@@ -159,6 +321,17 @@
 
 @endsection
 
+@section('css')
+
+	<link rel="stylesheet" type="text/css" href="{{ asset('back_end/vendors/datatables.net-bs4/css/dataTables.bootstrap4.css') }}">
+
+    <style type="text/css">
+        .table td { padding: 10px !important; }
+        .table th { padding: 15px !important; }
+        div.dataTables_wrapper div.dataTables_length label { font-size: 12px !important; }
+    </style>
+
+@endsection
 
 @section('js')
 
@@ -348,7 +521,61 @@
 				}
 			}
 		});
-
 	</script>
+
+	<script type="text/javascript" src="{{ asset('back_end/vendors/datatables.net/js/jquery.dataTables.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_end/vendors/datatables.net-bs4/js/dataTables.bootstrap4.js') }}"></script>
+    <script type="text/javascript">
+        var spanish = {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "No hay datos registrados en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero"
+                , "sLast": "Último"
+                , "sNext": "Siguiente"
+                , "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+
+        $(function() {
+            $('.data-table').DataTable({
+                "stateSave": true, // guarda el estado del DT al actualizar
+                "info": false, // oculta la info. de la tabla
+                "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todo"]],
+                "iDisplayLength": 5,
+                "language": spanish
+                //"scrollY": "45vh", // para usar una determinada parte del espacio del viewport
+                //"paging": false, // oculta la paginacion
+                // "ordering": true // para habilitar el ordenamiento
+            });
+            
+            $('.data-table').each(function() {
+                var datatable = $(this);
+
+                // SEARCH - Add the placeholder for Search and Turn this into in-line form control
+                var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+                search_input.attr('placeholder', 'Buscar en toda la tabla...');
+                search_input.removeClass('form-control-sm');
+                
+                // LENGTH - Inline-Form control
+                var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+                //length_sel.removeClass('form-control-sm');
+            });
+        });
+   </script>
 
 @endsection

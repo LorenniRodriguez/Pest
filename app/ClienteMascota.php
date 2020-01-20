@@ -47,7 +47,4 @@ class ClienteMascota extends Model
 
         return $fecha->format('d-m-Y');
     }
-
-	
-
 }

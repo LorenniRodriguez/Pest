@@ -64,8 +64,8 @@ class Cita extends Model
     public function getDiasRestantesAttribute ()
     {
         $fecha_cita = new DateTime($this->fecha_cita);
-        $fecha_hoy = new DateTime();
+        $fecha_hoy = new DateTime(date('d-m-Y'));
 
-        return $fecha_hoy->diff($fecha_cita)->format('%R%a días');
+        return $fecha_hoy->diff($fecha_cita)->format('%R%a');
     }
 }

@@ -21,6 +21,12 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('back_end/css/style.css') }}">
   <style type="text/css">
+    .badge {
+      font-size: .7rem;
+    }
+    .select2-container {
+      width: 100% !important;
+    }
     .select2-container--default .select2-selection--single {
         border: 1px solid #f2f2f2 !important;
         font-family: "Poppins", sans-serif;

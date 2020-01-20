@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="id_mascota">Mascota: <span><strong class="text-danger">*</strong></span></label>
                         <select class="form-control select2" name="id_mascota" id="id_mascota" required="">
-                            <option value="0">Seleccione la mascota...</option>
+                            <option value="">Seleccione la mascota...</option>
                             @foreach($mascotas as $mascota)
                             <option value="{{ $mascota->id_mascota }}" @if(old('id_mascota') == $mascota->id_mascota) selected="" @endif>{{ $mascota->nombre }}</option>
                             @endforeach
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label for="id_jaula">Jaula: <span><strong class="text-danger">*</strong></span></label>
                         <select class="form-control select2" name="id_jaula" id="id_jaula" required="">
-                            <option value="0">Seleccione una jaula...</option>
+                            <option value="">Seleccione una jaula...</option>
                             @foreach($jaulas as $jaula)
                             <option value="{{ $jaula->id_jaula }}" @if(old('id_jaula') == $jaula->id_jaula) selected="" @endif>{{ $jaula->descripcion }}</option>
                             @endforeach
@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <label for="id_tipo_hospedaje">Tipo Hospedaje: <span><strong class="text-danger">*</strong></span></label>
                         <select class="form-control select2" name="id_tipo_hospedaje" id="id_tipo_hospedaje" required="">
-                            <option value="0">Seleccione un tipo hospedaje...</option>
+                            <option value="">Seleccione un tipo hospedaje...</option>
                             @foreach($tipo_hospedajes as $TipoHospedaje)
                             <option value="{{ $TipoHospedaje->id_tipo_hospedaje }}" @if(old('id_tipo_hospedaje') == $TipoHospedaje->id_tipo_hospedaje) selected="" @endif>{{ $TipoHospedaje->descripcion }}</option>
                             @endforeach
@@ -56,8 +56,9 @@
                     <div class="form-group">
                         <label for="id_tipo_hospedaje">Asuntos del Hospedaje: <span><strong class="text-danger">*</strong></span></label>
 
-                        <input name="asuntos" id="asuntos" placeholder="Asuntos detallados" type="text" 
-                        value="{{old('asuntos')}}" class="form-control" />
+                        <textarea class="form-control" name="asuntos" required="" maxlength="255">{{old('asuntos')}}</textarea>
+                        {{-- <input name="asuntos" id="asuntos" placeholder="Asuntos detallados" type="text" 
+                        value="" class="form-control" /> --}}
                     </div> 
 
                     <div class="form-group">

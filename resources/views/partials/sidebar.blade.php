@@ -93,7 +93,7 @@
                         <a class="nav-link" href="{{ route('vacunacion.index') }}">Próximas Vacunaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('vacunacion.historico') }}">Histórico de Vacunación</a>
+                        <a class="nav-link" href="{{ route('vacunacion.historico') }}">Histórico Vacunación</a>
                     </li>
                 </ul>
             </div>
@@ -118,7 +118,7 @@
                         <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Adopciones Realizadas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico de Adopciones</a>
+                        <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
                     </li>
                 </ul>
             </div>
@@ -130,19 +130,19 @@
          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#hospedajes" aria-expanded="false" aria-controls="hospedajes">
                 <i class="menu-icon mdi mdi-home-heart"></i>
-                <span class="menu-title">Realizar Hospedaje</span>
+                <span class="menu-title">Gestionar Hospedajes</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="hospedajes">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('hospedajes.create') }}">Registrar Hospedaje</a>
+                        <a class="nav-link" href="{{ route('hospedajes.create') }}">Efectuar Hospedaje</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('hospedajes.index') }}">Hospedajes Realizados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('hospedajes.historico') }}">Histórico Hospedaje</a>
+                        <a class="nav-link" href="{{ route('hospedajes.historico') }}">Histórico Hospedajes</a>
                     </li>       
                 </ul>
             </div>

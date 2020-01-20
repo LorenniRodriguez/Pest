@@ -17,7 +17,9 @@
                                     <th>Adoptado Por</th>
                                     <th>Estatus</th>
                                     <th>Registrado Por</th>
-                                    <th>Cancelada Por</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Concluida / Cancelada Por</th>
+                                    <th>Fecha Conclusión</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,20 +31,22 @@
                                         <td>
                                             @if($cliente_mascota->estatus == 'I')
                                                 <label class="badge badge-danger">Cancelada</label>
+                                            @elseif($cliente_mascota->estatus == 'E')
+                                                <label class="badge badge-info">Concluida</label>
                                             @else
-                                                <label class="badge badge-success">Realizada</label>
+                                                <label class="badge badge-success">¡Realizada!</label>
                                             @endif
                                         </td>
-                                        <td>{{ $cliente_mascota->registradoPor->name}}</td>
-                                         <td class="text-center">
-                                            
-                                            @if($cliente_mascota->borrado_por != null) 
+                                        <td>{{ $cliente_mascota->registradoPor->name }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($cliente_mascota->fecha_registro)) }}</td>
+                                         <td>
+
+                                            @if($cliente_mascota->borrado_por != null)
                                                 {{ $cliente_mascota->borradoPor->name }} 
                                             @else
                                                 ·
                                             @endif
-                                       </td>
-                                        
+                                       </td>                                        
                                 @endforeach
                             </tbody>                          
                         </table>

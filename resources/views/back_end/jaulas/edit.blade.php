@@ -13,7 +13,7 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="descripcion">jaula:</label>
+                            <label for="descripcion">jaula: <span><strong class="text-danger">*</strong></span></label>
                             <input type="text" value="{{ $jaula->descripcion }}" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off">
                         </div>
 

@@ -102,8 +102,10 @@ Route::get('/prueba', function () {
 	]));*/
 
 	$mascota = App\Mascota::find(5);
-	dd(
-		\App\Cita::find(1)->atendidoPor->name
+
+	echo '<pre>';
+	var_dump(
+		\App\MascotaVacuna::whereRaw("estatus = 'A' and cast(fecha_registro as date) = ?", array(date('Y-m-d')))->get()
 	);
 
 });

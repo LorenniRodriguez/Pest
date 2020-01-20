@@ -26,7 +26,7 @@
                     <div class="form-group">
                             <label for="id_mascota">Mascota: <span><strong class="text-danger">*</strong></span></label>
                             <select class="form-control select2" name="id_mascota" id="id_mascota" required="">
-                                <option value="0">Seleccione la mascota...</option>
+                                <option value="">Seleccione la mascota...</option>
                                 @foreach($mascotas as $mascota)
                                     <option value="{{ $mascota->id_mascota }}" @if(old('id_mascota') == $mascota->id_mascota) selected="" @endif>{{ $mascota->nombre }}</option>
                                 @endforeach
@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label for="id_cliente">Cliente: <span><strong class="text-danger">*</strong></span></label>
                             <select class="form-control select2" name="id_cliente" id="id_cliente" required="">
-                                <option value="0">Seleccione el cliente...</option>
+                                <option value="">Seleccione el cliente...</option>
                                 @foreach($clientes as $cliente)
                                     <option value="{{ $cliente->id_cliente }}" @if(old('id_cliente') == $cliente->id_cliente) selected="" @endif>{{ $cliente->nombres }}</option>
                                 @endforeach
@@ -44,15 +44,15 @@
                         </div>
 
                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">¿Es adopción?</label>
-                          <div class="col-sm-4">
+                          <label class="col-sm-3 col-form-label">¿Es adopción? <span><strong class="text-danger">*</strong></span></label>
+                          <div class="col-sm-2">
                             <div class="form-radio">
                               <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="es_adopcion" id="es_adopcion1" value="Y" checked> Sí
                               </label>
                             </div>
                           </div>
-                          <div class="col-sm-5">
+                          <div class="col-sm-2">
                             <div class="form-radio">
                               <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="es_adopcion" id="es_adopcion2" value="N"> No

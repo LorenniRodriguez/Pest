@@ -13,7 +13,7 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="servicio">Tipo de Servicio:</label>
+                            <label for="servicio">Tipo de Servicio: <span><strong class="text-danger">*</strong></span></label>
                             <select class="form-control" name="id_tipo_servicio" id="id_tipo_servicio">
                                 @foreach($tipo_servicios as $tipo_servicio)
                                     <option value="{{ $tipo_servicio->id_tipo_servicio }}" @if($servicio->id_tipo_servicio == $tipo_servicio->id_tipo_servicio) selected="" @endif>{{ $tipo_servicio->descripcion }}</option>
@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="descripcion">Servicio:</label>
+                            <label for="descripcion">Servicio: <span><strong class="text-danger">*</strong></span></label>
                             <input type="text" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off" value="{{ $servicio->descripcion }}">
                         </div>
 

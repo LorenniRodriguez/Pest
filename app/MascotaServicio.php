@@ -28,12 +28,10 @@ class MascotaServicio extends Model
 	}
 
 	// Assessors
-
 	public function getFechaRegistroAttribute ($fecha_registro)
     {
         $fecha = new \DateTime($fecha_registro);
 
         return $fecha->format('d-m-Y');
     }
-
 }

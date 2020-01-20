@@ -30,7 +30,6 @@ class MascotaVacuna extends Model
 		return $this->belongsTo('App\User', 'id_usuario');
 	}
 
-
 	// Assessors
     public function getFechaRegistroAttribute ($fecha_registro)
     {

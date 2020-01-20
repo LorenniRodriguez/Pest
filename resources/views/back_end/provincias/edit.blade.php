@@ -13,7 +13,7 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="pais">País:</label>
+                            <label for="pais">País: <span><strong class="text-danger">*</strong></span></label>
                             <select class="form-control" name="id_pais" id="id_pais">
                                 @foreach($paises as $pais)
                                     <option value="{{ $pais->id_pais }}" @if($provincia->id_pais == $pais->id_pais) selected="" @endif>{{ $pais->descripcion }}</option>
@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="descripcion">Provincia:</label>
+                            <label for="descripcion">Provincia: <span><strong class="text-danger">*</strong></span></label>
                             <input type="text" value="{{ $provincia->descripcion }}" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off">
                         </div>
 
