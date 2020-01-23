@@ -60,6 +60,13 @@ class MascotaVacunaController extends Controller
 
     public function store (Request $request)
     {
+       $this->validate($request, [
+        
+            'id_mascota' => 'required',
+            'id_vacuna' => 'required'
+        ]);
+
+           
         $mascota_vacuna = new MascotaVacuna;
     	
     	$mascota_vacuna->id_mascota = $request->id_mascota;

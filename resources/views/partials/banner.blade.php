@@ -4,7 +4,7 @@
             <div class="header-left">
                 <div class="w3layouts-logo">
                     <h1>
-                        <a href="{{ route('home') }}">Cat <span>Club</span></a>
+                        <a href="{{ route('home') }}">Servet <span>Veterinaria</span></a>
                     </h1>
                 </div>
             </div>
@@ -23,10 +23,10 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li><a class="active" href="/">Inicio</a></li>
-                                <li><a href="{{ url('/about') }}">Acerca de</a></li>
-                                <li><a href="{{ url('/gallery') }}">Galería</a></li>
-                                <li><a href="{{ url('/blog') }}">Blog</a></li>
-                                <li><a href="{{ url('/contact') }}">Contacto</a></li>
+                                {{-- <li><a href="{{ url('/about') }}">Acerca de</a></li> --}}
+                                <li><a href="{{ route('mascotas.desaparecidas') }}">Mascotas Desaparecidas</a></li>
+                                <li><a href="{{ route('blog') }}">Blog</a></li>
+                                <li><a href="{{ route('contact') }}">Contacto</a></li>
                                 @guest
                                     <li><a href="{{ route('login') }}">Login</a></li>
                                 @else
@@ -37,12 +37,12 @@
                         </div>  
                     </nav>      
                 </div>
-                <div class="agileinfo-social-grids">
+                {{-- <div class="agileinfo-social-grids">
                     <ul>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>

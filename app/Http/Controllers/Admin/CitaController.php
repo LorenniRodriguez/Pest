@@ -62,7 +62,7 @@ class CitaController extends Controller
         $cita->save();
 
         Session::flash('success', 'La cita se ha agendado correctamente.');
-        return redirect()->route('citas.index');
+        return redirect()->route('vacunacion.index');
     }
 
     /**

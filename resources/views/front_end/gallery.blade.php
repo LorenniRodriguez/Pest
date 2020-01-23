@@ -7,7 +7,7 @@
 
 	<div class="about-heading">	
 		<div class="container">
-			<h2>Our Gallery</h2>
+			<h2>Mascotas Desaparecidas</h2>
 		</div>
 	</div>
 

@@ -31,7 +31,7 @@
                           <label class="col-sm-3 col-form-label">Nombre Mascota: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="nombre" id="nombre" placeholder="Nombre de la mascota" type="text" 
-                            value="{{ old ('nombre') }}" class="form-control" />
+                            value="{{ old ('nombre') }}" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -39,7 +39,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Peso: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name= "peso" id="peso" placeholder="Peso de la Mascota" type="text" 
+                            <input name= "peso" autocomplete="off" id="peso" placeholder="Peso de la Mascota" type="text" 
                             value="{{ old ('peso') }}" class="form-control" />
                           </div>
                         </div>

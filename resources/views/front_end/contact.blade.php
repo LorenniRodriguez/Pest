@@ -7,7 +7,7 @@
 
 	<div class="about-heading">	
 		<div class="container">
-			<h2>Contact</h2>
+			<h2>Contacto</h2>
 		</div>
 	</div>
 
@@ -24,7 +24,7 @@
 			</div>
 			<div class="mail-grids">
 				<div class="col-md-6 mail-grid-left">
-					<h3>Address</h3>
+					<h3>Dirección</h3>
 					<h5>Cras porttitor imperdiet volutpat nulla malesuada lectus eros <span>ut convallis felis consectetur ut </span></h5>
 					<h4>Headquarters</h4>
 					<p>123 T. Globel Place.

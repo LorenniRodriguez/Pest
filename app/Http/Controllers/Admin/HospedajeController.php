@@ -50,6 +50,15 @@ class HospedajeController extends Controller
      */
     public function store(Request $request)
     {
+
+         $this->validate($request, [
+            'id_mascota' => 'required',
+            'id_jaula' => 'required',
+            'id_tipo_hospedaje' => 'required',
+            'asuntos' => 'required',
+            'fecha_final' => 'required|date|after_or_equal:today'
+        ]);
+
         $hospedaje = new Hospedaje;
 
         $hospedaje->id_mascota = $request->id_mascota;
@@ -60,7 +69,7 @@ class HospedajeController extends Controller
         $hospedaje->fecha_final = $request->fecha_final;
         $hospedaje->save();
 
-         Session::flash('success', 'La cita se ha agendado correctamente.');
+         Session::flash('success', 'El hospedaje se ha efectuado correctamente.');
          return redirect()->route('hospedajes.index');
     }
 

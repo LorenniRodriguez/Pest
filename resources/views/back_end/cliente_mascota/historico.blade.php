@@ -46,7 +46,9 @@
                                             @else
                                                 ·
                                             @endif
-                                       </td>                                        
+                                       </td>
+                                       <td> {{ $cliente_mascota->fecha_conclusion}} </td> 
+                                                                            
                                 @endforeach
                             </tbody>                          
                         </table>

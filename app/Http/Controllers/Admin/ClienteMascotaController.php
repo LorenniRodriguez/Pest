@@ -48,6 +48,12 @@ class ClienteMascotaController extends Controller
      */
     public function store(Request $request)
     {  
+        $this->validate($request, [
+            'id_mascota' => 'required',
+            'id_cliente' => 'required',
+            'es_adopcion' => 'required'
+        ]);
+
 
         $cliente_mascota = new ClienteMascota;
 
@@ -80,7 +86,7 @@ class ClienteMascotaController extends Controller
      */
     public function edit($id)
     {
-        //
+         
     }
 
     /**
@@ -93,6 +99,16 @@ class ClienteMascotaController extends Controller
     public function update(Request $request, $id)
     {
 
+        $cliente_mascota = ClienteMascota::find($id);
+
+        $cliente_mascota->estatus = 'E';
+        $cliente_mascota->borrado_por = Auth::user()->id;
+        $cliente_mascota->fecha_conclusion = date('Y-m-d');
+        $cliente_mascota->update();
+
+        Session::flash('success', 'La adopcion se ha concluido correctamente.');
+        return redirect()->route('cliente_mascota.index');
+
     }
 
     /**
@@ -101,7 +117,7 @@ class ClienteMascotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $cliente_mascota = ClienteMascota::find($id);
 
@@ -114,10 +130,12 @@ class ClienteMascotaController extends Controller
 
     }
 
+
    public function historico ()
     {
         return view('back_end.cliente_mascota.historico', [
             'cliente_mascotas' => ClienteMascota::all()
         ]);
-    }  
+    }
+
 }

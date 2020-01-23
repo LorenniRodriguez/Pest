@@ -9,7 +9,7 @@ class Cliente extends Model {
 
     protected $primaryKey = 'id_cliente';
 
-    protected $fillable = ['nombres', 'apellidos', 'edad', 'direccion', 'cedula', 'telefono','celular', 'correo', 
+    protected $fillable = ['nombres', 'apellidos', 'fecha_nacimiento', 'direccion', 'cedula', 'telefono','celular', 'correo', 
     'id_provincia','fecha_registro','id_genero', 'id_pais'];
     public $timestamps = false;
 
@@ -39,5 +39,20 @@ class Cliente extends Model {
     public function getnombreCompletoAttribute ()
     {
         return $this->nombres . ' ' . $this->apellidos;
+    }
+
+    // Assessors
+    public function getFechaRegistroAttribute ($fecha_registro)
+    {
+        $fecha = new \DateTime($fecha_registro);
+
+        return $fecha->format('d-m-Y');
+    }
+
+    public function getFechaNacimientoAttribute ($fecha_nacimiento)
+    {
+        $fecha = new \DateTime($fecha_nacimiento);
+
+        return $fecha->format('d-m-Y');
     }
 }

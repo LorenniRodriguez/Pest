@@ -41,6 +41,11 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
+          $this->validate($request, [
+            'id_tipo_servicio' => 'required',
+            'descripcion' => 'required'
+        ]);
+
         $servicio = new Servicio;
         $servicio->id_tipo_servicio = $request->id_tipo_servicio;
         $servicio->descripcion = $request->descripcion;

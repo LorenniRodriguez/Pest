@@ -38,6 +38,8 @@
                                                 <label class="badge badge-success">{{ str_replace('+', '', substr($hospedaje->dias_restantes, 1, 1)) }} día(s)</label>
                                             @elseif($hospedaje->dias_restantes < 0)
                                                 <label class="badge badge-danger">@php echo ((int) $hospedaje->dias_restantes * -1) . ' día(s)' @endphp</label>
+                                            @else
+                                                <label class="badge badge-primary">¡Es hoy!</label>
                                             @endif
                                         </td>
                                         <td>

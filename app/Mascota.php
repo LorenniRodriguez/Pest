@@ -8,7 +8,7 @@ class Mascota extends Model
     protected $table = 'mascotas';
     protected $primaryKey = 'id_mascota';
 
-    protected $fillable = ['nombre', 'edad', 'peso', 'id_raza', 'id_estatura','id_tipo_mascota', 'id_color','fecha_nacimiento'];
+    protected $fillable = ['nombre', 'peso', 'id_raza', 'id_estatura','id_tipo_mascota', 'id_color','fecha_nacimiento'];
     
     public $timestamps = false;
 

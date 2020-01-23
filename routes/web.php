@@ -12,12 +12,12 @@
 */
 
 Auth::routes();
-Route::get('/', 'FrontEndController@home');
-Route::get('/about', 'FrontEndController@about');
-Route::get('/gallery', 'FrontEndController@gallery');
-Route::get('/blog', 'FrontEndController@blog');
-Route::get('/contact', 'FrontEndController@contact');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'FrontEndController@home')->name('home');
+Route::get('/inicio', 'HomeController@index')->name('home');
+Route::get('/acerca-de', 'FrontEndController@about')->name('about');
+Route::get('/mascotas-desaparecidas', 'FrontEndController@gallery')->name('mascotas.desaparecidas');
+Route::get('/blog', 'FrontEndController@blog')->name('blog');
+Route::get('/contacto', 'FrontEndController@contact')->name('contact');
 
 
 // rutas del backend
@@ -68,7 +68,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 	Route::post('mascota-vacuna/store', 'MascotaVacunaController@store')->name('mascota_vacuna.store');
 	Route::delete('mascota-vacuna/destroy/{mascota_vacuna}', 'MascotaVacunaController@destroy')->name('mascota_vacuna.destroy');
 
-	#cita ruta
+	#proceso cita ruta
 	Route::resource('vacunacion', 'CitaController');
 	Route::post('vacunacion/buscar-vacunas', 'CitaController@buscarVacunas')->name('vacunacion.buscar_vacunas');
 	Route::get('historico-vacunacion', 'CitaController@historico')->name('vacunacion.historico');
@@ -80,32 +80,44 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     #proceso adopciones rutas
     Route::resource('cliente_mascota', 'ClienteMascotaController');
     Route::get('historico-adopciones', 'ClienteMascotaController@historico')->name('cliente_mascota.historico');
+    
 
     #proceso servicios rutas
     Route::resource('mascota_servicio', 'MascotaServicioController');
-    Route::resource('' , '');
-    
+    Route::get('historico-servicio', 'MascotaServicioController@historico')->name('mascota_servicio.historico');
+
+    #proceso diagnostico rutas
+    Route::resource('diagnosticos', 'DiagnosticoController');
+
     #graficos del sistema
     Route::get('graficos', 'GraficoController@index')->name('graficos.index');
     Route::post('graficos/consulta', 'GraficoController@consultar')->name('graficos.consultar');
-});
 
+    #ruta del blog
+    Route::resource('posts', 'postController');
 
-
-Route::get('/prueba', function () {
-
-	/*dd(\App\Mascota::create([
-		'nombre' => 'Colado',
-		'peso' => '3 kg',
-		'id_raza' => '2',
-		'edad' => 65
-	]));*/
-
-	$mascota = App\Mascota::find(5);
-
-	echo '<pre>';
-	var_dump(
-		\App\MascotaVacuna::whereRaw("estatus = 'A' and cast(fecha_registro as date) = ?", array(date('Y-m-d')))->get()
-	);
+    #ruta del blog / mascota desaparecida
+    Route::resource('mascota_desaparecida', 'MascotaDesaparecidaController');
+    
 
 });
+
+
+
+// // Route::get('/prueba', function () {
+
+// // 	// dd(\App\Post::create([
+// // 	// 	'titulo' => 'Nuevo Posts',
+// // 	// 	'descripcion' => 'Esto es una prueba',
+// // 	// 	'imagen' => 'imgjajajja'
+ 		
+// // 	// ]));
+
+// // 	// $mascota = App\Mascota::find(5);
+
+// // 	// echo '<pre>';
+// // 	// var_dump(
+// // 	// 	\App\MascotaVacuna::whereRaw("estatus = 'A' and cast(fecha_registro as date) = ?", array(date('Y-m-d')))->get()
+// // 	// );
+
+// });

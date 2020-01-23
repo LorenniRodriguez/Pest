@@ -19,10 +19,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        
+
         return view('back_end.clientes.index')
-            ->with([
-                'clientes' => Cliente::all()
+        ->with([
+            'clientes' => Cliente::all()
         ]);
     }
 
@@ -33,13 +33,13 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        
+
         return view ('back_end.clientes.create', [
 
-              'paises' => Pais::all(),
-              'provincias' => Provincia::all(),
-              'generos' => Genero::all()
-        ]);
+          'paises' => Pais::all(),
+          'provincias' => Provincia::all(),
+          'generos' => Genero::all()
+      ]);
 
 
     }
@@ -52,27 +52,31 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
 
-            'nombres'      => 'required',
-            'apellidos'    => 'required',
-            'edad'         => 'required',
-            'direccion'    => 'required',
-            'cedula'       => 'required|min:1|max:13'
+     $this->validate($request, [
 
-    
-        ]);
-    
+        'nombres'      => 'required|min:3|max:50',
+        'apellidos'    => 'required|min:3|max:50',
+        'fecha_nacimiento' => 'required|date',
+        'direccion'    => 'required|min:5|max:100',
+        'cedula'       => 'required|min:13|max:13', 
+        'telefono'     => 'required|min:12|max:12',
+        'celular'      => 'required|min:12|max:12',
+        'id_provincia' => 'required',
+        'id_genero'    => 'required',
+        'id_pais'      => 'required'
+    ]);
 
-        $cliente = Cliente::create($request->only('nombres', 'apellidos','edad', 'direccion', 'cedula', 'telefono','celular', 'correo', 
-            'id_provincia','id_genero', 'id_pais'));
 
-        Session::flash('success', 'El Cliente se ha guardado correctamente.');
-        return redirect()->route('clientes.index');
+     $cliente = Cliente::create($request->only('nombres', 'apellidos', 'fecha_nacimiento', 'direccion', 'cedula', 'telefono','celular', 'correo', 
+        'id_provincia','id_genero', 'id_pais'));
+
+     Session::flash('success', 'El Cliente se ha guardado correctamente.');
+     return redirect()->route('clientes.index');
 
           //echo '<pre>';
           //var_dump($request->all());
-    }
+ }
 
     /**
      * Display the specified resource.
@@ -110,9 +114,23 @@ class ClienteController extends Controller
      */
     public function update(Cliente $cliente, Request $request)
     {
+         $this->validate($request, [
+
+        'nombres'      => 'required|min:3|max:50',
+        'apellidos'    => 'required|min:3|max:50',
+        'fecha_nacimiento' => 'required|date',
+        'direccion'    => 'required|min:5|max:100',
+        'cedula'       => 'required|min:13|max:13', 
+        'telefono'     => 'required|min:12|max:12',
+        'celular'      => 'required|min:12|max:12',
+        'id_provincia' => 'required',
+        'id_genero'    => 'required',
+        'id_pais'      => 'required'
+    ]);
+
         $cliente->nombres = $request->nombres;
         $cliente->apellidos = $request->apellidos;
-        $cliente->edad = $request->edad;
+        $cliente->fecha_nacimiento = $request->fecha_nacimiento;
         $cliente->direccion = $request->direccion;
         $cliente->cedula = $request->cedula;
         $cliente->telefono = $request->telefono;

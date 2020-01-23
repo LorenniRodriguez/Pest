@@ -30,7 +30,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Nombres: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="nombres" id="nombres" placeholder="Nombres del cliente" type="text" class="form-control" />
+                            <input name="nombres" id="nombres" placeholder="Nombres del cliente" type="text" class="form-control" autocomplete="off"  />
                           </div>
                         </div>
                       </div>
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Teléfono: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="telefono" id="telefono" placeholder="Numero de Teléfono" type="text" class="form-control" />
+                            <input name="telefono" id="telefono" placeholder="Numero de Teléfono" type="text" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -48,7 +48,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Apellidos: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="apellidos" id="apellidos" placeholder="Apellidos del cliente" type="text" class="form-control" />
+                            <input name="apellidos" id="apellidos" placeholder="Apellidos del cliente" type="text" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -56,17 +56,18 @@
                         <div class="form-group row">
                          <label class="col-sm-3 col-form-label">Celular: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="celular" id="celular" placeholder="Numero de Celular" type="text" class="form-control" />
+                            <input name="celular" id="celular" placeholder="Numero de Celular" type="text" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
-                       <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Edad: <span><strong class="text-danger">*</strong></span></label>
+                     <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Fecha Nacimineto: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="edad" id="edad" placeholder="Edad del Cliente" type="text" class="form-control" />
+                            <input name="fecha_nacimiento" id ="fecha_nacimiento" placeholder ="Fecha Nacimineto" 
+                                  value="{{ old ('Fecha_nacimiento') }}" type="date" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -130,7 +131,7 @@
                          <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Cédula: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control"/>
+                            <input autocomplete="off" name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control"/>
                           </div>
                         </div>
                       </div>
@@ -148,7 +149,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Dirección: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="direccion" id="dirección"type="text" placeholder="Direccion del Cliente" class="form-control" />
+                            <input name="direccion" id="dirección"type="text" placeholder="Direccion del Cliente" class="form-control" autocomplete="off" />
                           </div>
                         </div>
                       </div>             

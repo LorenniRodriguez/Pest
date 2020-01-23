@@ -58,7 +58,7 @@ class Hospedaje extends Model
     public function adoptadaPor ()
     {
         return $this->hasMany('App\ClienteMascota', 'id_mascota')
-            ->where('estatus', '=', 'A');
+        ->where('estatus', '=', 'A');
     }
 
     // Assessors

@@ -51,6 +51,11 @@ class MascotaServicioController extends Controller
      */
     public function store(Request $request)
     {
+         $this->validate($request, [
+            'id_mascota' => 'required',
+            'id_servicio' => 'required'
+        ]);
+
         foreach ($request->id_servicio as $id_servicio)
         {
             $mascota_servicio = new MascotaServicio;
@@ -107,6 +112,27 @@ class MascotaServicioController extends Controller
      */
     public function destroy($id)
     {
-        //
+         
+        $mascota_servicio = MascotaServicio::find($id);
+
+        $mascota_servicio->estatus = 'I';
+        $mascota_servicio->borrado_por = Auth::user()->id;
+        $mascota_servicio->update();
+
+        Session::flash('success', 'El servicio se ha anulado permanentemente.');
+        return redirect()->route('mascota_servicio.index');
+
     }
+
+    public function historico ()
+    {
+
+        return view ('back_end.mascota_servicio.historico', [
+
+        'mascota_servicios' => MascotaServicio::all()
+                 
+
+        ]);
+    }
+    
 }

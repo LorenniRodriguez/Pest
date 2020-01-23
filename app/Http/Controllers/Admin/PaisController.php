@@ -38,7 +38,11 @@ class PaisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
+          $this->validate($request, [
+            'descripcion' => 'required'
+        ]);
+
         $pais = new Pais;
         $pais->descripcion = $request->descripcion;
         $pais->save();

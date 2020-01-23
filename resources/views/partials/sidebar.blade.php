@@ -105,119 +105,194 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#cliente-mascota" aria-expanded="false" 
             aria-controls="cliente-mascota">
-                <i class="menu-icon mdi mdi-paw"></i>
-                <span class="menu-title">Gestionar Adopciones</span>
-                <i class="menu-arrow"></i>
-            </a>            
-            <div class="collapse" id="cliente-mascota">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cliente_mascota.create') }}">Registrar Adopciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Adopciones Realizadas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        {{--fin del modulo de adopcion--}}
+            <i class="menu-icon mdi mdi-paw"></i>
+            <span class="menu-title">Gestionar Adopciones</span>
+            <i class="menu-arrow"></i>
+        </a>            
+        <div class="collapse" id="cliente-mascota">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cliente_mascota.create') }}">Registrar Adopciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Adopciones Realizadas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    {{--fin del modulo de adopcion--}}
 
 
-        {{-- opcion del modulo de hospedajes --}}
-         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#hospedajes" aria-expanded="false" aria-controls="hospedajes">
-                <i class="menu-icon mdi mdi-home-heart"></i>
-                <span class="menu-title">Gestionar Hospedajes</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="hospedajes">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('hospedajes.create') }}">Efectuar Hospedaje</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('hospedajes.index') }}">Hospedajes Realizados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('hospedajes.historico') }}">Histórico Hospedajes</a>
-                    </li>       
-                </ul>
-            </div>
-        </li>
-        {{-- fin del modulo de hospedajes --}}
+    {{-- opcion del modulo de hospedajes --}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#hospedajes" aria-expanded="false" aria-controls="hospedajes">
+            <i class="menu-icon mdi mdi-home-heart"></i>
+            <span class="menu-title">Gestionar Hospedajes</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="hospedajes">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('hospedajes.create') }}">Efectuar Hospedaje</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('hospedajes.index') }}">Hospedajes Realizados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('hospedajes.historico') }}">Histórico Hospedajes</a>
+                </li>       
+            </ul>
+        </div>
+    </li>
+    {{-- fin del modulo de hospedajes --}}
 
 
-        {{-- opcion del modulo de servicios--}}
+    {{-- opcion del modulo de servicios--}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#mascota-servicio" aria-expanded="false" 
+        aria-controls="mascota-servicio">
+
+        <i class="menu-icon mdi mdi-heart"></i>
+        <span class="menu-title">Gestionar Servicios</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="mascota-servicio">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('mascota_servicio.create') }}">Aplicar Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('mascota_servicio.index') }}">Servicios Aplicados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('mascota_servicio.historico') }}">Histórico Servicios</a>
+            </li>
+        </ul>
+    </div>
+</li>
+{{-- fin del modulo de servicios--}}
+
+{{-- opcion del mudulo diagnostico --}}
+<li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#diagnostico" aria-expanded="false" 
+    aria-controls="diagnostico">
+
+    <i class="menu-icon mdi mdi-clipboard-outline"></i>
+    <span class="menu-title">Historial Clínico</span>
+    <i class="menu-arrow"></i>
+</a>
+<div class="collapse" id="diagnostico">
+    <ul class="nav flex-column sub-menu">
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#mascota-servicio" aria-expanded="false" 
-                aria-controls="mascota-servicio">
-
-                <i class="menu-icon mdi mdi-heart"></i>
-                <span class="menu-title">Gestionar Servicios</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="mascota-servicio">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('mascota_servicio.create') }}">Aplicar Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('mascota_servicio.index') }}">Servicios Aplicados</a>
-                    </li>
+            <a class="nav-link" href="{{ route('diagnosticos.create') }}">Crear Historial Clínico</a>
+        </li>
                     {{--  <li class="nav-item">
                     <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
-                    </li> --}}
-                </ul>
-            </div>
-        </li>
-        {{-- fin del modulo de servicios--}}
+                </li> --}}
+            </ul>
+        </div>
+    </li>
+    {{-- fin del modulo diagnostico --}}
 
+    {{-- opcion del mudulo publicar posts--}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#posts" aria-expanded="false" 
+        aria-controls="posts">
 
-        {{-- modulo de opciones de registrar --}}
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#registrar" aria-expanded="false" aria-controls="registrar">
-                <i class="menu-icon mdi mdi-folder-plus"></i>
-                <span class="menu-title">Registrar</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="registrar">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('colores.index') }}">Color</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('jaulas.index') }}">Jaula</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('paises.index') }}">País</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('provincias.index') }}">Provincia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('razas.index') }}">Raza</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('servicios.index') }}">Servicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('vacunas.index') }}">Vacuna</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        {{-- fin modulo de opciones de registrar --}}
+        <i class="menu-icon mdi mdi-bookmark"></i>
+        <span class="menu-title">Publicar Posts</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="posts">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('posts.create') }}">Crear Publicaciones</a>
+            </li>
 
-        {{-- opcion del modulo graficos --}}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('graficos.index') }}">
-                <i class="menu-icon mdi mdi-chart-areaspline"></i>
-                <span class="menu-title">Gráficos</span>
-            </a>
-        </li>
-        {{-- fin opcion del modulo graficos --}}
-    </ul>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('posts.index') }}">Publicaciones Realizadas</a>
+            </li>
+
+                    {{--  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
+                </li> --}}
+            </ul>
+        </div>
+    </li>
+    {{-- fin del mudulo publicar posts --}}
+
+    {{-- opcion del mudulo publicar posts--}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#mascota_desaparecida" aria-expanded="false" 
+        aria-controls="mascota_desaparecida">
+
+        <i class="menu-icon mdi mdi-magnify"></i>
+        <span class="menu-title">Publicar Mascotas</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="mascota_desaparecida">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('mascota_desaparecida.create') }}">Publicar Mascota</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('mascota_desaparecida.index') }}">Mascotas Publicadas</a>
+            </li>
+
+                    {{--  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
+                </li> --}}
+            </ul>
+        </div>
+    </li>
+    {{-- fin del mudulo publicar posts --}}
+
+    {{-- modulo de opciones de registrar --}}
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#registrar" aria-expanded="false" aria-controls="registrar">
+            <i class="menu-icon mdi mdi-folder-plus"></i>
+            <span class="menu-title">Registrar</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="registrar">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('colores.index') }}">Color</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('jaulas.index') }}">Jaula</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('paises.index') }}">País</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('provincias.index') }}">Provincia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('razas.index') }}">Raza</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('servicios.index') }}">Servicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('vacunas.index') }}">Vacuna</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    {{-- fin modulo de opciones de registrar --}}
+
+    {{-- opcion del modulo graficos --}}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('graficos.index') }}">
+            <i class="menu-icon mdi mdi-chart-areaspline"></i>
+            <span class="menu-title">Gráficos</span>
+        </a>
+    </li>
+    {{-- fin opcion del modulo graficos --}}
+</ul>
 </nav>

@@ -9,18 +9,18 @@
                     <ul class="rslides callbacks callbacks1" id="slider4">
                         <li>
                             <div class="agileits-banner-info">
-                                <h3>Lorem ipsum dolor sit amet <span>Nulla massa magna</span></h3>
-                                <div class="w3-button">
+                                <h3>Servet Veterinaria <span>¡Cuidamos de tu mascota como si fueras tú!</span></h3>
+                                {{-- <div class="w3-button">
                                     <a href="single.html">More</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </li>
                         <li>
                             <div class="agileits-banner-info">
-                                <h3>Donec posuere cursus nibh<span>Ut molestie lectus</span></h3>
-                                <div class="w3-button">
+                                <h3>Servet Veterinaria<span>sdgfsgrdsfgsdfgf</span></h3>
+                                {{-- <div class="w3-button">
                                     <a href="single.html">More</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </li>
                     </ul>
@@ -59,7 +59,7 @@
     <div class="welcome">
         <div class="container">
             <div class="w3ls-heading">
-                <h2>Welcome To Our Cat club</h2>
+                <h2>¡Bienvenido a Servet Veterinaria!</h2>
             </div>
             <div class="welcome-grids">
                 <div class="col-md-6 agile-welcome-grid">
@@ -98,7 +98,7 @@
     <div class="services">
         <div class="container">
             <div class="w3ls-heading">
-                <h3>Services</h3>
+                <h3>¡Lo Que Hacemos!</h3>
             </div>
             <div class="wthree-services-grids">
                 <div class="col-md-6 w3ls-about-left">
@@ -107,8 +107,8 @@
                             <i class="fa fa-cog" aria-hidden="true"></i>
                         </div>
                         <div class="icon-right">
-                            <h5>Suspendisse consectetur dapibus volutpat.</h5>
-                            <p>Phasellus dapibus felis elit, sed accumsan arcu gravida vitae. Nullam aliquam erat at lectus ullamcorper, nec interdum neque hendrerit.</p>
+                            <h5>Adopciones</h5>
+                            <p>¡Ven y descubre tu futura mascota!</p>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -117,18 +117,18 @@
                             <i class="fa fa-heart" aria-hidden="true"></i>
                         </div>
                         <div class="icon-right">
-                            <h5>Lorem ipsum dolor sit amet</h5>
-                            <p>Phasellus dapibus felis elit, sed accumsan arcu gravida vitae. Nullam aliquam erat at lectus ullamcorper, nec interdum neque hendrerit.</p>
+                            <h5>Vacunas</h5>
+                            <p>Tenemos todo los tipos de vacunas que tu Mascota necesita.</p>
                         </div>
                         <div class="clearfix"> </div>
                         </div>
                     <div class="agileits-icon-grid">
                         <div class="icon-left hvr-radial-out">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            <i class="fa fa-home" aria-hidden="true" style="font-size: 2rem; color: #fff;"></i>
                         </div>
                         <div class="icon-right">
-                            <h5>Suspendisse consectetur dapibus volutpat.</h5>
-                            <p>Phasellus dapibus felis elit, sed accumsan arcu gravida vitae. Nullam aliquam erat at lectus ullamcorper, nec interdum neque hendrerit.</p>
+                            <h5>Hospedajes</h5>
+                            <p>Somos los ideales en el cuidado tu mascota</p>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -136,11 +136,11 @@
                 <div class="col-md-6 w3ls-about-left">
                     <div class="agileits-icon-grid">
                         <div class="icon-left hvr-radial-out">
-                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <i class="fa fa-paw" aria-hidden="true" style="font-size: 2rem; color: #fff;"></i>
                         </div>
                         <div class="icon-right">
-                            <h5>Suspendisse consectetur dapibus volutpat.</h5>
-                            <p>Phasellus dapibus felis elit, sed accumsan arcu gravida vitae. Nullam aliquam erat at lectus ullamcorper, nec interdum neque hendrerit.</p>
+                            <h5>Brindamos Los Servicios Más Básicos</h5>
+                            <p>Porque los servicios lo realizamos todos, ¡Ven y visitanos!</p>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -149,8 +149,8 @@
                             <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                         </div>
                         <div class="icon-right">
-                            <h5>Lorem ipsum dolor sit amet</h5>
-                            <p>Phasellus dapibus felis elit, sed accumsan arcu gravida vitae. Nullam aliquam erat at lectus ullamcorper, nec interdum neque hendrerit.</p>
+                            <h5>Colaboramos Para Que Encuentres Tu Mascota Desaparecida</h5>
+                            <p>Comunicate con nostros en caso de que tu mascota se encuentre desaparecida.</p>
                         </div>
                         <div class="clearfix"> </div>
                         </div>
@@ -159,8 +159,8 @@
                             <i class="fa fa-bell" aria-hidden="true"></i>
                         </div>
                         <div class="icon-right">
-                            <h5>Suspendisse consectetur dapibus volutpat.</h5>
-                            <p>Phasellus dapibus felis elit, sed accumsan arcu gravida vitae. Nullam aliquam erat at lectus ullamcorper, nec interdum neque hendrerit.</p>
+                            <h5>Te Mantenemos Informados Sobre Tips y Noticias Para Tu Mascota</h5>
+                            <p>Visita nuestro sitio Web y entérate de todo los consejos para tu mascota .</p>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -174,7 +174,7 @@
     <div class="news">
         <div class="container">
             <div class="w3ls-heading">
-                <h3>News & Events</h3>
+                <h3>Últimas Publicaciones</h3>
             </div>
             <div class="w3-agileits-news-grids">
                 <div class="col-md-6 news-left">
@@ -184,10 +184,10 @@
                             <p>Nov 24</p>
                         </div>
                         <div class="agileits-line"> </div>
-                        <div class="agile-news-icon">
+                        {{-- <div class="agile-news-icon">
                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i></a>
                             <p>2 comments</p>
-                        </div>
+                        </div> --}}
                         <div class="agileits-line"> </div>
                         <div class="agile-news-icon">
                             <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>

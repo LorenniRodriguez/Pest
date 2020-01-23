@@ -39,6 +39,13 @@ class VacunaController extends Controller
      */
     public function store(Request $request)
     {
+          $this->validate($request, [
+            'descripcion' => 'required',
+            'para_gatos' => 'required',
+            'para_perros' => 'required'
+
+        ]);
+
         $vacuna = new Vacuna;
         $vacuna->descripcion = $request->descripcion;
         $vacuna->para_gatos = $request->para_gatos;

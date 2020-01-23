@@ -109,7 +109,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($citas_pendientes as $cita)
-                                	@if($cita->dias_restantes > 0 && $cita->dias_restantes <= 3)
+                                	@if($cita->dias_restantes >= 0 && $cita->dias_restantes <= 3)
 	                                    <tr>
 	                                    	<td>{{ $cita->mascota->adoptadaPor[0]->cliente->nombreCompleto }}</td>
 	                                        <td>{{ $cita->mascota->nombre }}</td>
@@ -187,7 +187,7 @@
 	                        </thead>
 	                        <tbody>
 	                            @foreach ($hospedajes_pendientes as $hospedaje)
-	                                @if($hospedaje->dias_restantes > 0 && $hospedaje->dias_restantes <= 3)
+	                                @if($hospedaje->dias_restantes >= 0 && $hospedaje->dias_restantes <= 3)
 		                                <tr>
 		                                	<td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombreCompleto }}</td>
 		                                    <td>{{ $hospedaje->mascota->nombre }}</td>
@@ -198,6 +198,8 @@
 		                                                <label class="badge badge-success">{{ str_replace('+', '', substr($hospedaje->dias_restantes, 1, 1)) }} día(s)</label>
 		                                            @elseif($hospedaje->dias_restantes < 0)
 		                                                <label class="badge badge-danger">@php echo ((int) $hospedaje->dias_restantes * -1) . ' día(s)' @endphp</label>
+		                                            @else
+                                                		<label class="badge badge-primary">¡Es hoy!</label>
 		                                            @endif
 		                                        </td>
 		                                    <td>

@@ -34,6 +34,10 @@ class JaulaController extends Controller
      */
     public function store(Request $request)
     {
+         $this->validate($request, [
+            'descripcion' => 'required'
+        ]);
+
         $jaula = new Jaula;
         $jaula->descripcion = $request->descripcion;
         $jaula->save();

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
+use Auth;
 use Session;
-use App\Raza;
+use App\Diagnostico;
+use App\Mascota;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class RazaController extends Controller
+class DiagnosticoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +19,7 @@ class RazaController extends Controller
      */
     public function index()
     {
-        return view('back_end.razas.index', [
-            'razas' => Raza::all()
-        ]);
+        //
     }
 
     /**
@@ -28,7 +29,11 @@ class RazaController extends Controller
      */
     public function create()
     {
-        //
+        return view ('back_end.diagnosticos.create', [
+
+        'mascotas' => Mascota::where('estatus', '=', 'A')->get()
+
+        ]);
     }
 
     /**
@@ -39,16 +44,16 @@ class RazaController extends Controller
      */
     public function store(Request $request)
     {
-          $this->validate($request, [
-            'descripcion' => 'required'
-        ]);
+        
+        $diagnostico = new Diagnostico;
 
-        $raza = new Raza;
-        $raza->descripcion = $request->descripcion;
-        $raza->save();
+        $diagnostico->id_mascota = $request->id_mascota;
+        $diagnostico->descripcion = $request->descripcion;
+       //$diagnostico->id_usuario = Auth::user()->id;
+        $diagnostico->save();
 
-        Session::flash('success', 'La raza se ha guardado correctamente.');
-        return redirect()->route('razas.index');
+        Session::flash('success', 'El historial clinico se ha guardado correctamente.');
+        return redirect()->route('hospedajes.create');
     }
 
     /**
@@ -70,9 +75,7 @@ class RazaController extends Controller
      */
     public function edit($id)
     {
-        return view('back_end.razas.edit', [
-            'raza' => Raza::find($id)
-        ]);
+        //
     }
 
     /**
@@ -84,12 +87,7 @@ class RazaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $raza = Raza::find($id);
-        $raza->descripcion = $request->descripcion;
-        $raza->update();
-
-        Session::flash('success', 'La raza se ha actualizado correctamente.');
-        return redirect()->route('razas.index');
+        //
     }
 
     /**
@@ -100,21 +98,6 @@ class RazaController extends Controller
      */
     public function destroy($id)
     {
-        $raza = Raza::find($id);
-        $raza->estatus = 'I';
-        $raza->update();
-
-        Session::flash('success', 'El registro se ha enviado a la papelera correctamente.');
-        return redirect()->route('razas.index');
-    }
-
-    public function restore ($id)
-    {
-        $raza = Raza::find($id);
-        $raza->estatus = 'A';
-        $raza->update();
-
-        Session::flash('success', 'El registro se ha sido restaurado correctamente.');
-        return redirect()->route('razas.index');
+        //
     }
 }

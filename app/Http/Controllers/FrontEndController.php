@@ -30,4 +30,6 @@ class FrontEndController extends Controller
     {
     	return view('front_end.contact');
     }
+
+    
 }

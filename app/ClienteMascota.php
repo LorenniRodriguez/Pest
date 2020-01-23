@@ -10,7 +10,7 @@ class ClienteMascota extends Model
 	protected $primaryKey = 'id_cliente_mascota';
 
 
-	protected $fillable = ['id_mascota', 'id_cliente','id_usuario', 'es_adopcion', 'registrado_por','borrado_por'];
+	protected $fillable = ['id_mascota', 'id_cliente','id_usuario', 'es_adopcion', 'registrado_por','borrado_por', 'fecha_conclusion'];
 	public $timestamps = false;
 
 	//Relaciones entre modelos
@@ -47,4 +47,20 @@ class ClienteMascota extends Model
 
         return $fecha->format('d-m-Y');
     }
+
+     public function getFechaConclusion ($fecha_conclusion)
+    {
+        $fecha = new \DateTime($fecha_conclusion);
+
+        return $fecha->format('d-m-Y');
+    }
+
+        public function getFechaFinalAttribute ($fecha_final)
+    {
+        $fecha = new \DateTime($fecha_conclusion);
+
+        return $fecha->format('d-m-Y');
+    }
+
+    
 }

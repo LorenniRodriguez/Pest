@@ -39,6 +39,10 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
+         $this->validate($request, [
+            'descripcion' => 'required'
+        ]);
+
         $color = new Color;
         $color->descripcion = $request->descripcion;
         $color->save();
@@ -66,6 +70,7 @@ class ColorController extends Controller
      */
     public function edit($id)
     {
+        
         return view('back_end.colores.edit', [
             'color' => Color::find($id)
         ]);

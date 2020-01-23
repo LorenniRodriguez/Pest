@@ -9,7 +9,7 @@ class MascotaServicio extends Model
     protected $table = 'mascota_servicio';
     protected $primaryKey = 'id_mascota_servicio';
 
-    protected $fillable = ['id_servicio', 'id_mascota', 'id_usuario', ];
+    protected $fillable = ['id_servicio', 'id_mascota', 'id_usuario', 'borrado_por' ];
     public $timestamps = false;
 
     public function servicio ()
@@ -23,6 +23,11 @@ class MascotaServicio extends Model
 	}
 
 	public function usuario ()
+	{
+		return $this->belongsTo('App\User', 'id_usuario');
+	}
+
+	public function borradoPor ()
 	{
 		return $this->belongsTo('App\User', 'id_usuario');
 	}
