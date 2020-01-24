@@ -12,7 +12,7 @@
                         <table class="table table-hover data-table" cellspacing="0" style="width: 100%;" width="100%">
                             <thead class="bg-primary text-white">
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Dueño</th>
                                     <th>Mascota</th>
                                     <th>Jaula</th>
                                     <th>Tipo Hospedaje</th>
@@ -26,7 +26,7 @@
                             <tbody>
                                 @foreach ($hospedajes as $hospedaje)
                                     <tr>
-                                        <td>{{ $hospedaje->id_hospedaje }}</td>
+                                        <td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombres ?? '' }}</td>
                                         <td>{{ $hospedaje->mascota->nombre }}</td>
                                         <td>{{ $hospedaje->jaula->descripcion }}</td>
                                         <td>{{ $hospedaje->TipoHospedaje->descripcion}}</td>

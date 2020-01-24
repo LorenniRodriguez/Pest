@@ -1,6 +1,6 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Posts Registrado')
+@section('titulo', 'Posts Publicados')
 
 @section('content')
 
@@ -13,19 +13,19 @@
                         <thead class="bg-primary text-white">
                             <tr>
                                 <th>Título</th>
-                                <th>Descripción</th>
-                                <th>Imagen</th>
-                                <th>Fecha Publicación</th>
-                                <th>Acciones</th>
+                                <th class="text-center">Imagen</th>
+                                <th class="text-center">Fecha Publicación</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($posts as $post)
                             <tr>
                                 <td>{{ $post->titulo }}</td>
-                                <td>{{ $post->descripcion }}</td>
-                                <td>{{ $post->imagen}}</td>
-                                <td>{{ date('d-m-Y', strtotime($post->fecha_publicacion)) }}</td>
+                                <td class="text-center">
+                                    <img src="{{ Storage::url($post->imagen) }}">
+                                </td>
+                                <td class="text-center">{{ date('d-m-Y', strtotime($post->fecha_publicacion)) }}</td>
                                 <td>
                                  <div style="display: flex; justify-content: space-around;">
                                     <a href="" class=""></a>

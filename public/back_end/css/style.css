@@ -16545,4 +16545,5 @@ ul {
   .error-page .error-page-divider {
     border-left: 3px solid rgba(255, 255, 255, 0.2); } }
 
+.img-xs, .table td img, .table th img { width: 80px; height: 80px; }
 /*# sourceMappingURL=maps/style.css.map */

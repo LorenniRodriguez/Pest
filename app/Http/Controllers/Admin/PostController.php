@@ -6,6 +6,7 @@ use DB;
 use Auth;
 use Session;
 use App\Post;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -40,13 +41,23 @@ class PostController extends Controller
     {
         $post = new Post;
 
+        # tratando la imagen
+        # *
+        $this->validate($request, [
+            'imagen' => 'required|image'
+        ]);
+
+        $imagen = $request->file('imagen')->store('posts', 'public');
+        # *
+        # fin de trabajar con la imagen
+
         $post->titulo = $request->titulo;
         $post->descripcion = $request->descripcion;
-        $post->imagen = $request->imagen;
+        $post->imagen = $imagen;
         $post->save();
 
-        Session::flash('success', 'El Posts se ha publicado correctamente.');
-        return redirect()->route('mascota_desaparecidas.index');
+        Session::flash('success', 'El Post se ha publicado correctamente.');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -89,7 +100,21 @@ class PostController extends Controller
     {
         $post->titulo= $request->titulo;
         $post->descripcion = $request->descripcion;
-        $post->imagen   = $request->imagen;
+
+        if($request->has('imagen'))
+        {
+            # tratando la imagen
+            # *
+            $this->validate($request, [
+                'imagen' => 'required|image'
+            ]);
+
+            $imagen = $request->file('imagen')->store('posts', 'public');
+            # *
+            # fin de trabajar con la imagen
+            
+            $post->imagen = $imagen;
+        }
         
         $post->update();
 

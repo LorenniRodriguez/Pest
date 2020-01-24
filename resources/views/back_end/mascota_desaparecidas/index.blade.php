@@ -1,6 +1,6 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Posts Registrado')
+@section('titulo', 'Publicaciones Realizadas')
 
 @section('content')
 
@@ -12,22 +12,20 @@
                     <table class="table table-hover data-table" cellspacing="0" style="width: 100%;" width="100%">
                         <thead class="bg-primary text-white">
                             <tr>
-                                <th>ID</th>
                                 <th>Título</th>
-                                <th>Descripción</th>
-                                <th>Imagen</th>
-                                <th>Fecha Publicación</th>
-                                <th>Acciones</th>
+                                <th class="text-center">Imagen</th>
+                                <th class="text-center">Fecha Publicación</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($mascota_desaparecidas as $mascota_desaparecida)
                             <tr>
-                                <td>{{ $mascota_desaparecida->id_mascota_desaparecida}}</td>
                                 <td>{{ $mascota_desaparecida->titulo }}</td>
-                                <td>{{ $mascota_desaparecida->descripcion }}</td>
-                                <td>{{ $mascota_desaparecida->imagen}}</td>
-                                <td>{{ date('d-m-Y', strtotime($mascota_desaparecida->fecha_publicacion)) }}</td>
+                                <td class="text-center">
+                                    <img src="{{ Storage::url($mascota_desaparecida->imagen) }}">
+                                </td>
+                                <td class="text-center">{{ date('d-m-Y', strtotime($mascota_desaparecida->fecha_publicacion)) }}</td>
                                 <td>
                                    <div style="display: flex; justify-content: space-around;">
                                     <a href="" class=""></a>

@@ -20,12 +20,4 @@ class Post extends Model
     {
         return $this->belongsTo('App\User', 'borrado_por');
     }
-
-    // Assessors
-    public function getFechaRegistroAttribute ($fecha_publicacion)
-    {
-        $fecha = new \DateTime($fecha_publicacion);
-
-        return $fecha->format('d-m-Y');
-    }
 }

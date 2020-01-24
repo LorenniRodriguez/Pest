@@ -34,9 +34,9 @@
 					</div>
 
 					<div class="form-group">
-						<label for="id_tipo_hospedaje"> Caso Clínico: <span><strong class="text-danger">*</strong></span></label>
+						<label for="descripcion"> Caso Clínico: <span><strong class="text-danger">*</strong></span></label>
 
-						<textarea class="form-control" name="descripcion" required="" maxlength="255">{{old('descripcion')}}</textarea>
+						<textarea class="form-control" name="descripcion" id="descripcion" required="" maxlength="500" rows="10">{{old('descripcion')}}</textarea>
                         {{-- <input name="asuntos" id="asuntos" placeholder="Asuntos detallados" type="text" 
                         value="" class="form-control" /> --}}
                     </div>

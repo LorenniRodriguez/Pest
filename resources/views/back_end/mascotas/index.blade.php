@@ -12,8 +12,8 @@
                         <table class="table table-hover data-table" cellspacing="0" style="width: 100%;" width="100%">
                             <thead class="bg-primary text-white">
                                 <tr>
-                                    <th>Imagen</th>
-                                    <th>Nombre</th>
+                                    <th>Dueño</th>
+                                    <th>Mascota</th>
                                     <th>Tipo Mascota</th>
                                     <th>Raza</th>
                                     <th>Peso</th>
@@ -24,9 +24,7 @@
                             <tbody>
                                 @foreach ($mascotas as $mascota)
                                     <tr>
-                                        <td class="py-1">
-                                            <img src="{{ asset('back_end/images/faces-clipart/pic-1.png') }}" alt="image" />
-                                        </td>
+                                        <td>{{ $mascota->adoptadaPor[0]->cliente->nombreCompleto ?? '' }}</td>
                                         <td>{{ $mascota->nombre }}</td>
                                         <td>{{ $mascota->tipoMascota->descripcion }}</td>
                                         <td>{{ $mascota->raza->descripcion }}</td>

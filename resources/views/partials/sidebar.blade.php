@@ -151,47 +151,47 @@
 
 
     {{-- opcion del modulo de servicios--}}
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#mascota-servicio" aria-expanded="false" 
-        aria-controls="mascota-servicio">
-
-        <i class="menu-icon mdi mdi-heart"></i>
-        <span class="menu-title">Gestionar Servicios</span>
-        <i class="menu-arrow"></i>
-    </a>
-    <div class="collapse" id="mascota-servicio">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('mascota_servicio.create') }}">Aplicar Servicios</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('mascota_servicio.index') }}">Servicios Aplicados</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('mascota_servicio.historico') }}">Histórico Servicios</a>
-            </li>
-        </ul>
-    </div>
-</li>
-{{-- fin del modulo de servicios--}}
-
-{{-- opcion del mudulo diagnostico --}}
-<li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#diagnostico" aria-expanded="false" 
-    aria-controls="diagnostico">
-
-    <i class="menu-icon mdi mdi-clipboard-outline"></i>
-    <span class="menu-title">Historial Clínico</span>
-    <i class="menu-arrow"></i>
-</a>
-<div class="collapse" id="diagnostico">
-    <ul class="nav flex-column sub-menu">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('diagnosticos.create') }}">Crear Historial Clínico</a>
-        </li>
-                    {{--  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
-                </li> --}}
+            <a class="nav-link" data-toggle="collapse" href="#mascota-servicio" aria-expanded="false" 
+            aria-controls="mascota-servicio">
+
+            <i class="menu-icon mdi mdi-heart"></i>
+            <span class="menu-title">Gestionar Servicios</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="mascota-servicio">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mascota_servicio.create') }}">Aplicar Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mascota_servicio.index') }}">Servicios Aplicados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mascota_servicio.historico') }}">Histórico Servicios</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    {{-- fin del modulo de servicios--}}
+
+    {{-- opcion del mudulo diagnostico --}}
+    <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#diagnostico" aria-expanded="false" 
+            aria-controls="diagnostico">
+
+            <i class="menu-icon mdi mdi-clipboard-outline"></i>
+            <span class="menu-title">Historial Clínico</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="diagnostico">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('diagnosticos.create') }}">Crear Historial Clínico</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('consultar_historial_clinico') }}">Consultar Historial Clínico</a>
+                </li>
             </ul>
         </div>
     </li>
@@ -209,11 +209,11 @@
     <div class="collapse" id="posts">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('posts.create') }}">Crear Publicaciones</a>
+                <a class="nav-link" href="{{ route('posts.create') }}">Crear Post</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('posts.index') }}">Publicaciones Realizadas</a>
+                <a class="nav-link" href="{{ route('posts.index') }}">Posts Publicados</a>
             </li>
 
                     {{--  <li class="nav-item">
@@ -230,7 +230,7 @@
         aria-controls="mascota_desaparecida">
 
         <i class="menu-icon mdi mdi-magnify"></i>
-        <span class="menu-title">Publicar Mascotas</span>
+        <span class="menu-title">Mascotas Extraviadas</span>
         <i class="menu-arrow"></i>
     </a>
     <div class="collapse" id="mascota_desaparecida">

@@ -40,6 +40,11 @@ class Mascota extends Model
             ->where('estatus', '=', 'A');
     }
 
+    public function diagnosticos ()
+    {
+        return $this->hasMany('App\Diagnostico', 'id_mascota');
+    }
+
     // Assessors
     public function getFechaRegistroAttribute ($fecha_registro)
     {

@@ -10,17 +10,11 @@
                         <li>
                             <div class="agileits-banner-info">
                                 <h3>Servet Veterinaria <span>¡Cuidamos de tu mascota como si fueras tú!</span></h3>
-                                {{-- <div class="w3-button">
-                                    <a href="single.html">More</a>
-                                </div> --}}
                             </div>
                         </li>
                         <li>
                             <div class="agileits-banner-info">
                                 <h3>Servet Veterinaria<span>sdgfsgrdsfgsdfgf</span></h3>
-                                {{-- <div class="w3-button">
-                                    <a href="single.html">More</a>
-                                </div> --}}
                             </div>
                         </li>
                     </ul>
@@ -64,30 +58,23 @@
             <div class="welcome-grids">
                 <div class="col-md-6 agile-welcome-grid">
                     <div class="grid">
-                        <div class="col-md-6 agileits-left">
-                            <figure class="effect-chico">
-                                <img src="{{ asset('front_end/images/2.jpg') }}" alt="" />
-                                <figcaption>
-                                    <h4>Proin nulla</h4>
-                                    <p>Chico's main fear was missing the morning bus.</p>
-                                </figcaption>           
-                            </figure>
-                        </div>
-                        <div class="col-md-6 agileits-left">
-                            <figure class="effect-chico">
-                                <img src="{{ asset('front_end/images/3.jpg') }}" alt=" " />
-                                <figcaption>
-                                    <h4>Nam ornare</h4>
-                                    <p>Chico's main fear was missing the morning bus.</p>
-                                </figcaption>           
-                            </figure>
-                        </div>
+                        @foreach($mascotas as $mascota)
+                            <div class="col-md-6 agileits-left">
+                                <figure class="effect-chico">
+                                    <img src="{{ Storage::url($mascota->imagen) }}" alt="" />
+                                    <figcaption>
+                                        <h4>{{ $mascota->titulo }}</h4>
+                                        <p>{{ $mascota->descripcion }}</p>
+                                    </figcaption>           
+                                </figure>
+                            </div>
+                        @endforeach
                         <div class="clearfix"> </div>
                     </div>
                 </div>
                 <div class="col-md-6 agileinfo-welcome-right">
-                    <h4>Donec posuere cursus nibh. Mauris a sollicitudin metus. Mauris porttitor, dui maximus viverra bibendum</h4>
-                    <p>Nulla massa magna, luctus at justo et, euismod convallis mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris rutrum fringilla fermentum.<span>Donec tincidunt, eros quis consectetur maximus, nibh justo pretium diam, id vehicula lacus nunc eu orci. Aliquam molestie, nibh vitae pharetra semper, nunc nisi laoreet diam, et placerat nulla quam non leo. </span></p>
+                    <h4>Con tu ayuda podemos encontrar estas mascotas.</h4>
+                    <p>Estas mascotas ha sido reportadas por sus respectivos dueños y esperan con ansías que sean encontradas. <br>Si llegas a ver alguna de estas mascotas, no dudes en contactarnos.</span></p>
                 </div>
                 <div class="clearfix"> </div>
             </div>

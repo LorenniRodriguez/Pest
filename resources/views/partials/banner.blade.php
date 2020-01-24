@@ -22,11 +22,11 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a class="active" href="/">Inicio</a></li>
+                                <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/">Inicio</a></li>
                                 {{-- <li><a href="{{ url('/about') }}">Acerca de</a></li> --}}
-                                <li><a href="{{ route('mascotas.desaparecidas') }}">Mascotas Desaparecidas</a></li>
-                                <li><a href="{{ route('blog') }}">Blog</a></li>
-                                <li><a href="{{ route('contact') }}">Contacto</a></li>
+                                <li><a class="{{ request()->is('mascotas-desaparecidas') ? 'active' : '' }}" href="{{ route('mascotas.desaparecidas') }}">Mascotas Desaparecidas</a></li>
+                                <li><a class="{{ request()->is('blog') ? 'active' : '' }}" href="{{ route('blog') }}">Blog</a></li>
+                                <li><a class="{{ request()->is('contacto') ? 'active' : '' }}" href="{{ route('contact') }}">Contacto</a></li>
                                 @guest
                                     <li><a href="{{ route('login') }}">Login</a></li>
                                 @else

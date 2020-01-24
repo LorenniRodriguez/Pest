@@ -43,12 +43,23 @@ class MascotaDesaparecidaController extends Controller
      */
     public function store(Request $request)
     {
-
         $mascota_desaparecida = new MascotaDesaparecida;
+
+        # tratando la imagen
+        # *
+        $this->validate($request, [
+            'imagen' => 'required|image'
+        ]);
+
+        // $imagen = $request->imagen;
+        // $featured_new_name = time() . $imagen->getClientOriginalName(); //La hora concatenado con el nombre original del archivo
+        $imagen = $request->file('imagen')->store('mascotas', 'public');
+        # *
+        # fin de trabajar con la imagen
 
         $mascota_desaparecida->titulo = $request->titulo;
         $mascota_desaparecida->descripcion = $request->descripcion;
-        $mascota_desaparecida->imagen = $request->imagen;
+        $mascota_desaparecida->imagen = $imagen;
         $mascota_desaparecida->save();
          Session::flash('success', 'La mascota desaparecida se ha publicado correctamente.');
          return redirect()->route('mascota_desaparecida.index');
@@ -88,19 +99,32 @@ class MascotaDesaparecidaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, mascotadesaparecida $mascotadesaparecida)
+    public function update(Request $request, $id)
     {
+        $mascotadesaparecida = MascotaDesaparecida::find($id);
         $mascotadesaparecida->titulo= $request->titulo;
-        $mascotadesaparecida->estatus = $request->descripcion;
-        $mascotadesaparecida->descripcion = $request->imagen;
+        $mascotadesaparecida->descripcion = $request->descripcion;
+
+        if($request->has('imagen'))
+        {
+            # tratando la imagen
+            # *
+            $this->validate($request, [
+                'imagen' => 'required|image'
+            ]);
+
+            // $imagen = $request->imagen;
+            // $featured_new_name = time() . $imagen->getClientOriginalName(); //La hora concatenado con el nombre original del archivo
+            $imagen = $request->file('imagen')->store('mascotas', 'public');
+            $mascotadesaparecida->imagen = $imagen;
+            # *
+            # fin de trabajar con la imagen
+        }
         
         $mascotadesaparecida->update();
 
         Session::flash('success', 'La publicacion se ha actualizado correctamente.');
         return redirect()->route('mascota_desaparecida.index');
-
-        //echo '<pre>';
-        //var_dump($request->all());
     }
 
     /**
@@ -117,7 +141,7 @@ class MascotaDesaparecidaController extends Controller
        $mascotadesaparecida->borrado_por = Auth::user()->id;
        $mascotadesaparecida->update();
 
-       Session::flash('success', 'publicación se ha anulado permanentemente.');
+       Session::flash('success', 'La publicación se ha anulado permanentemente.');
        return redirect()->route('mascota_desaparecida.index');
    }
 }

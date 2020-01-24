@@ -1852,7 +1852,7 @@ ul.pagination {
 }
 .blog-left-bottom p{
     margin: 1em 0 0 0;
-    color: #BBBBBB;
+    color: #2F2F2F; /*#BBBBBB;*/
     font-size: .875em;
     line-height: 1.8em;
 }

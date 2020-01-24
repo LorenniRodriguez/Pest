@@ -14,7 +14,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Mascota</th>
-                                    <th>Adoptado Por</th>
+                                    <th>Adoptada Por</th>
                                     <th>Estatus</th>
                                     <th>Registrado Por</th>
                                     <th>Fecha Registro</th>
@@ -27,7 +27,7 @@
                                     <tr>
                                         <td>{{ $cliente_mascota->id_cliente_mascota }}</td>
                                         <td>{{ $cliente_mascota->mascota->nombre }}</td>
-                                        <td>{{ $cliente_mascota->cliente->nombres}}</td>
+                                        <td>{{ $cliente_mascota->cliente->nombreCompleto ?? '' }}</td>
                                         <td>
                                             @if($cliente_mascota->estatus == 'I')
                                                 <label class="badge badge-danger">Cancelada</label>

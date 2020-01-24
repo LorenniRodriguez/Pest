@@ -7,6 +7,8 @@ use Auth;
 use Session;
 use App\Diagnostico;
 use App\Mascota;
+use App\MascotaVacuna;
+use App\MascotaServicio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -99,5 +101,21 @@ class DiagnosticoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function consultar ()
+    {
+        return view('back_end.diagnosticos.consultar_mascota', [
+            'mascotas' => Mascota::where('estatus', '=', 'A')->get()
+        ]);
+    }
+
+    public function historialMascota (Request $request)
+    {
+        return view('back_end.diagnosticos.historial_clinico', [
+            'mascota' => Mascota::find($request->id_mascota),
+            'mascota_vacunas' => MascotaVacuna::where('estatus', '=', 'A')->get(),
+            'mascota_servicios' => MascotaServicio::whereRaw("estatus = 'A' and id_mascota = ?", array($request->id_mascota))->get()
+        ]);
     }
 }

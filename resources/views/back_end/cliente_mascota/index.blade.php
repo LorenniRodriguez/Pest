@@ -12,9 +12,8 @@
                     <table class="table table-hover data-table" cellspacing="0" style="width: 100%;" width="100%">
                         <thead class="bg-primary text-white">
                             <tr>
-                                <th>ID</th>
+                                <th>Dueño</th>
                                 <th>Mascota</th>
-                                <th>Cliente</th>
                                 <th>Registrado Por</th>
                                 <th>Fecha Registro</th>
                                 <th class="text-center">Acciones</th>
@@ -23,9 +22,8 @@
                         <tbody>
                           @foreach ($cliente_mascotas as $cliente_mascota)
                           <tr>
-                            <td>{{ $cliente_mascota->id_cliente_mascota}}</td>
+                            <td>{{ $cliente_mascota->cliente->nombreCompleto ?? '' }}</td>
                             <td>{{ $cliente_mascota->mascota->nombre }}</td>
-                            <td>{{ $cliente_mascota->cliente->nombres }}</td>
                             <td>{{ $cliente_mascota->registradoPor->name}}</td>
                             <td>{{ $cliente_mascota->fecha_registro}}</td>
                             <td>

@@ -13,6 +13,7 @@
                             <thead class="bg-primary text-white">
                                 <tr>
                                     <th>ID</th>
+                                    <th>Dueño</th>
                                     <th>Mascota</th>
                                     <th>Estatus</th>
                                     <th>Registrado Por</th>
@@ -26,6 +27,7 @@
                                 @foreach ($hospedajes as $hospedaje)
                                     <tr>
                                         <td>{{ $hospedaje->id_hospedaje }}</td>
+                                        <td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombres }}</td>
                                         <td>{{ $hospedaje->mascota->nombre }}</td>
                                         <td>
                                             @if($hospedaje->estatus == 'I')

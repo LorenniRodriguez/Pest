@@ -164,7 +164,7 @@
 	<div class="col-md-6 mb-4">
 		<div class="card">
             <div class="card-body">
-				<h5>Cantidad de Hospedajes Por Raza</h5>
+				<h5>Cantidad de Hospedajes Por Cliente</h5>
 				<div class="cant_hospedajes_cliente">
 					<canvas id="cant_hospedajes_cliente" width="800" height="450"></canvas>
 				</div>

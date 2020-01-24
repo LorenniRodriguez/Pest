@@ -5,6 +5,7 @@
         .table td { padding: 10px !important; }
         .table th { padding: 15px !important; }
         div.dataTables_wrapper div.dataTables_length label { font-size: 12px !important; }
+        div.dataTables_wrapper div.dataTables_filter input { width: 200px !important; }
     </style>
 @endsection
 

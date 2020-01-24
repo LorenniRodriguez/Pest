@@ -13,10 +13,11 @@
 
 Auth::routes();
 Route::get('/', 'FrontEndController@home')->name('home');
-Route::get('/inicio', 'HomeController@index')->name('home');
+// Route::get('/inicio', 'HomeController@index')->name('home');
 Route::get('/acerca-de', 'FrontEndController@about')->name('about');
 Route::get('/mascotas-desaparecidas', 'FrontEndController@gallery')->name('mascotas.desaparecidas');
 Route::get('/blog', 'FrontEndController@blog')->name('blog');
+Route::get('/post/{post}', 'FrontEndController@single')->name('single');
 Route::get('/contacto', 'FrontEndController@contact')->name('contact');
 
 
@@ -88,13 +89,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 
     #proceso diagnostico rutas
     Route::resource('diagnosticos', 'DiagnosticoController');
+    Route::get('consultar/historial-clinico-mascota', 'DiagnosticoController@consultar')->name('consultar_historial_clinico');
+    Route::post('historial-clinico-mascota', 'DiagnosticoController@historialMascota')->name('historial_clinico');
 
     #graficos del sistema
     Route::get('graficos', 'GraficoController@index')->name('graficos.index');
     Route::post('graficos/consulta', 'GraficoController@consultar')->name('graficos.consultar');
 
     #ruta del blog
-    Route::resource('posts', 'postController');
+    Route::resource('posts', 'PostController');
 
     #ruta del blog / mascota desaparecida
     Route::resource('mascota_desaparecida', 'MascotaDesaparecidaController');
