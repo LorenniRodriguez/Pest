@@ -16,6 +16,7 @@
                                 <th>Mascota</th>
                                 <th>Registrado Por</th>
                                 <th>Fecha Registro</th>
+                                <th>Certificado</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
@@ -26,6 +27,13 @@
                             <td>{{ $cliente_mascota->mascota->nombre }}</td>
                             <td>{{ $cliente_mascota->registradoPor->name}}</td>
                             <td>{{ $cliente_mascota->fecha_registro}}</td>
+                            <td>
+                                @if($cliente_mascota->es_adopcion == 'Y')
+                                    <a class="btn btn-secondary btn-xs btn-rounded" href="{{ route('cliente_mascota.certificado', $cliente_mascota->id_cliente_mascota) }}" target="__blank"><i class="fa fa-print"></i> Imprimir</a>
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>
 
                                 <div style="display: flex; justify-content: space-around;">
@@ -42,7 +50,7 @@
                                     </form>
                                     @endif
                                     
-                                    {{--  @if(Auth::user()->user_type == 'A' || $cliente_mascota->id_usuario == Auth::user()->id) --}}
+                                     @if(Auth::user()->user_type == 'A' || $cliente_mascota->registrado_por == Auth::user()->id)
                                     @if($cliente_mascota->estatus == 'A')
                                     <form method="POST" action="{{ route('cliente_mascota.destroy', $cliente_mascota->id_cliente_mascota) }}">
                                         @csrf
@@ -53,7 +61,7 @@
                                         </button>
                                     </form>
                                     @endif
-                                    {{-- @endif --}}
+                                    @endif
                                 </div> 
                             </td>               
                         </tr>

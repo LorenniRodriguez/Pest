@@ -35,7 +35,7 @@ class ClienteMascotaController extends Controller
         return view('back_end.cliente_mascota.create',[ 
 
         'mascotas' => DB:: select("SELECT * FROM mascotas AS m WHERE m.estatus = 'A' AND NOT EXISTS ( SELECT * FROM
-           cliente_mascota AS cm  WHERE m.id_mascota = cm.id_mascota AND cm.estatus = 'A')"),
+           cliente_mascota AS cm  WHERE m.id_mascota = cm.id_mascota AND cm.estatus = 'A' AND cm.estatus = 'E')"),
         'clientes' => Cliente::where('estatus', '=', 'A')->get()
         ]);
     }
@@ -60,7 +60,7 @@ class ClienteMascotaController extends Controller
         $cliente_mascota->id_mascota = $request->id_mascota;
         $cliente_mascota->id_cliente = $request->id_cliente;
         $cliente_mascota->es_adopcion = $request->es_adopcion;
-        $cliente_mascota->registrado_por = Auth::user()->id;
+        $cliente_mascota->registrado_por= Auth::user()->id;
         $cliente_mascota->save();
 
          Session::flash('success', 'La adopcion se ha realizado correctamente.');
@@ -138,4 +138,11 @@ class ClienteMascotaController extends Controller
         ]);
     }
 
+
+    public function certificado ($id)
+    {
+        return view('back_end.cliente_mascota.certificado', [
+            'mascota' => ClienteMascota::find($id)
+        ]);
+    }
 }

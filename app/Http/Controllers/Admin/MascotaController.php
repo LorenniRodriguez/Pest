@@ -59,7 +59,7 @@ class MascotaController extends Controller
             'id_raza'     => 'required',
             'id_estatura' => 'required',
             'id_color'    => 'required',
-            'fecha_nacimiento' => 'required|date'
+            
         ]);
         
         $mascota = Mascota::create($request->only('nombre', 'peso', 'id_raza', 'id_estatura',
@@ -117,7 +117,7 @@ class MascotaController extends Controller
             'id_raza'     => 'required',
             'id_estatura' => 'required',
             'id_color'    => 'required',
-            'fecha_nacimiento' => 'required|date'
+            
         ]);
 
         $mascota->nombre = $request->nombre;

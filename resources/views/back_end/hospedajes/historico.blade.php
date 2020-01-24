@@ -27,7 +27,7 @@
                                 @foreach ($hospedajes as $hospedaje)
                                     <tr>
                                         <td>{{ $hospedaje->id_hospedaje }}</td>
-                                        <td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombres }}</td>
+                                        <td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombres ?? '' }}</td>
                                         <td>{{ $hospedaje->mascota->nombre }}</td>
                                         <td>
                                             @if($hospedaje->estatus == 'I')

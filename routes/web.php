@@ -81,6 +81,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     #proceso adopciones rutas
     Route::resource('cliente_mascota', 'ClienteMascotaController');
     Route::get('historico-adopciones', 'ClienteMascotaController@historico')->name('cliente_mascota.historico');
+    Route::get('certificado/{id}', 'ClienteMascotaController@certificado')->name('cliente_mascota.certificado');
     
 
     #proceso servicios rutas

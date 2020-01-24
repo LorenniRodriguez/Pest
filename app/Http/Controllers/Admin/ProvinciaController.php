@@ -41,10 +41,10 @@ class ProvinciaController extends Controller
      */
     public function store(Request $request)
     {
-          $this->validate($request, [
-            'id_provincia' => 'required',
-            'descripcion' => 'required'
-        ]);
+        //   $this->validate($request, [
+        //     'id_provincia' => 'required',
+        //     'descripcion' => 'required'
+        // ]);
 
         $provincia = new Provincia;
         $provincia->id_pais = $request->id_pais;

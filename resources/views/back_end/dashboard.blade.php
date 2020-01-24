@@ -111,7 +111,7 @@
                                 @foreach ($citas_pendientes as $cita)
                                 	@if($cita->dias_restantes >= 0 && $cita->dias_restantes <= 3)
 	                                    <tr>
-	                                    	<td>{{ $cita->mascota->adoptadaPor[0]->cliente->nombreCompleto }}</td>
+	                                    	<td>{{ $cita->mascota->adoptadaPor[0]->cliente->nombreCompleto ?? '' }}</td>
 	                                        <td>{{ $cita->mascota->nombre }}</td>
 	                                        <td>{{ $cita->vacuna->descripcion }}</td>
 	                                        <td>{{ $cita->fecha_cita }}</td>
@@ -189,7 +189,7 @@
 	                            @foreach ($hospedajes_pendientes as $hospedaje)
 	                                @if($hospedaje->dias_restantes >= 0 && $hospedaje->dias_restantes <= 3)
 		                                <tr>
-		                                	<td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombreCompleto }}</td>
+		                                	<td>{{ $hospedaje->mascota->adoptadaPor[0]->cliente->nombreCompleto ?? '' }}</td>
 		                                    <td>{{ $hospedaje->mascota->nombre }}</td>
 		                                    <td>{{ $hospedaje->jaula->descripcion }}</td>                                 
 		                                    <td>{{ $hospedaje->fecha_final }}</td>

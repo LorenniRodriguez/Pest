@@ -55,7 +55,7 @@ class DiagnosticoController extends Controller
         $diagnostico->save();
 
         Session::flash('success', 'El historial clinico se ha guardado correctamente.');
-        return redirect()->route('hospedajes.create');
+        return redirect()->route('diagnosticos.create');
     }
 
     /**
