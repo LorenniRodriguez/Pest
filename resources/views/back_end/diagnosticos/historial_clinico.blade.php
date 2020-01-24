@@ -62,42 +62,42 @@
                     <form>
                         <div class="form-group">
                             <label>Nombre:</label>
-                            <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->nombre_completo }}">
+                            <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->nombre_completo ?? '' }}">
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label>Cédula:</label>
-                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->cedula }}">
+                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->cedula ?? '' }}">
                             </div>
 
                             <div class="col-md-6">
                                 <label>Fecha Nac.:</label>
-                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->fecha_nacimiento }}">
+                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->fecha_nacimiento  ?? '' }}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label>Género:</label>
-                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->genero->descripcion }}">
+                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->genero->descripcion ?? ''  }}">
                             </div>
 
                             <div class="col-md-6">
                                 <label>Celular:</label>
-                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->celular }}">
+                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->celular ?? '' }}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label>Provincia:</label>
-                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->provincia->descripcion }}">
+                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->provincia->descripcion ?? ''  }}">
                             </div>
 
                             <div class="col-md-4">
                                 <label>Registrado:</label>
-                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->fecha_registro }}">
+                                <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->fecha_registro ?? '' }}">
                             </div>
                         </div>
                     </form>

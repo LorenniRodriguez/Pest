@@ -71,25 +71,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">País: <span><strong class="text-danger">*</strong></span></label>
-                          <div class="col-sm-9">
-                           <select name="id_pais" id="id_pais" class="form-control select2">
 
-                            @foreach($paises as $pais)
-
-                              <option value="{{$pais->id_pais}}">                           
-                                {{ $pais->descripcion }}</option>
-
-                              @endforeach
-
-                            </select>
-                          </div>                   
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                          <label class="col-sm-3 col-form-label">Género: <span><strong class="text-danger">*</strong></span></label>
@@ -106,23 +88,6 @@
                             </select>
 
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Provincia: <span><strong class="text-danger">*</strong></span></label>
-                          <div class="col-sm-9">
-                           <select name="id_provincia" id="id_provincia" class="form-control select2">
-
-                            @foreach($provincias as $provincia)
-
-                              <option value="{{$provincia->id_provincia}}">                           
-                                {{ $provincia->descripcion }}</option>
-
-                              @endforeach
-
-                            </select>
-                          </div>                   
                         </div>
                       </div>
                     </div>
@@ -145,6 +110,24 @@
                       </div>
                     </div>
                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Provincia: <span><strong class="text-danger">*</strong></span></label>
+                          <div class="col-sm-9">
+                           <select name="id_provincia" id="id_provincia" class="form-control select2">
+
+                            @foreach($provincias as $provincia)
+
+                              <option value="{{$provincia->id_provincia}}">                           
+                                {{ $provincia->descripcion }}</option>
+
+                              @endforeach
+
+                            </select>
+                          </div>                   
+                        </div>
+                      </div>
+                      
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Dirección: <span><strong class="text-danger">*</strong></span></label>

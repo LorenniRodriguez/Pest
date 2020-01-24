@@ -16,7 +16,6 @@
                                     <th>Apellidos</th>
                                     <th>Teléfono</th>
                                     <th>Celular</th>
-                                    <th> País</th>
                                     <th>Provincia</th>
                                     <th>Fecha Registro</th>
                                     <th>Acciones</th>
@@ -29,7 +28,6 @@
                                         <td>{{ $cliente->apellidos }}</td>
                                         <td>{{ $cliente->telefono}}</td>
                                         <td>{{ $cliente->celular}}</td>
-                                        <td>{{ $cliente->pais->descripcion}}</td>
                                         <td>{{ $cliente->provincia->descripcion}}</td>
                                         <td>{{ date('d-m-Y', strtotime($cliente->fecha_registro)) }}</td>
 

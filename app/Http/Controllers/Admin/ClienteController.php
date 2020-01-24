@@ -63,8 +63,7 @@ class ClienteController extends Controller
         'telefono'     => 'required|min:12|max:12',
         'celular'      => 'required|min:12|max:12',
         'id_provincia' => 'required',
-        'id_genero'    => 'required',
-        'id_pais'      => 'required'
+        'id_genero'    => 'required'
     ]);
 
 
@@ -124,8 +123,7 @@ class ClienteController extends Controller
         'telefono'     => 'required|min:12|max:12',
         'celular'      => 'required|min:12|max:12',
         'id_provincia' => 'required',
-        'id_genero'    => 'required',
-        'id_pais'      => 'required'
+        'id_genero'    => 'required'
     ]);
 
         $cliente->nombres = $request->nombres;

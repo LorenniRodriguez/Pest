@@ -29,7 +29,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Nombres:</label>
+                <label class="col-sm-3 col-form-label">Nombres: <span><strong class="text-danger">*</strong></span></label>
                 <div class="col-sm-9">
                   <input autocomplete="off" name="nombres" id="nombres" placeholder="Nombres del cliente" 
                   type="text"  value="{{ $cliente->nombres }}" class="form-control" />
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Teléfono:</label>
+                <label class="col-sm-3 col-form-label">Teléfono: <span><strong class="text-danger">*</strong></span></label>
                 <div class="col-sm-9">
                   <input autocomplete="off" name="telefono" id="telefono" placeholder="Numero de Teléfono" 
                   value="{{ $cliente->telefono }}" type="text" class="form-control" />
@@ -49,7 +49,7 @@
           <div class="row">
            <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Apellidos:</label>
+              <label class="col-sm-3 col-form-label">Apellidos: <span><strong class="text-danger">*</strong></span></label>
               <div class="col-sm-9">
                 <input autocomplete="off" name="apellidos" id="apellidos" placeholder="Apellidos del cliente" 
                 value="{{ $cliente->apellidos }}" type="text" class="form-control" />
@@ -58,7 +58,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-             <label class="col-sm-3 col-form-label">Celular:</label>
+             <label class="col-sm-3 col-form-label">Celular: <span><strong class="text-danger">*</strong></span></label>
              <div class="col-sm-9">
               <input autocomplete="off" name="celular" id="celular" placeholder="Numero de Celular" 
               value="{{ $cliente->celular}}" type="text" class="form-control" />
@@ -69,78 +69,41 @@
       <div class="row">
         <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Fecha Nacimineto: <span><strong class="text-danger">*</strong></span></label>
+              <label class="col-sm-3 col-form-label">Fecha Nacimiento: <span><strong class="text-danger">*</strong></span></label>
               <div class="col-sm-9">
                 <input name="fecha_nacimiento" id ="fecha_nacimiento" placeholder ="Fecha Nacimineto" 
-                value="{{ old ('$cliente->fecha_nacimiento') }}" type="date" class="form-control" />
+                value="{{ date('Y-m-d', strtotime($cliente->fecha_nacimiento)) }}" type="date" class="form-control" />
               </div>
             </div>
           </div>
-        <div class="col-md-6">
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Pais:</label>
-            <div class="col-sm-9">
-             <select name="id_pais" id="id_pais" class="form-control select2">
 
-              @foreach($paises as $pais)
+          <div class="col-md-6">
+            <div class="form-group row">
+             <label class="col-sm-3 col-form-label">Genero: <span><strong class="text-danger">*</strong></span></label>
+             <div class="col-sm-9">
+              <select name="id_genero" id="id_genero" class="form-control select2">
 
-              <option value="{{$pais->id_pais}}">                           
-                {{ $pais->descripcion }}</option>
+                @foreach($generos as $genero)
 
-                @endforeach
+                <option value="{{$genero->id_genero}}"
 
-              </select>
-            </div>                   
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group row">
-           <label class="col-sm-3 col-form-label">Genero:</label>
-           <div class="col-sm-9">
-            <select name="id_genero" id="id_genero" class="form-control select2">
+                 @if($cliente->id_genero == $genero->id_genero) selected @endif>
 
-              @foreach($generos as $genero)
+                 {{ $genero->descripcion }}</option>
 
-              <option value="{{$genero->id_genero}}"
+                 @endforeach
 
-               @if($cliente->id_genero == $genero->id_genero) selected @endif>
+               </select>
 
-               {{ $genero->descripcion }}</option>
-
-               @endforeach
-
-             </select>
-
+             </div>
            </div>
          </div>
-       </div>
-       <div class="col-md-6">
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Provincia:</label>
-          <div class="col-sm-9">
-           <select name="id_provincia" id="id_provincia" class="form-control select2">
-
-            @foreach($provincias as $provincia)
-
-            <option value="{{$provincia->id_provincia}}"
-
-             @if($cliente->id_provincia == $provincia->id_provincia) selected @endif>
-
-             {{ $provincia->descripcion }}</option>
-
-             @endforeach
-
-           </select>
-         </div>                   
-       </div>
-     </div>
-   </div>
+      </div>
+      
    <div class="row">
     <div class="col-md-6">
      <div class="form-group row">
-      <label class="col-sm-3 col-form-label">Cédula:</label>
+      <label class="col-sm-3 col-form-label">Cédula: <span><strong class="text-danger">*</strong></span></label>
       <div class="col-sm-9">
         <input autocomplete="off" name="cedula" id="cedula" placeholder="" type="text" 
         value="{{ $cliente->cedula}}"class="form-control" />
@@ -149,7 +112,7 @@
   </div>
   <div class="col-md-6">
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label">Correo</label>
+      <label class="col-sm-3 col-form-label">Correo: <span><strong class="text-danger">*</strong></span></label>
       <div class="col-sm-9">
         <input autocomplete="off" name="correo" id="correo" placeholder="" type="text" 
         value="{{ $cliente->correo}}"class="form-control" />
@@ -160,7 +123,28 @@
 <div class="row">
   <div class="col-md-6">
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label">Dirección:</label>
+      <label class="col-sm-3 col-form-label">Provincia: <span><strong class="text-danger">*</strong></span></label>
+      <div class="col-sm-9">
+       <select name="id_provincia" id="id_provincia" class="form-control select2">
+
+        @foreach($provincias as $provincia)
+
+        <option value="{{$provincia->id_provincia}}"
+
+         @if($cliente->id_provincia == $provincia->id_provincia) selected @endif>
+
+         {{ $provincia->descripcion }}</option>
+
+         @endforeach
+
+       </select>
+     </div>                   
+   </div>
+ </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Dirección: <span><strong class="text-danger">*</strong></span></label>
       <div class="col-sm-9">
         <input autocomplete="off" name="direccion" id="direccion"type="text" 
         value="{{ $cliente->direccion}}" class="form-control" />

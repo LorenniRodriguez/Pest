@@ -114,7 +114,7 @@ class CitaController extends Controller
         $cita->update();
 
         Session::flash('success', 'La cita se ha anulado permanentemente.');
-        return redirect()->route('citas.index');
+        return redirect()->route('vacunacion.index');
     }
 
     public function buscarVacunas (Request $request)

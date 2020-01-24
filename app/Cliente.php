@@ -10,7 +10,7 @@ class Cliente extends Model {
     protected $primaryKey = 'id_cliente';
 
     protected $fillable = ['nombres', 'apellidos', 'fecha_nacimiento', 'direccion', 'cedula', 'telefono','celular', 'correo', 
-    'id_provincia','fecha_registro','id_genero', 'id_pais'];
+    'id_provincia','fecha_registro','id_genero'];
     public $timestamps = false;
 
 
@@ -18,11 +18,6 @@ class Cliente extends Model {
     public function genero ()
     {
         return $this->belongsTo('App\Genero', 'id_genero');
-    }
-
-    public function pais ()
-    {
-        return $this->belongsTo('App\Pais', 'id_pais');
     }
 
     public function provincia()

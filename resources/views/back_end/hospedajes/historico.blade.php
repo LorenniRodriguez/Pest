@@ -20,7 +20,8 @@
                                     <th>Atendido Por</th>
                                     <th>Cancelada Por</th>
                                     <th>Asuntos</th>
-                                    <th>Finalizado</th>
+                                    <th>Fecha Final</th>
+                                    <th>Fecha Entrega</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,6 +59,7 @@
                                        </td>
 
                                        <td>{{ $hospedaje->TipoHospedaje->descripcion }}</td>
+                                       <td>{{ $hospedaje->fecha_final}}</td>
                                        <td>{{ $hospedaje->fecha_entrega}}</td>
                                         
                                 @endforeach

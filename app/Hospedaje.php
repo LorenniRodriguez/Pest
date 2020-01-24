@@ -76,6 +76,16 @@ class Hospedaje extends Model
         return $fecha->format('d-m-Y');
     }
 
+    public function getFechaEntregaAttribute ($fecha_entrega)
+    {
+        $fecha = new \DateTime($fecha_entrega);
+
+        if(is_null($fecha_entrega))
+            return null;
+
+        return $fecha->format('d-m-Y');
+    }
+
     public function getDiasRestantesAttribute ()
     {
         $fecha_final = new \DateTime($this->fecha_final);

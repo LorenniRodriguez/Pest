@@ -52,7 +52,7 @@
                           <label class="col-sm-3 col-form-label">Fecha Nacimineto: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="fecha_nacimiento" id ="fecha_nacimiento" 
-                            value="{{ $mascota->fecha_nacimiento }}" type="date" class="form-control" />
+                            value="{{ date('Y-m-d', strtotime($mascota->fecha_nacimiento)) }}" type="date" class="form-control" />
                           </div>
                         </div>
                       </div>
