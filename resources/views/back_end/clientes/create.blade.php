@@ -4,19 +4,7 @@
 
 @section('content')
 
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-  
-  <ul>
-    @foreach($errors->all() as $error)
-    <li>{{ $error }}</li>
-
-    @endforeach
-
-  </ul>
-</div>
-
-@endif
+@include('back_end._errores')
 
   <div class="row">
     <div class="col-12 grid-margin">
@@ -30,7 +18,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Nombres: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="nombres" id="nombres" placeholder="Nombres del cliente" type="text" class="form-control" autocomplete="off"  />
+                            <input name="nombres" id="nombres" placeholder="Nombres del cliente" type="text" class="form-control"    value="{{ old ('nombres') }}" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -38,7 +26,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Teléfono: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="telefono" id="telefono" placeholder="Numero de Teléfono" type="text" class="form-control" autocomplete="off" />
+                            <input name="telefono" id="telefono" placeholder="Numero de Teléfono" type="text" class="form-control"   value="{{ old ('telefono') }}" autocomplete="off" />
                           </div>
                         </div>
                       </div>
@@ -48,7 +36,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Apellidos: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="apellidos" id="apellidos" placeholder="Apellidos del cliente" type="text" class="form-control" autocomplete="off" />
+                            <input name="apellidos" id="apellidos" placeholder="Apellidos del cliente" type="text" class="form-control" autocomplete="off" value="{{ old ('apellidos') }}" />
                           </div>
                         </div>
                       </div>
@@ -56,7 +44,7 @@
                         <div class="form-group row">
                          <label class="col-sm-3 col-form-label">Celular: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="celular" id="celular" placeholder="Numero de Celular" type="text" class="form-control" autocomplete="off" />
+                            <input name="celular" id="celular" placeholder="Numero de Celular" type="text" class="form-control"autocomplete="off"  value="{{ old ('celular') }}" />
                           </div>
                         </div>
                       </div>
@@ -96,7 +84,7 @@
                          <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Cédula: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input autocomplete="off" name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control"/>
+                            <input autocomplete="off" name="cedula" id="cedula" placeholder="Cédula del Cliente" type="text" class="form-control" value="{{ old ('cedula') }}" />
                           </div>
                         </div>
                       </div>
@@ -104,7 +92,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Correo: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="correo" id="correo" placeholder="Correo Personal" type="text" class="form-control" />
+                            <input name="correo" id="correo" placeholder="Correo Personal" type="text" class="form-control" autocomplete="off"  value="{{ old ('correo') }}" />
                           </div>
                         </div>
                       </div>
@@ -132,7 +120,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Dirección: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
-                            <input name="direccion" id="dirección"type="text" placeholder="Direccion del Cliente" class="form-control" autocomplete="off" />
+                            <input name="direccion" id="dirección"type="text" placeholder="Direccion del Cliente" class="form-control" autocomplete="off"  value="{{ old ('direccion') }}" />
                           </div>
                         </div>
                       </div>             

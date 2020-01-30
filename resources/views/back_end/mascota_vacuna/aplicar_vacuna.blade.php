@@ -12,7 +12,12 @@
 
                     <form>
                         <div class="form-group">
-                            <label>Nombre:</label>
+                            <label>Dueño:</label>
+                            <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->nombreCompleto ?? '' }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mascota:</label>
                             <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->nombre }}">
                         </div>
 

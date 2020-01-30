@@ -58,13 +58,51 @@ class ClienteController extends Controller
         'nombres'      => 'required|min:3|max:50',
         'apellidos'    => 'required|min:3|max:50',
         'fecha_nacimiento' => 'required|date',
-        'direccion'    => 'required|min:5|max:100',
-        'cedula'       => 'required|min:13|max:13', 
+        'direccion'    => 'required|min:10|max:100',
+        'cedula'       => 'required|min:13|max:13|unique:clientes,cedula', 
         'telefono'     => 'required|min:12|max:12',
         'celular'      => 'required|min:12|max:12',
+        'correo'       => 'required|email|unique:clientes,correo',
         'id_provincia' => 'required',
         'id_genero'    => 'required'
-    ]);
+    ],
+
+    [
+    'nombres.required' => 'El campo nombres es requerido.',
+    'nombres.min' => 'El campo nombres debe contener más de 2 caracteres.',
+    'nombres.max' => 'El campo nombres debe contener menos de 50 caracteres.',
+    
+    'apellidos.required' => 'El campo apellido es requerido.',
+    'apellido.min' => 'El campo apellido debe contener más de 2 caracteres.',
+    'apellido.max' => 'El campo apellido debe contener  menos de 2 caracteres',
+    
+    'direccion.required' => 'El campo fecha es requerido.',
+    'direccion.max' => 'El campo dirección  debe contener menos de 100 caracteres.',
+    'direccion.min' => 'El campo dirección  debe contener más de 10 caracteres.',
+    
+    'cedula.required' => 'El campo cédula es requerido.',
+    'cedula.min' => 'El campo cédula debe contener  13 caracteres.',
+    'cedula.max' => 'El campo cédula debe contener  13 caracteres.',
+    'cedula.unique' => 'El campo cédula debe ser único.',
+
+    'telefono.required' => 'El campo  teléfono es requerido',
+    'telefono.min' => 'El campo teléfono debe contener 12 caracteres.',
+    'telefono.max' => 'El campo teléfono debe contener 12 caracteres.',
+
+    'celular.required' => 'El campo  celular es requerido',
+    'celular.min' => 'El campo celular debe contener 12 caracteres.',
+    'celular.max' => 'El campo celular debe contener 12 caracteres.',
+
+
+    'correo.required' => 'El campo correo es requerido.',
+    'correo.email' => 'Asegurese que el campo del correo se encuentre correcto.',
+    'correo.unique' => 'El campo correo debe ser único ',
+    
+    'fecha_nacimiento.required' => 'Ingrese la fecha de nacimiento.' 
+
+    ]
+
+    );
 
 
      $cliente = Cliente::create($request->only('nombres', 'apellidos', 'fecha_nacimiento', 'direccion', 'cedula', 'telefono','celular', 'correo', 
@@ -113,6 +151,57 @@ class ClienteController extends Controller
      */
     public function update(Cliente $cliente, Request $request)
     {
+        $this->validate($request, [
+
+        'nombres'      => 'required|min:3|max:50',
+        'apellidos'    => 'required|min:3|max:50',
+        'fecha_nacimiento' => 'required|date',
+        'direccion'    => 'required|min:10|max:100',
+        'cedula'       => 'required|min:13|max:13|unique:clientes,cedula,$id_cliente', 
+        'telefono'     => 'required|min:12|max:12',
+        'celular'      => 'required|min:12|max:12',
+        'correo'       => 'required|email|unique:clientes,correo',
+        'id_provincia' => 'required',
+        'id_genero'    => 'required'
+    ],
+
+    [
+    'nombres.required' => 'El campo nombres es requerido.',
+    'nombres.min' => 'El campo nombres debe contener más de 2 caracteres.',
+    'nombres.max' => 'El campo nombres debe contener menos de 50 caracteres.',
+    
+    'apellidos.required' => 'El campo apellido es requerido.',
+    'apellido.min' => 'El campo apellido debe contener más de 2 caracteres.',
+    'apellido.max' => 'El campo apellido debe contener  menos de 2 caracteres',
+    
+    'direccion.required' => 'El campo fecha es requerido.',
+    'direccion.max' => 'El campo dirección  debe contener menos de 100 caracteres.',
+    'direccion.min' => 'El campo dirección  debe contener más de 10 caracteres.',
+    
+    'cedula.required' => 'El campo cédula es requerido.',
+    'cedula.min' => 'El campo cédula debe contener  13 caracteres.',
+    'cedula.max' => 'El campo cédula debe contener  13 caracteres.',
+    'cedula.unique' => 'El campo cédula debe ser único.',
+
+    'telefono.required' => 'El campo  teléfono es requerido',
+    'telefono.min' => 'El campo teléfono debe contener 12 caracteres.',
+    'telefono.max' => 'El campo teléfono debe contener 12 caracteres.',
+
+    'celular.required' => 'El campo  celular es requerido',
+    'celular.min' => 'El campo celular debe contener 12 caracteres.',
+    'celular.max' => 'El campo celular debe contener 12 caracteres.',
+
+
+    'correo.required' => 'El campo correo es requerido.',
+    'correo.email' => 'Asegurese que el campo del correo se encuentre correcto.',
+    'correo.unique' => 'El campo correo debe ser único ',
+    
+    'fecha_nacimiento.required' => 'Ingrese la fecha de nacimiento.' 
+
+    ]
+
+    );
+
          $this->validate($request, [
 
         'nombres'      => 'required|min:3|max:50',
@@ -136,7 +225,7 @@ class ClienteController extends Controller
         $cliente->correo = $request->correo;
         $cliente->id_provincia = $request->id_provincia;
         $cliente->id_genero = $request->id_genero;
-        $cliente->id_pais = $request->id_pais;
+        // $cliente->id_pais = $request->id_pais;
         $cliente->update();
 
         Session::flash('success', 'El cliente se ha actualizado correctamente.');

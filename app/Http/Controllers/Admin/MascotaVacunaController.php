@@ -33,7 +33,7 @@ class MascotaVacunaController extends Controller
                 FROM
                     vacunas AS v
                 WHERE
-                    NOT EXISTS
+                    NOT EXISTS -- filtro las vacunas que ya se han aplicado --
                     (
                         SELECT
                             *
@@ -44,9 +44,53 @@ class MascotaVacunaController extends Controller
                                 AND mv.estatus = 'A'
                                 AND mv.id_mascota = $mascota->id_mascota
                     )
+                    AND NOT EXISTS -- filtro las vacunas que se encuentran en agenda --
+                    (
+                        SELECT
+                            *
+                        FROM
+                            citas AS c
+                        WHERE
+                            c.id_mascota = $mascota->id_mascota
+                                AND c.id_vacuna = v.id_vacuna
+                                AND c.estatus = 'A'
+                                AND (CAST(NOW() AS DATE) < c.fecha_cita OR CAST(NOW() AS DATE) <> c.fecha_cita)
+                    )
                     AND (v.para_gatos = $mascota->id_tipo_mascota OR v.para_perros = $mascota->id_tipo_mascota)
                     AND v.estatus = 'A'
-            ");
+
+                UNION
+  
+                SELECT
+                  *
+                FROM
+                    vacunas AS v
+                WHERE
+                    NOT EXISTS
+                    (
+                        SELECT
+                            *
+                        FROM
+                            citas AS c
+                        WHERE
+                            c.id_mascota = $mascota->id_mascota
+                                AND c.id_vacuna = v.id_vacuna
+                                AND (c.estatus = 'A' AND c.fecha_atendida IS NOT NULL)
+                                AND (CAST(NOW() AS DATE) < c.fecha_cita OR CAST(NOW() AS DATE) <> c.fecha_cita)
+                    )
+                    AND EXISTS
+                    (
+                        SELECT
+                            *
+                        FROM
+                            mascotas AS m
+                        WHERE
+                            m.id_mascota = $mascota->id_mascota
+                                AND m.id_tipo_mascota = 2
+                    )
+                    AND v.para_perros = 2
+                    AND v.estatus = 'A'
+                ");
 
 
     	return view('back_end.mascota_vacuna.aplicar_vacuna', [
@@ -73,6 +117,20 @@ class MascotaVacunaController extends Controller
     	$mascota_vacuna->id_vacuna = $request->id_vacuna;
     	$mascota_vacuna->id_usuario = Auth::user()->id; // obtiene el id del usuario logueado
     	$mascota_vacuna->save();
+
+        // identifico si esta vacuna se realizó desde el módulo de vacunación y la mascota la tiene en citas pendientes
+        if(is_null($request->id_cita))
+        {
+            $citas = Cita::whereRaw("
+                id_vacuna = $request->id_vacuna
+                    AND id_mascota = $request->id_mascota
+                    AND estatus = 'A'
+            ")->get();
+            
+            if(isset($citas))
+                $request->id_cita = $citas[0]->id_cita;
+        }
+
 
         // identifico si la vacuna se ha aplicado desde el modulo de citas
         if($request->id_cita)

@@ -35,6 +35,8 @@
                                                 <label class="badge badge-success">{{ str_replace('-', '', substr($cita->dias_restantes, 1, 1)) }} día(s)</label>
                                             @elseif($cita->dias_restantes < 0)
                                                 <label class="badge badge-danger">@php echo ((int) $cita->dias_restantes * -1) . ' día(s)' @endphp</label>
+                                            @else
+                                                <label class="badge badge-primary">¡Es hoy!</label>
                                             @endif
                                         </td>
                                         <td>
@@ -47,9 +49,11 @@
                                                     <input type="hidden" name="id_vacuna" value="{{ $cita->id_vacuna }}">
                                                     <input type="hidden" name="id_cita" value="{{ $cita->id_cita }}">
 
-                                                    <button type="submit" class="btn btn-info btn-xs btn-rounded">
-                                                        <i class="fa fa-location-arrow"></i>¡Atender!
-                                                    </button>
+                                                    @if($cita->dias_restantes <= 0)
+                                                        <button type="submit" class="btn btn-info btn-xs btn-rounded">
+                                                            <i class="fa fa-location-arrow"></i>¡Atender!
+                                                        </button>
+                                                    @endif
                                                 </form>
 
                                                 @if(Auth::user()->user_type == 'A' || $cita->id_usuario == Auth::user()->id)
