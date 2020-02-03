@@ -106,19 +106,19 @@
             <a class="nav-link" data-toggle="collapse" href="#cliente-mascota" aria-expanded="false" 
             aria-controls="cliente-mascota">
             <i class="menu-icon mdi mdi-paw"></i>
-            <span class="menu-title">Gestionar Adopciones</span>
+            <span class="menu-title">Relacionar Mascotas</span>
             <i class="menu-arrow"></i>
         </a>            
         <div class="collapse" id="cliente-mascota">
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cliente_mascota.create') }}">Registrar Adopciones</a>
+                    <a class="nav-link" href="{{ route('cliente_mascota.create') }}">Crear Relación</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Adopciones Realizadas</a>
+                    <a class="nav-link" href="{{ route('cliente_mascota.index') }}">Mascotas Relacionadas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Adopciones</a>
+                    <a class="nav-link" href="{{ route('cliente_mascota.historico') }}">Histórico Relación Mascota</a>
                 </li>
             </ul>
         </div>

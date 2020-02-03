@@ -1,6 +1,6 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Relacionar Mascotas')
+@section('titulo', 'Relacionar Mascota')
 
 @section('content')
     
@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="mb-4">Datos --</h5>
+                    <h5 class="mb-4">Datos a Relacionar</h5>
 
                     <div class="errores mb-3">
                         @if(count($errors) > 0)
