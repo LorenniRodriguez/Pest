@@ -1,6 +1,6 @@
 @extends('../layouts.backend')
 
-@section('titulo', 'Adopciones Registradas')
+@section('titulo', 'Registros de Mascota relacionadas')
 
 @section('content')
 

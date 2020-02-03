@@ -34,10 +34,10 @@ class HospedajeController extends Controller
     public function create()
     {
         return view('back_end.hospedajes.create', [
-            'mascotas' => DB::select("SELECT * FROM mascotas AS m
+            'mascotas' => DB::select("SELECT m.*, IFNULL(CONCAT(c.nombres, ' ', c.apellidos), '') AS dueño FROM mascotas AS m LEFT JOIN cliente_mascota AS cm ON m.id_mascota = cm.id_mascota AND cm.estatus = 'A' LEFT JOIN clientes AS c ON cm.id_cliente = c.id_cliente AND c.estatus = 'A'
              WHERE m.estatus = 'A' AND NOT EXISTS (SELECT * FROM hospedajes AS h  WHERE m.id_mascota = h.id_mascota AND h.fecha_entrega IS NULL AND h.estatus = 'A')"),
             'jaulas' => DB::select("SELECT *FROM jaulas AS j
-             WHERE j.estatus = 'A' AND NOT EXISTS (SELECT * FROM hospedajes AS h WHERE j.id_jaula = h.id_jaula AND fecha_entrega IS NULL  )"),
+             WHERE j.estatus = 'A' AND NOT EXISTS (SELECT * FROM hospedajes AS h WHERE j.id_jaula = h.id_jaula AND (h.fecha_entrega IS NULL AND h.estatus IN ('A', 'E')))"),
             'tipo_hospedajes' => TipoHospedaje::where('estatus', '=', 'A')->get(),
         ]);
     }

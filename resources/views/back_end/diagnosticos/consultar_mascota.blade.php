@@ -15,7 +15,9 @@
                             <label for="id_mascota">Mascotas:</label>
                             <select class="form-control select2" name="id_mascota" id="id_mascota">
                             	@foreach($mascotas as $mascota)
-                            		<option value="{{ $mascota->id_mascota }}">{{ $mascota->nombre }}</option>
+                            		<option value="{{ $mascota->id_mascota }}">
+                                        {{ $mascota->adoptadaPor[0]->cliente->nombreCompleto ?? 'Veterinaria' }} | {{ $mascota->nombre }}
+                                    </option>
                             	@endforeach
                             </select>
                         </div>

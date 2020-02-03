@@ -23,10 +23,12 @@
 				<div class="col-md-12 blog-top-left-grid" style="float: initial !important;">
 					<div class="row left-blog">
 						@foreach($posts as $post)						
-							<div class="blog-left col-md-6">
+							<div class="blog-left col-md-4">
 								<div class="blog-left-left">
 									<p>Publicado por <a href="#">Servet Veterinaria</a> en {{ date('M d, Y', strtotime($post->fecha_publicacion)) }} &nbsp;&nbsp;</p>
-									<a href="{{ route('single', $post->id_post) }}"><img src="{{ Storage::url($post->imagen) }}"></a>
+									<a href="{{ route('single', $post->id_post) }}">
+										<img src="{{ Storage::url($post->imagen) }}" style="background-position: center bottom; height: 300px; width: 350px;">
+									</a>
 								</div>
 								<div class="blog-left-right">
 									<a href="{{ route('single', $post->id_post) }}">{{ $post->titulo }}</a>

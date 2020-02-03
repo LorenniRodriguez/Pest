@@ -28,7 +28,9 @@
                             <select class="form-control select2" name="id_mascota" id="id_mascota" required="">
                                 <option value="">Seleccione la mascota...</option>
                                 @foreach($mascotas as $mascota)
-                                    <option value="{{ $mascota->id_mascota }}" @if(old('id_mascota') == $mascota->id_mascota) selected="" @endif>{{ $mascota->nombre }}</option>
+                                    <option value="{{ $mascota->id_mascota }}" @if(old('id_mascota') == $mascota->id_mascota) selected="" @endif>
+                                        {{ $mascota->adoptadaPor[0]->cliente->nombreCompleto ?? 'Veterinaria' }} | {{ $mascota->nombre }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -57,34 +59,54 @@
     
     <script type="text/javascript">
 
-        $('#id_mascota').change(function (value) {
+        $(document).ready(function () {
 
-            if($('#id_mascota').val() > 0)
-            {
-                $.ajax({
-                    type: 'POST',
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    url: '{{ route('vacunacion.buscar_vacunas') }}',
-                    data: { 'id_mascota': $('#id_mascota').val() },
-                    success: function (response) {
-                        var options = [];
+            $('#id_mascota').change(function (value) {
 
-                        for(var x = 0; x < response.length; x++)
-                        {
-                            options.push('<option value="', response[x].id_vacuna, '">', response[x].descripcion, '</option>');
+                if($('#id_mascota').val() > 0)
+                {
+                    $.ajax({
+                        type: 'POST',
+                        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                        url: '{{ route('vacunacion.buscar_vacunas') }}',
+                        data: { 'id_mascota': $('#id_mascota').val() },
+                        success: function (response) {
+                            var options = [];
+
+                            if(response.length > 0)
+                            {
+                                for(var x = 0; x < response.length; x++)
+                                {
+                                    let id_vacuna_old = `{{ old('id_vacuna') }}`;
+                                    let is_selected;
+
+                                    if(id_vacuna_old == response[x].id_vacuna)
+                                        is_selected = 'selected=""';
+                                    else
+                                        is_selected = '';
+
+                                    options.push('<option '+ is_selected +' value="', response[x].id_vacuna, '">', response[x].descripcion, '</option>');
+                                }
+                            }
+
+                            else
+                            {
+                                var options = [];
+                                options.push('<option value="">', 'No hay vacunas que aplicar', '</option>');
+                            }
+
+                            $("#id_vacuna").html(options.join(''));
                         }
+                    });
+                }
 
-                        $("#id_vacuna").html(options.join(''));
-                    }
-                });
-            }
+                else
+                    $("#id_vacuna").html('');
+            });
 
-            else
-                $("#id_vacuna").html('');
+            // disparo el evento on change sobre el select de mascotas
+            $('#id_mascota').trigger('change');
         });
-
-        // disparo el evento on change sobre el select de mascotas
-        $('#id_mascota').trigger('change');
 
     </script>
 

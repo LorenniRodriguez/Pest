@@ -62,7 +62,7 @@
                     <form>
                         <div class="form-group">
                             <label>Nombre:</label>
-                            <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->nombre_completo ?? '' }}">
+                            <input type="text" class="form-control form-control" readonly="" value="{{ $mascota->adoptadaPor[0]->cliente->nombre_completo ?? 'Veterinaria' }}">
                         </div>
 
                         <div class="form-group row">

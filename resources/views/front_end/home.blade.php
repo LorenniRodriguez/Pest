@@ -56,10 +56,10 @@
                 <h2>¡Bienvenido a Servet Veterinaria!</h2>
             </div>
             <div class="welcome-grids">
-                <div class="col-md-6 agile-welcome-grid">
-                    <div class="grid">
+                <div class="col-md-8 agile-welcome-grid">
+                    <div class="grid" style="display: flex;">
                         @foreach($mascotas as $mascota)
-                            <div class="col-md-6 agileits-left">
+                            <div class="col-md-6 agileits-left" style="float:left; display: flex;">
                                 <figure class="effect-chico">
                                     <img src="{{ Storage::url($mascota->imagen) }}" alt="" />
                                     <figcaption>
@@ -72,7 +72,7 @@
                         <div class="clearfix"> </div>
                     </div>
                 </div>
-                <div class="col-md-6 agileinfo-welcome-right">
+                <div class="col-md-4 agileinfo-welcome-right">
                     <h4>Con tu ayuda podemos encontrar estas mascotas.</h4>
                     <p>Estas mascotas ha sido reportadas por sus respectivos dueños y esperan con ansías que sean encontradas. <br>Si llegas a ver alguna de estas mascotas, no dudes en contactarnos.</span></p>
                 </div>
@@ -157,58 +157,5 @@
         </div>
     </div>
     <!-- //services -->
-    <!-- news -->
-    <div class="news">
-        <div class="container">
-            <div class="w3ls-heading">
-                <h3>Últimas Publicaciones</h3>
-            </div>
-            <div class="w3-agileits-news-grids">
-                <div class="col-md-6 news-left">
-                    <div class="w3-agile-news-date">
-                        <div class="agile-news-icon">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                            <p>Nov 24</p>
-                        </div>
-                        <div class="agileits-line"> </div>
-                        {{-- <div class="agile-news-icon">
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i></a>
-                            <p>2 comments</p>
-                        </div> --}}
-                        <div class="agileits-line"> </div>
-                        <div class="agile-news-icon">
-                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
-                            <p>3482</p>
-                        </div>
-                    </div>
-                    <div class="w3-agile-news-img">
-                        <a href="single.html"><img src="{{ asset('front_end/images/4.jpg') }}" alt="" /></a>
-                        <h4><a href="single.html">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</a></h4>
-                        <p>Donec justo ante, maximus et aliquam et, elementum ac purus. Nam eget ante ac velit laoreet sodales ut vel nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed quam nibh. In sed nisi enim. Duis eget nunc vitae elit dignissim feugiat. Morbi molestie fringilla ipsum, id molestie dolor sodales vel.</p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="col-md-6 news-right">
-                    <div class="news-right-grid">
-                        <a href="single.html">Nunc non neque ex. Aliquam neque massa</a>
-                        <h5>06th Nov,2016</h5>
-                        <p>Ut rutrum convallis erat at malesuada. Donec facilisis sem nisl, ut rhoncus ex ullamcorper ornare. Ut ac interdum velit. Cras nulla nibh, rutrum non venenatis sit amet, ullamcorper venenatis felis.</p>
-                    </div>
-                    <div class="news-right-grid">
-                        <a href="single.html">Phasellus sapien eros, condimentum quis</a>
-                        <h5>17th Nov,2016</h5>
-                        <p>Ut rutrum convallis erat at malesuada. Donec facilisis sem nisl, ut rhoncus ex ullamcorper ornare. Ut ac interdum velit. Cras nulla nibh, rutrum non venenatis sit amet, ullamcorper venenatis felis.</p>
-                    </div>
-                    <div class="news-right-grid">
-                        <a href="single.html">Donec justo ante, maximus et aliquam et</a>
-                        <h5>29th Nov,2016</h5>
-                        <p>Ut rutrum convallis erat at malesuada. <wbr>Donec facilisis sem nisl, ut rhoncus ex ullamcorper ornare. Ut ac interdum velit. Cras nulla nibh, rutrum non venenatis sit amet, ullamcorper venenatis felis.</p>
-                    </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-    </div>
-    <!-- //news -->
 
 @endsection

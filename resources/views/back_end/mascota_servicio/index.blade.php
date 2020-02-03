@@ -23,7 +23,7 @@
                         <tbody>
                           @foreach ($mascota_servicios as $mascota_servicio)
                               <tr>
-                                <td>{{ $mascota_servicio->mascota->adoptadaPor[0]->cliente->nombreCompleto ?? '' }}</td>
+                                <td>{{ $mascota_servicio->mascota->adoptadaPor[0]->cliente->nombreCompleto ?? 'Veterinaria' }}</td>
                                 <td>{{ $mascota_servicio->mascota->nombre }}</td>
                                 <td>{{ $mascota_servicio->servicio->descripcion}}</td>
                                 <td>{{ $mascota_servicio->usuario->name}}</td>

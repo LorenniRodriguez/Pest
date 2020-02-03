@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="mb-4">Datos Adopciones</h5>
+                    <h5 class="mb-4">Datos --</h5>
 
                     <div class="errores mb-3">
                         @if(count($errors) > 0)
@@ -38,7 +38,7 @@
                             <select class="form-control select2" name="id_cliente" id="id_cliente" required="">
                                 <option value="">Seleccione el cliente...</option>
                                 @foreach($clientes as $cliente)
-                                    <option value="{{ $cliente->id_cliente }}" @if(old('id_cliente') == $cliente->id_cliente) selected="" @endif>{{ $cliente->nombres }}</option>
+                                    <option value="{{ $cliente->id_cliente }}" @if(old('id_cliente') == $cliente->id_cliente) selected="" @endif>{{ $cliente->nombreCompleto }}</option>
                                 @endforeach
                             </select>
                         </div>

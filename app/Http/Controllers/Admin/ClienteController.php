@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
@@ -59,7 +60,7 @@ class ClienteController extends Controller
         'apellidos'    => 'required|min:3|max:50',
         'fecha_nacimiento' => 'required|date',
         'direccion'    => 'required|min:10|max:100',
-        'cedula'       => 'required|min:13|max:13|unique:clientes,cedula', 
+        'cedula'       => 'required|min:13|max:13|unique:cliente,cedula', 
         'telefono'     => 'required|min:12|max:12',
         'celular'      => 'required|min:12|max:12',
         'correo'       => 'required|email|unique:clientes,correo',
@@ -151,16 +152,21 @@ class ClienteController extends Controller
      */
     public function update(Cliente $cliente, Request $request)
     {
+        // quitar los guiones
+        $request['cedula'] = str_replace('-', '', (str_replace('_', '', $request->cedula)));
+        $request['celular'] = str_replace('-', '', (str_replace('_', '', $request->celular)));
+        $request['telefono'] = str_replace('-', '', (str_replace('_', '', $request->telefono)));
+
         $this->validate($request, [
 
         'nombres'      => 'required|min:3|max:50',
         'apellidos'    => 'required|min:3|max:50',
         'fecha_nacimiento' => 'required|date',
         'direccion'    => 'required|min:10|max:100',
-        'cedula'       => 'required|min:13|max:13|unique:clientes,cedula,$id_cliente', 
-        'telefono'     => 'required|min:12|max:12',
-        'celular'      => 'required|min:12|max:12',
-        'correo'       => 'required|email|unique:clientes,correo',
+        'cedula'       =>  ['required', 'min:11', 'max:11', Rule::unique('clientes')->ignore($cliente->id_cliente, 'id_cliente')],
+        'telefono'     => 'required|min:10|max:10',
+        'celular'      => 'required|min:10|max:10',
+        'correo'       => ['required', 'email', Rule::unique('clientes')->ignore($cliente->id_cliente, 'id_cliente')],
         'id_provincia' => 'required',
         'id_genero'    => 'required'
     ],
@@ -179,17 +185,17 @@ class ClienteController extends Controller
     'direccion.min' => 'El campo dirección  debe contener más de 10 caracteres.',
     
     'cedula.required' => 'El campo cédula es requerido.',
-    'cedula.min' => 'El campo cédula debe contener  13 caracteres.',
-    'cedula.max' => 'El campo cédula debe contener  13 caracteres.',
+    'cedula.min' => 'El campo cédula debe contener al menos 11 caracteres.',
+    'cedula.max' => 'El campo cédula no puede contener más de 11 caracteres.',
     'cedula.unique' => 'El campo cédula debe ser único.',
 
     'telefono.required' => 'El campo  teléfono es requerido',
-    'telefono.min' => 'El campo teléfono debe contener 12 caracteres.',
-    'telefono.max' => 'El campo teléfono debe contener 12 caracteres.',
+    'telefono.min' => 'El campo teléfono debe contener al menos 10 caracteres.',
+    'telefono.max' => 'El campo teléfono no puede contener más de 10 caracteres.',
 
     'celular.required' => 'El campo  celular es requerido',
-    'celular.min' => 'El campo celular debe contener 12 caracteres.',
-    'celular.max' => 'El campo celular debe contener 12 caracteres.',
+    'celular.min' => 'El campo celular debe contener al menos 10 caracteres.',
+    'celular.max' => 'El campo celular no puede contener más de 10 caracteres.',
 
 
     'correo.required' => 'El campo correo es requerido.',
@@ -201,20 +207,6 @@ class ClienteController extends Controller
     ]
 
     );
-
-         $this->validate($request, [
-
-        'nombres'      => 'required|min:3|max:50',
-        'apellidos'    => 'required|min:3|max:50',
-        'fecha_nacimiento' => 'required|date',
-        'direccion'    => 'required|min:5|max:100',
-        'cedula'       => 'required|min:13|max:13', 
-        'telefono'     => 'required|min:12|max:12',
-        'celular'      => 'required|min:12|max:12',
-        'id_provincia' => 'required',
-        'id_genero'    => 'required'
-    ]);
-
         $cliente->nombres = $request->nombres;
         $cliente->apellidos = $request->apellidos;
         $cliente->fecha_nacimiento = $request->fecha_nacimiento;
@@ -255,4 +247,6 @@ class ClienteController extends Controller
         Session::flash('success', 'El registro se ha sido restaurado correctamente.');
         return redirect()->route('clientes.index');
     }
+
+
 }

@@ -35,7 +35,7 @@ class ClienteMascotaController extends Controller
         return view('back_end.cliente_mascota.create',[ 
 
         'mascotas' => DB:: select("SELECT * FROM mascotas AS m WHERE m.estatus = 'A' AND NOT EXISTS ( SELECT * FROM
-           cliente_mascota AS cm  WHERE m.id_mascota = cm.id_mascota AND cm.estatus = 'A' AND cm.estatus = 'E')"),
+           cliente_mascota AS cm  WHERE m.id_mascota = cm.id_mascota AND cm.estatus = 'A')"),
         'clientes' => Cliente::where('estatus', '=', 'A')->get()
         ]);
     }

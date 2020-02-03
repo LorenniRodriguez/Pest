@@ -92,6 +92,7 @@
 <script src="{{ asset('back_end/vendors/js/vendor.bundle.base.js') }}"></script>
 {{-- <script src="{{ asset('back_end/vendors/js/vendor.bundle.addons.js') }}"></script> --}}
 <script src="{{ asset('back_end/vendors/jquery-toast/jquery.toast.min.js') }}"></script>
+<script src="{{ asset('back_end/vendors/jquery.inputmask.bundle.min.js') }}"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->
 <!-- End plugin js for this page-->

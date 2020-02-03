@@ -127,7 +127,7 @@ class MascotaVacunaController extends Controller
                     AND estatus = 'A'
             ")->get();
             
-            if(isset($citas))
+            if(isset($citas[0]))
                 $request->id_cita = $citas[0]->id_cita;
         }
 

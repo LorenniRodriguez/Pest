@@ -164,3 +164,12 @@
 </div>
 
 @endsection
+
+
+@section('js')
+  <script type="text/javascript">
+        $('#telefono').inputmask('999-999-9999');
+        $('#celular').inputmask('999-999-9999');
+        $('#cedula').inputmask('999-9999999-9');
+  </script>
+@endsection

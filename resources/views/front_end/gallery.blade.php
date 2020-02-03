@@ -20,9 +20,9 @@
 		<div class="container">
 			<div class="gallery-grids">
 				@foreach($mascotas as $mascota)
-					<div class="col-md-4 gallery-grid">
-						<div class="grid">
-							<figure class="effect-apollo">
+					<div class="col-md-6 gallery-grid" style="display: flex;">
+						<div class="grid" style="float:left; display: flex; width: 450px; height: 250px;">
+							<figure class="effect-apollo" style="width: 450px;">
 								<a class="example-image-link" href="{{ Storage::url($mascota->imagen) }}" data-lightbox="example-set" data-title="{{ $mascota->titulo . ' ···· ' . $mascota->descripcion }}">
 									<img src="{{ Storage::url($mascota->imagen) }}" alt="" />
 									<figcaption>

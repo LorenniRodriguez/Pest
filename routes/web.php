@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 	# mascota ruta
 	Route::resource('mascotas', 'MascotaController');
 	Route::post('mascotas/restore/{mascota}', 'MascotaController@restore')->name('mascotas.restore');
+	Route::get('mascotas-reporte', 'MascotaController@reporte')->name('mascota.reporte');
 
 	#colores ruta
 	Route::resource('colores', 'ColorController');

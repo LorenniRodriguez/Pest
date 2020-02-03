@@ -467,7 +467,8 @@ ul.dropdown-menu {
     float: left;
     overflow: hidden;
     height: auto;
-    background: #3085a3;
+    /*background: #3085a3;*/
+    background: #042c39;
     text-align: center;
 }
 
@@ -539,11 +540,13 @@ figure.effect-chico p {
 }
 
 figure.effect-chico h4 {
-    margin: 1.5em 0 1em 0;
+    /*margin: 1.5em 0 1em 0;*/
+    margin: 0em 0 0.4em 0;
     font-size: 1.5em;
     color: #FFFFFF;
     font-family: 'Raleway', sans-serif;
     text-transform: capitalize;
+    text-shadow: black -2px 3px 4px;
 }
 
 figure.effect-chico p {
@@ -1470,6 +1473,7 @@ h2.typoh2{
 	height: auto;
 	text-align: center;
 	cursor: pointer;
+  max-height: 250px;
 }
 
 .grid figure img {
@@ -1486,6 +1490,7 @@ h2.typoh2{
 	font-size: 1.25em;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+  text-shadow: black -2px 3px 4px;
 }
 
 .grid figure figcaption::before,
@@ -1532,6 +1537,8 @@ h2.typoh2{
 .grid figure p {
 	letter-spacing: 1px;
 	font-size: 68.5%;
+  text-shadow: black -2px 3px 4px;
+  word-wrap: anywhere;
 }
 /*-----------------*/
 /***** Apollo *****/
@@ -1613,6 +1620,7 @@ figure.effect-apollo:hover p {
     color: #313131;
     text-transform: uppercase;
     font-weight: 800;
+    word-wrap: anywhere;
 }
 .blog-left-right a:hover{
     text-decoration: none;

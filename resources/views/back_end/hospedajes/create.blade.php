@@ -28,7 +28,9 @@
                         <select class="form-control select2" name="id_mascota" id="id_mascota" required="">
                             <option value="">Seleccione la mascota...</option>
                             @foreach($mascotas as $mascota)
-                            <option value="{{ $mascota->id_mascota }}" @if(old('id_mascota') == $mascota->id_mascota) selected="" @endif>{{ $mascota->nombre }} </option>
+                                <option value="{{ $mascota->id_mascota }}" @if(old('id_mascota') == $mascota->id_mascota) selected="" @endif>
+                                    @if(strlen($mascota->dueño) > 0) {{ $mascota->dueño }} @else Veterinaria @endif  |  {{ $mascota->nombre }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

@@ -294,5 +294,14 @@
         </a>
     </li>
     {{-- fin opcion del modulo graficos --}}
+
+    {{-- opcion del modulo reporte --}}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('mascota.reporte') }}">
+            <i class="menu-icon mdi mdi-file"></i>
+            <span class="menu-title">Reporte de Mascotas</span>
+        </a>
+    </li>
+    {{-- fin opcion del modulo reporte --}}
 </ul>
 </nav>

@@ -51,6 +51,14 @@ class CitaController extends Controller
             'id_mascota' => 'required',
             'id_vacuna' => 'required',
             'fecha_cita' => 'required|date|after:today'
+        ],
+
+        [
+            'id_mascota.required' => 'El campo mascota es requerido.',
+            'id_vacuna.required' => 'El campo vacuna es requerido.',
+            'fecha_cita.required' => 'El campo fecha cita es requerido.',
+            'fecha_cita.date' => 'El campo fecha cita debe ser de tipo fecha.',
+            'fecha_cita.after' => 'El campo fecha cita debe ser mayor que la fecha de hoy.',
         ]);
 
         $cita = new Cita;
