@@ -34,6 +34,18 @@ class JaulaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+           'descripcion' => 'required|min:2|max:50|unique:jaulas,descripcion'
+           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+            'descripcion.unique' => 'La jaula ingresada ya existe.'
+        ]
+    );
+
          $this->validate($request, [
             'descripcion' => 'required'
         ]);
@@ -79,6 +91,19 @@ class JaulaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+      $this->validate($request, [
+           'descripcion' => 'required|min:2|max:50|unique:jaulas,descripcion'
+           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+            'descripcion.unique' => 'La jaulas ingresada ya existe.'
+        ]
+    );
+
         $jaula = Jaula::find($id);
         $jaula->descripcion = $request->descripcion;
         $jaula->update();

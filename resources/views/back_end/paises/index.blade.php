@@ -3,6 +3,7 @@
 @section('titulo', 'Países Registrados')
 
 @section('content')
+    @include('back_end._errores')
 
     <div class="row">
         <div class="col-lg-8 grid-margin stretch-card">
@@ -68,7 +69,7 @@
 
                         <div class="form-group">
                             <label for="descripcion">País: <span><strong class="text-danger">*</strong></span></label>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off">
+                            <input type="text" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off"  value="{{ old ('descripcion') }}">
                         </div>
 
                         <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-save"></i>Guardar</button>

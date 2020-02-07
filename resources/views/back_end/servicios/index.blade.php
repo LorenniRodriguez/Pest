@@ -3,6 +3,7 @@
 @section('titulo', 'Servicios Registrados')
 
 @section('content')
+    @include('back_end._errores')
 
     <div class="row">
         <div class="col-lg-8 grid-margin stretch-card">
@@ -70,8 +71,8 @@
                         <div class="form-group">
                             <label for="servicio">Tipo de Servicio:</label>
                             <select class="form-control" name="id_tipo_servicio" id="id_tipo_servicio">
-                                @foreach($tipo_servicios as $servicio)
-                                    <option value="{{ $servicio->id_tipo_servicio }}">{{ $servicio->descripcion }}</option>
+                                 @foreach($tipo_servicios as $tipo_servicio)
+                                    <option value="{{ $tipo_servicio->id_tipo_servicio }}" @if($servicio->id_tipo_servicio == $tipo_servicio->id_tipo_servicio) selected="" @endif>{{ $tipo_servicio->descripcion }}  </option>
                                 @endforeach
                             </select>
                         </div>

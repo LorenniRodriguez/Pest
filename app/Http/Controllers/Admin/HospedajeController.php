@@ -57,7 +57,20 @@ class HospedajeController extends Controller
             'id_tipo_hospedaje' => 'required',
             'asuntos' => 'required',
             'fecha_final' => 'required|date|after_or_equal:today'
-        ]);
+        ],
+
+        [
+            'id_mascota.required' => 'El campo mascota es requerido.',
+            'id_jaula.required' => 'El campo jaula es requerido.',
+            'id_tipo_hospedaje.required' => 'El tipo hospedaje es requerido',
+            'fecha_final.required' => 'El campo fecha cita es requerido.',
+            'fecha_final.date' => 'El campo fecha final debe ser de tipo fecha.',
+            'fecha_final.after' => 'El campo fecha final debe ser mayor que la fecha de hoy.'
+        ]
+
+
+
+    );
 
         $hospedaje = new Hospedaje;
 

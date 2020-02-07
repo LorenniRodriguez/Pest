@@ -127,7 +127,7 @@ class MascotaController extends Controller
     {
      $this->validate($request, [
 
-        'nombre'      => 'required|min:1|max:30',
+        'nombre'      => 'required|min:2|max:50',
         'peso'        => 'required|min:1|max:6',
         'id_raza'     => 'required',
         'id_estatura' => 'required',
@@ -139,7 +139,7 @@ class MascotaController extends Controller
 
         'nombre.required' => 'El campo nombres es requerido.',
         'nombre.min' => 'El campo nombre debe contener más de 2 caracteres.',
-        'nombre.max' => 'El campo nombres debe contener menos de 30 caracteres.',
+        'nombre.max' => 'El campo nombres debe contener menos de 50 caracteres.',
 
         'peso.required' => 'El campo peso es requerido.',
         'peso.min' => 'El campo peso debe contener más de 3 caracteres.',

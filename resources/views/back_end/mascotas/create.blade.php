@@ -4,19 +4,7 @@
 
 @section('content')
 
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-  
-  <ul>
-    @foreach($errors->all() as $error)
-    <li>{{ $error }}</li>
-
-    @endforeach
-
-  </ul>
-</div>
-
-@endif
+@include('back_end._errores')
 
 	<div class="row">
 		<div class="col-12 grid-margin">
@@ -63,31 +51,33 @@
 
                               @foreach($colores as $color)
 
-                              <option value="{{$color->id_color}}">                           
+                              <option value="{{$color->id_color}}" @if(old('id_color') == $color->id_color) selected="" @endif>  
+
                                 {{ $color->descripcion }}</option>
 
-                              @endforeach
+                                @endforeach
 
-                            </select>
+                              </select>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Estatura: <span><strong class="text-danger">*</strong></span></label>
-                          <div class="col-sm-9">
-                            <select name="id_estatura" id="id_estatura" class="form-control select2">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Estatura: <span><strong class="text-danger">*</strong></span></label>
+                            <div class="col-sm-9">
+                              <select name="id_estatura" id="id_estatura" class="form-control select2">
 
-                              @foreach($estaturas as $estatura)
+                                @foreach($estaturas as $estatura)
 
-                              <option value="{{ $estatura->id_estatura }}">
-                              {{ $estatura->descripcion }}</option>
+                                <option value="{{ $estatura->id_estatura }}" @if(old('id_estatura') == $estatura->id_estatura) selected="" @endif >
 
-                              @endforeach          
-                            
-                           </select>
+                                  {{ $estatura->descripcion }}</option>
+
+                                  @endforeach          
+
+                                </select>
                           </div>
                         </div>
                       </div>
@@ -118,7 +108,10 @@
 
                               @foreach($razas as $raza)
 
-                              <option value="{{ $raza->id_raza }}">{{ $raza->descripcion }}</option>
+                              <option value="{{ $raza->id_raza }}" @if(old('id_raza') == $raza->id_raza) selected="" @endif>
+
+
+                                {{ $raza->descripcion }}</option>
 
                               @endforeach
 

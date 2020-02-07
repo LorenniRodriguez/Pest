@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Session;
 use App\Vacuna;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -40,11 +41,17 @@ class VacunaController extends Controller
     public function store(Request $request)
     {
           $this->validate($request, [
-            'descripcion' => 'required',
-            'para_gatos' => 'required',
-            'para_perros' => 'required'
+            'descripcion' => 'required|min:2|max:50|unique:vacunas,descripcion',
+    
+        ],
 
-        ]);
+        [
+            'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+            'descripcion.unique' => 'La vacuna ingresado ya existe.'
+
+        ]
+    );
 
         $vacuna = new Vacuna;
         $vacuna->descripcion = $request->descripcion;
@@ -88,6 +95,9 @@ class VacunaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
+
+
     {
         $vacuna = Vacuna::find($id);
         $vacuna->descripcion = $request->descripcion;

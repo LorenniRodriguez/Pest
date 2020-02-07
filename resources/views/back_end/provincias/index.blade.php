@@ -71,8 +71,9 @@
                             <label for="pais">País:</label>
                             <select class="form-control select2" name="id_pais" id="id_pais">
                                 @foreach($paises as $pais)
-                                    <option value="{{ $pais->id_pais }}">{{ $pais->descripcion }}</option>
+                                    <option value="{{ $pais->id_pais }}" @if($provincia->id_pais == $pais->id_pais) selected="" @endif>{{ $pais->descripcion }}</option>
                                 @endforeach
+                            </select>
                             </select>
                         </div>
 

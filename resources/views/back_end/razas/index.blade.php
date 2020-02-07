@@ -3,7 +3,8 @@
 @section('titulo', 'Razas Registradas')
 
 @section('content')
-
+    @include('back_end._errores')
+    
     <div class="row">
         <div class="col-lg-8 grid-margin stretch-card">
             <div class="card">
@@ -68,7 +69,7 @@
 
                         <div class="form-group">
                             <label for="descripcion">Raza:</label>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control" required="" autocomplete="off">
+                            <input type="text" name="descripcion" id="descripcion"  value="{{ old ('descripcion') }}" class="form-control" required="" autocomplete="off">
                         </div>
 
                         <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-save"></i>Guardar</button>

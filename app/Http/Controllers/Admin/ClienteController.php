@@ -60,7 +60,7 @@ class ClienteController extends Controller
         'apellidos'    => 'required|min:3|max:50',
         'fecha_nacimiento' => 'required|date',
         'direccion'    => 'required|min:10|max:100',
-        'cedula'       => 'required|min:13|max:13|unique:cliente,cedula', 
+        'cedula'       => 'required|min:13|max:13|unique:clientes,cedula', 
         'telefono'     => 'required|min:12|max:12',
         'celular'      => 'required|min:12|max:12',
         'correo'       => 'required|email|unique:clientes,correo',
@@ -180,7 +180,7 @@ class ClienteController extends Controller
     'apellido.min' => 'El campo apellido debe contener más de 2 caracteres.',
     'apellido.max' => 'El campo apellido debe contener  menos de 2 caracteres',
     
-    'direccion.required' => 'El campo fecha es requerido.',
+    'direccion.required' => 'El campo dirección es requerido.',
     'direccion.max' => 'El campo dirección  debe contener menos de 100 caracteres.',
     'direccion.min' => 'El campo dirección  debe contener más de 10 caracteres.',
     

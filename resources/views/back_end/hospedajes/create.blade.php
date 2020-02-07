@@ -3,23 +3,14 @@
 @section('titulo', 'Registrar Hospedaje')
 
 @section('content')
+    @include('back_end._errores')
 
 <div class="row">
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
                 <h5 class="mb-4">Datos Hospedaje</h5>
-
-                <div class="errores mb-3">
-                    @if(count($errors) > 0)
-                    @foreach($errors->all() as $error)
-                    <ul>
-                        <li class="text-danger">{{ $error }}</li>
-                    </ul>
-                    @endforeach
-                    @endif
-                </div>
-
+                
                 <form method="POST" action="{{ route('hospedajes.store') }}">
                     @csrf
 

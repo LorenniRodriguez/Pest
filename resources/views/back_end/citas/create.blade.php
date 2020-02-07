@@ -3,6 +3,7 @@
 @section('titulo', 'Agendar Próxima Vacunación')
 
 @section('content')
+    @include('back_end._errores')
     
     <div class="row">
         <div class="col-md-8">
@@ -10,15 +11,7 @@
                 <div class="card-body">
                     <h5 class="mb-4">Nueva Vacunación</h5>
 
-                    <div class="errores mb-3">
-                        @if(count($errors) > 0)
-                            @foreach($errors->all() as $error)
-                                <ul>
-                                    <li class="text-danger">{{ $error }}</li>
-                                </ul>
-                            @endforeach
-                        @endif
-                    </div>
+                    
 
                     <form method="POST" action="{{ route('vacunacion.store') }}">
                         @csrf

@@ -3,6 +3,7 @@
 @section('titulo', 'Editar Jaula')
 
 @section('content')
+    @include('back_end._errores')
 
     <div class="row">
         <div class="col-md-4">

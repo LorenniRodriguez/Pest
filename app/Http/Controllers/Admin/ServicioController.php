@@ -41,10 +41,17 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-          $this->validate($request, [
-            'id_tipo_servicio' => 'required',
-            'descripcion' => 'required'
-        ]);
+            $this->validate($request, [
+           'descripcion' => 'required|min:2|max:50|unique:servicios,descripcion'
+           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+            'descripcion.unique' => 'El servicio ingresado ya existe.'
+        ]
+    );
 
         $servicio = new Servicio;
         $servicio->id_tipo_servicio = $request->id_tipo_servicio;
@@ -89,6 +96,18 @@ class ServicioController extends Controller
      */
     public function update(Request $request, $id)
     {
+          $this->validate($request, [
+           'descripcion' => 'required|min:2|max:50|unique:servicios,descripcion'
+           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+            'descripcion.unique' => 'El servicio ingresado ya existe.'
+        ]
+    );
+          
         $servicio = Servicio::find($id);
         $servicio->id_tipo_servicio = $request->id_tipo_servicio;
         $servicio->descripcion = $request->descripcion;

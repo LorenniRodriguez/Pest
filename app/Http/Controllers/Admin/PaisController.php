@@ -39,17 +39,25 @@ class PaisController extends Controller
      */
     public function store(Request $request)
     { 
-          $this->validate($request, [
-            'descripcion' => 'required'
-        ]);
+       $this->validate($request, [
+        'descripcion' => 'required|min:2|max:50|unique:paises,descripcion'
 
-        $pais = new Pais;
-        $pais->descripcion = $request->descripcion;
-        $pais->save();
+    ],
 
-        Session::flash('success', 'El país se ha guardado correctamente.');
-        return redirect()->route('paises.index');
-    }
+    [
+        'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+        'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+        'descripcion.unique' => 'El país ingresado ya existe.'
+    ]
+);
+
+     $pais = new Pais;
+     $pais->descripcion = $request->descripcion;
+     $pais->save();
+
+     Session::flash('success', 'El país se ha guardado correctamente.');
+     return redirect()->route('paises.index');
+ }
 
     /**
      * Display the specified resource.
@@ -84,6 +92,18 @@ class PaisController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+        'descripcion' => 'required|min:2|max:50|unique:paises,descripcion'
+
+     ],
+
+     [
+        'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+        'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+        'descripcion.unique' => 'El país ingresado ya existe.'
+    ]
+);
+
         $pais = Pais::find($id);
         $pais->descripcion = $request->descripcion;
         $pais->update();

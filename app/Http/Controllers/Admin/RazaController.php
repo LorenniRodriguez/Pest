@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Validation\Rule;
 use Session;
 use App\Raza;
 use App\Http\Controllers\Controller;
@@ -40,8 +41,16 @@ class RazaController extends Controller
     public function store(Request $request)
     {
           $this->validate($request, [
-            'descripcion' => 'required'
-        ]);
+           'descripcion' => 'required|min:2|max:50|unique:razas,descripcion'
+           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripción debe contener menos de 50 caracteres.',
+            'descripcion.unique' => 'La raza ingresada ya existe.'
+        ]
+    );
 
         $raza = new Raza;
         $raza->descripcion = $request->descripcion;
@@ -84,6 +93,17 @@ class RazaController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $this->validate($request, [
+           'descripcion' => 'required|min:2|max:50|unique:razas,descripcion'           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripcion debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripcion debe contener menos de 50 caracteres.',
+            'descripcion.unique' => 'La raza ingresada ya existe.',
+        ]
+    );
+
         $raza = Raza::find($id);
         $raza->descripcion = $request->descripcion;
         $raza->update();

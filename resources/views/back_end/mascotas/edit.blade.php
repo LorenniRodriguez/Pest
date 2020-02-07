@@ -4,19 +4,7 @@
 
 @section('content')
 
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-  
-  <ul>
-    @foreach($errors->all() as $error)
-    <li>{{ $error }}</li>
-
-    @endforeach
-
-  </ul>
-</div>
-
-@endif
+@include('back_end._errores')
 
   <div class="row">
     <div class="col-12 grid-margin">
@@ -32,7 +20,7 @@
                           <label class="col-sm-3 col-form-label">Nombre Mascota: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name="nombre" id="nombre" placeholder="Nombre de la mascota" type="text" 
-                            value="{{ $mascota->nombre }}" class="form-control" />
+                            value="@if(old('nombre')) {{ old('nombre') }} @else {{ $mascota->nombre }} @endif" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -41,7 +29,7 @@
                           <label class="col-sm-3 col-form-label">Peso: <span><strong class="text-danger">*</strong></span></label>
                           <div class="col-sm-9">
                             <input name= "peso" id="peso" placeholder="Peso de la Mascota" type="text" 
-                            value="{{ $mascota->peso }}" class="form-control" />
+                            value="@if(old('peso')) {{ old('peso') }} @else {{ $mascota->peso }} @endif" class="form-control" />
                           </div>
                         </div>
                       </div>

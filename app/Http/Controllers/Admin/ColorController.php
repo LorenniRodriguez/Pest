@@ -40,6 +40,17 @@ class ColorController extends Controller
     public function store(Request $request)
     {
          $this->validate($request, [
+           'descripcion' => 'required|min:2|max:50|unique:colores,descripcion'
+           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripción debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripción debe contener menos de 20 caracteres.',
+            'descripcion.unique' => 'El color ingresado ya existe.'
+        ]
+    );
+         $this->validate($request, [
             'descripcion' => 'required'
         ]);
 
@@ -85,6 +96,17 @@ class ColorController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $this->validate($request, [
+           'descripcion' => 'required|min:2|max:50|unique:colores,descripcion'           
+        ],
+
+        [
+            'descripcion.min' => 'El campo descripcion debe contener más de 2 caracteres.',
+            'descripcion.max' => 'El campo descripcion debe contener menos de 10 caracteres.',
+            'descripcion.unique' => 'La color ingresada ya existe.',
+        ]
+    );
+
         $color = Color::find($id);
         $color->descripcion = $request->descripcion;
         $color->update();
